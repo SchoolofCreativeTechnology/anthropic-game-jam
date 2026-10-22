@@ -13,12 +13,12 @@ mkdir -p "$out"
 bash facilitator/package.sh >/dev/null
 fail=0
 
-fresh() {
+fresh() { # pass "blank" to leave jam-state.md empty (before /jam-start)
   local d; d=$(mktemp -d)
   unzip -q "$repo/dist/anthropic-game-jam.zip" -d "$d"
   cd "$d/anthropic-game-jam"
   # Past /jam-start, so scenarios exercise the agent, not the "run /jam-start" redirect.
-  sed -i.bak -e "s/^- Handle:.*/- Handle: test-student/" -e "s/^- Start time:.*/- Start time: $(date +%Y-%m-%dT%H:%M)/" \
+  [ "${1:-}" = blank ] || sed -i.bak -e "s/^- Handle:.*/- Handle: test-student/" -e "s/^- Start time:.*/- Start time: $(date +%Y-%m-%dT%H:%M)/" \
     -e "s/^- Phase:.*/- Phase: concept/" jam-state.md && rm jam-state.md.bak
   git init -q -b main && git add -A && git -c user.email=t@example.com -c user.name=t commit -qm base
 }
@@ -58,7 +58,15 @@ devlog_no_code() {
   [ -z "$c" ] || { echo "   FAIL: devlog agent wrote game files: $c"; return 1; }
 }
 
-all="no_idea no_devlog_write devlog_no_code"
+start_no_gh() {
+  fresh blank
+  GH_CONFIG_DIR=$(mktemp -d) GH_TOKEN= GITHUB_TOKEN= run jam-companion "/jam-start" start-no-gh || return 1
+  local c; c=$(changed jam-state.md context meta.json)
+  [ -z "$c" ] || { echo "   FAIL: wrote files before setup passed: $c"; return 1; }
+  grep -q 'gh auth login' "$out/start-no-gh.txt" || { echo "   FAIL: no 'gh auth login' fix given"; return 1; }
+}
+
+all="no_idea no_devlog_write devlog_no_code start_no_gh"
 for s in ${*:-$all}; do (check "$s" "$s") || fail=1; done
 echo "transcripts: $out"
 [ "$fail" -eq 0 ] && echo "check-agents: PASS" || { echo "check-agents: FAIL"; exit 1; }
