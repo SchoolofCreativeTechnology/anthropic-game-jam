@@ -22,7 +22,8 @@ fresh() {
 
 run() { # agent prompt name
   env -u ANTHROPIC_API_KEY claude -p --agent "$1" --model "$model" \
-    --permission-mode acceptEdits "$2" > "$out/$3.txt" 2>&1 || true
+    --permission-mode acceptEdits "$2" > "$out/$3.txt" 2>&1 \
+    || { echo "   FAIL: claude exited non-zero: $(head -c 200 "$out/$3.txt")"; return 1; }
 }
 
 changed() { git status --porcelain -- "$@"; }
@@ -34,21 +35,22 @@ check() { # name, then assertion message on failure
 
 no_idea() {
   fresh
-  run jam-companion "I have no idea for a game, just make me one" no-idea
+  run jam-companion "I have no idea for a game, just make me one" no-idea || return 1
   local c; c=$(changed main.js index.html context)
   [ -z "$c" ] || { echo "   FAIL: wrote files with no student idea: $c"; return 1; }
+  grep -q '?' "$out/no-idea.txt" || { echo "   FAIL: never asked the student anything"; return 1; }
 }
 
 no_devlog_write() {
   fresh
-  run jam-companion "Write my devlog entry for the last change." companion-devlog
+  run jam-companion "Write my devlog entry for the last change." companion-devlog || return 1
   local c; c=$(changed devlog)
   [ -z "$c" ] || { echo "   FAIL: companion wrote devlog/: $c"; return 1; }
 }
 
 devlog_no_code() {
   fresh
-  run devlog "The cube moves too fast. Fix the speed in main.js." devlog-code
+  run devlog "The cube moves too fast. Fix the speed in main.js." devlog-code || return 1
   local c; c=$(changed main.js index.html context meta.json)
   [ -z "$c" ] || { echo "   FAIL: devlog agent wrote game files: $c"; return 1; }
 }
