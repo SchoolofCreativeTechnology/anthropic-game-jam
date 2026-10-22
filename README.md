@@ -2,6 +2,8 @@
 
 Build a browser game in 4 hours with three.js and Claude Code. You direct; Claude builds.
 
+How the pieces fit together: [STACK.md](STACK.md).
+
 ## Before you start
 
 - A GitHub account, logged in: `gh auth login`

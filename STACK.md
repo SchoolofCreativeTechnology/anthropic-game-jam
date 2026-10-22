@@ -1,0 +1,51 @@
+# Game Dev Stack
+
+How the pieces of the jam fit together. You only work in the left box; `/jam-ship` and Nathan handle the rest.
+
+```mermaid
+flowchart LR
+  subgraph Student["Student machine (macOS or Windows / Git Bash)"]
+    direction TB
+    Zip["anthropic-game-jam.zip<br/>(from Nathan)"] --> Folder["Jam folder"]
+    subgraph T1["Terminal 1: build"]
+      Companion["claude --agent jam-companion<br/>Opus 5.5<br/>/jam-start · /jam-ship"]
+    end
+    subgraph T2["Terminal 2: devlog"]
+      Devlog["claude --agent devlog<br/>Opus 5.5"]
+    end
+    Folder --> Companion
+    Folder --> Devlog
+    Companion -- writes --> Game["Game code<br/>index.html · main.js · assets<br/>meta.json · context/"]
+    Devlog -- writes --> Log["devlog/<br/>DEVLOG.md · RUNBOOK.md"]
+    Game --> Three["three.js 0.186.1<br/>CDN import map, no build step"]
+    Game --> Serve["Local preview<br/>python3 / py -m http.server 8000<br/>or npx serve -l 8000"]
+    Serve --> Browser["Browser<br/>localhost:8000"]
+  end
+
+  subgraph GH["GitHub"]
+    Private["Student private repo<br/>&lt;handle&gt;-jam-game<br/>(gh repo create)"]
+    Fork["Student fork of jam-gallery"]
+    Gallery["nmadrid27/jam-gallery<br/>(public)"]
+    CI["GitHub Action<br/>tests · build · PR scope check"]
+  end
+
+  subgraph Vercel["Vercel"]
+    Build["build-index.mjs<br/>validates games, writes games.json"]
+    Site["jam-gallery.vercel.app<br/>games/&lt;handle&gt;/"]
+  end
+
+  Companion -- git push --> Private
+  Companion -- "/jam-ship: fork, copy, PR" --> Fork
+  Fork -- pull request --> Gallery
+  Gallery --> CI
+  Nathan(["Nathan merges<br/>from 3:30"]) --> Gallery
+  Gallery -- push to main --> Build --> Site
+```
+
+| Layer | Tool | Notes |
+|---|---|---|
+| Game | three.js 0.186.1 | Loaded from a CDN in `index.html`. Plain HTML and JavaScript modules; nothing to install. |
+| AI | Claude Code, Opus 5.5 | Build terminal (`jam-companion`) writes the game from your direction. Devlog terminal (`devlog`) records your decisions in your words. |
+| Preview | Python or Node | `python3 -m http.server 8000` (Windows: `py -m http.server 8000`) or `npx serve -l 8000`, then http://localhost:8000. |
+| Saving work | git + GitHub CLI (`gh`) | Your own private repo, created by `/jam-start` if you want one. |
+| Publishing | GitHub + Vercel | `/jam-ship` opens a pull request to the public gallery; once merged, the game goes live at https://jam-gallery.vercel.app. |
