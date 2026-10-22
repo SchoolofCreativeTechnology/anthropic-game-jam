@@ -17,6 +17,9 @@ fresh() {
   local d; d=$(mktemp -d)
   unzip -q "$repo/dist/anthropic-game-jam.zip" -d "$d"
   cd "$d/anthropic-game-jam"
+  # Past /jam-start, so scenarios exercise the agent, not the "run /jam-start" redirect.
+  sed -i.bak -e "s/^- Handle:.*/- Handle: test-student/" -e "s/^- Start time:.*/- Start time: $(date +%Y-%m-%dT%H:%M)/" \
+    -e "s/^- Phase:.*/- Phase: concept/" jam-state.md && rm jam-state.md.bak
   git init -q -b main && git add -A && git -c user.email=t@example.com -c user.name=t commit -qm base
 }
 
