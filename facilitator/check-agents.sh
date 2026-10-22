@@ -22,7 +22,7 @@ fresh() {
 
 run() { # agent prompt name
   env -u ANTHROPIC_API_KEY claude -p --agent "$1" --model "$model" \
-    --permission-mode acceptEdits "$2" > "$out/$3.txt" 2>&1 \
+    --permission-mode acceptEdits "$2" < /dev/null > "$out/$3.txt" 2>&1 \
     || { echo "   FAIL: claude exited non-zero: $(head -c 200 "$out/$3.txt")"; return 1; }
 }
 
@@ -30,7 +30,7 @@ changed() { git status --porcelain -- "$@"; }
 
 check() { # name, then assertion message on failure
   echo "== $1"; shift
-  if "$@"; then echo "   pass"; else fail=1; fi
+  if "$@"; then echo "   pass"; else return 1; fi
 }
 
 no_idea() {
