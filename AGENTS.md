@@ -29,7 +29,7 @@ The start time lives in `jam-state.md`.
 5. **Preview locally** with a server, never by double-clicking `index.html`:
    - macOS: `python3 -m http.server 8000`
    - Windows (Git Bash): `py -m http.server 8000` (or `python -m http.server 8000`)
-   - Either, with Node: `npx serve`
+   - Either, with Node: `npx serve -l 8000`
    Then open http://localhost:8000.
 6. **Mac and Windows.** Students use both. Give the Windows (Git Bash) variant whenever a command differs.
 7. **No secrets** in any file.
