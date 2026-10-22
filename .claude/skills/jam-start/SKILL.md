@@ -26,6 +26,15 @@ If anything failed: list each problem with its fix in plain language, say "Run `
 
 If everything passed, say so in one line and note which serve command they'll use (from `AGENTS.md`).
 
+**Git identity.** New installs often have no git name or email, and every commit fails without them. If `git config user.email` or `git config user.name` prints nothing, set them for this folder only (run `git init -b main` first if it is not a repo yet):
+
+```bash
+git config user.email "$(gh api user --jq '"\(.id)+\(.login)@users.noreply.github.com"')"
+git config user.name "$(gh api user --jq '.login')"
+```
+
+The noreply address also avoids GitHub's email-privacy push block.
+
 ## 2. Handle
 
 Ask for a handle: "This name shows publicly in the jam gallery next to your game. It doesn't have to be your real name."
