@@ -35,4 +35,12 @@ if grep -rlE 'nathan@nathanmadrid\.com|sk-ant-' "$root" >/dev/null 2>&1; then
   err "personal email or API key in: $(grep -rlE 'nathan@nathanmadrid\.com|sk-ant-' "$root" | sed "s#$root/##" | tr '\n' ' ')"
 fi
 
+# Interfaces other files depend on: DEVLOG headings and jam-state fields.
+for h in '## Entries' '## Reflection' '## AI Use Disclosure'; do
+  [ -f "$root/devlog/DEVLOG.md" ] && ! grep -qxF "$h" "$root/devlog/DEVLOG.md" && err "DEVLOG.md lacks heading: $h"
+done
+for f in '- Handle:' '- Start time:' '- Phase:' '- Repo URL:' '- Gallery PR:'; do
+  [ -f "$root/jam-state.md" ] && ! grep -q "^$f" "$root/jam-state.md" && err "jam-state.md lacks field: $f"
+done
+
 [ "$fail" -eq 0 ] && echo "check-package: PASS" || exit 1
