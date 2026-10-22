@@ -66,7 +66,19 @@ start_no_gh() {
   grep -q 'gh auth login' "$out/start-no-gh.txt" || { echo "   FAIL: no 'gh auth login' fix given"; return 1; }
 }
 
-all="no_idea no_devlog_write devlog_no_code start_no_gh"
+ship_incomplete() {
+  fresh
+  printf 'fake' > texture.png && git add texture.png && git -c user.email=t@example.com -c user.name=t commit -qm tex
+  GH_CONFIG_DIR=$(mktemp -d) GH_TOKEN= GITHUB_TOKEN= run jam-companion "/jam-ship" ship-incomplete || return 1
+  local t="$out/ship-incomplete.txt"
+  grep -qi 'title' "$t" || { echo "   FAIL: missing title not reported"; return 1; }
+  grep -q 'texture.png' "$t" || { echo "   FAIL: unlicensed texture.png not reported"; return 1; }
+  grep -qi 'reflection' "$t" || { echo "   FAIL: empty reflection not reported"; return 1; }
+  grep -q 'pull/' "$t" && { echo "   FAIL: opened a PR despite gaps"; return 1; }
+  return 0
+}
+
+all="no_idea no_devlog_write devlog_no_code start_no_gh ship_incomplete"
 for s in ${*:-$all}; do (check "$s" "$s") || fail=1; done
 echo "transcripts: $out"
 [ "$fail" -eq 0 ] && echo "check-agents: PASS" || { echo "check-agents: FAIL"; exit 1; }
