@@ -35,6 +35,11 @@ if grep -rlE 'nathan@nathanmadrid\.com|sk-ant-' "$root" >/dev/null 2>&1; then
   err "personal email or API key in: $(grep -rlE 'nathan@nathanmadrid\.com|sk-ant-' "$root" | sed "s#$root/##" | tr '\n' ' ')"
 fi
 
+# npx serve defaults to port 3000; every doc sends students to :8000.
+if grep -rnE 'npx serve' "$root" | grep -v 'npx serve -l 8000' >/dev/null; then
+  err "npx serve without -l 8000: $(grep -rnE 'npx serve' "$root" | grep -v 'npx serve -l 8000' | sed "s#$root/##" | cut -d: -f1,2 | tr '\n' ' ')"
+fi
+
 # Interfaces other files depend on: DEVLOG headings and jam-state fields.
 for h in '## Entries' '## Reflection' '## AI Use Disclosure'; do
   [ -f "$root/devlog/DEVLOG.md" ] && ! grep -qxF "$h" "$root/devlog/DEVLOG.md" && err "DEVLOG.md lacks heading: $h"
