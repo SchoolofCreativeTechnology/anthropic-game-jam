@@ -63,6 +63,6 @@ If `git push` fails on email privacy, use the same noreply fix as `/jam-start` s
 ## 4. Done
 
 - `cd` back to their jam folder. Write the PR URL into `jam-state.md` `Gallery PR:` and set `Phase: shipped`. Commit and push their repo.
-- Tell them: the PR is open; the gallery check runs automatically; once Nathan merges, the game appears in the jam gallery. If the check fails, show them `gh pr checks <url>` and fix what it names.
+- Tell them: the PR is open; the gallery check runs automatically; once Nathan merges, the game appears at https://jam-gallery.vercel.app (direct link: https://jam-gallery.vercel.app/games/<handle>/). If the check fails, show them `gh pr checks <url>` and fix what it names.
 - Mention that if they want the game on their own URL too, Nathan can walk them through connecting Vercel to their repo after the jam.
 - Suggest a last devlog entry about shipping.

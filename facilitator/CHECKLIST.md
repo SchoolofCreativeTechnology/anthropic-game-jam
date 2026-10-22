@@ -12,7 +12,7 @@ Excluded from the student package.
   - Windows: `winget install GitHub.cli`, Git for Windows (Git Bash) installed
 - [ ] Python 3 or Node present (local preview)
 - [ ] Every student's Claude plan includes Opus 5.5
-- [ ] `jam-gallery` live on Vercel; PR check workflow green on `main`
+- [x] `jam-gallery` live on Vercel (https://jam-gallery.vercel.app, team "Nathan Madrid's projects", auto-deploys on push to main); PR check workflow green on `main`
 - [ ] Fork-PR workflow approval: GitHub holds checks on PRs from first-time contributors. In `jam-gallery` Settings, Actions, General, "Approval for running fork pull request workflows", choose the least strict option, or plan to click "Approve and run" on each PR during the merge window
 - [ ] Build the zip: `bash facilitator/check-package.sh && bash facilitator/package.sh`
 - [ ] Dry run done on macOS and Windows (see plan Task 8)

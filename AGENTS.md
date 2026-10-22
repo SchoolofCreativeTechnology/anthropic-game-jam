@@ -41,3 +41,5 @@ The start time lives in `jam-state.md`.
 - `devlog/RUNBOOK.md`: how to run and ship this game.
 - `jam-state.md`: handle, start time, phase, repo URL, gallery PR.
 - `meta.json`: title, handle, description, asset credits. Shipped to the gallery.
+
+Gallery: https://jam-gallery.vercel.app (source: https://github.com/nmadrid27/jam-gallery).
