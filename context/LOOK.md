@@ -20,7 +20,7 @@ Example: "Grey-blue sea, near-black sky, one warm yellow for the beam."
 
 ## References
 
-*Games, films, art, or photos that capture it. Links are great.*
+*Games, films, art, or photos that capture it. Put images and links in `context/references/` and say here what each one is for.*
 
 Example: "The fog in *Limbo*; Hopper's lighthouse paintings."
 

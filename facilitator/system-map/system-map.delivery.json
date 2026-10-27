@@ -1,0 +1,17 @@
+{
+  "schemaVersion": 1,
+  "receiptId": "dc284dbe-324b-47e0-96a2-514a90165ab5",
+  "status": "current",
+  "command": "deliver",
+  "type": "architecture",
+  "input": "/Users/nathanmadrid/projects/anthropic-game-jam/facilitator/system-map/candidate.json",
+  "output": "/Users/nathanmadrid/projects/anthropic-game-jam/facilitator/system-map/system-map.html",
+  "specification": {
+    "sha256": "996b64d0cef90e196d115ececf06ef6f73cf27f017d5cf647f626226e75cdceb",
+    "bytes": 4332
+  },
+  "artifact": {
+    "sha256": "5149a43891ee2bba93b2692fbc2b3c1706ccb822221a52bf62f2831a9c92fae0",
+    "bytes": 833308
+  }
+}

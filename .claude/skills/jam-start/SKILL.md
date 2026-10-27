@@ -26,6 +26,8 @@ If anything failed: list each problem with its fix in plain language, say "Run `
 
 If everything passed, say so in one line and note which serve command they'll use (from `AGENTS.md`).
 
+**Start the clock now**, before the brief: the brief is part of the 0:00 to 0:45 Concept phase. If `Start time:` in `jam-state.md` is empty, set it from `date +%Y-%m-%dT%H:%M` and `Phase:` to `concept`. If it is already set (a rerun), keep it. If Nathan started the jam at a set time and they joined late, ask whether to use the official start instead.
+
 **Git identity.** New installs often have no git name or email, and every commit fails without them. If `git config user.email` or `git config user.name` prints nothing, set them for this folder only (run `git init -b main` first if it is not a repo yet):
 
 ```bash
@@ -58,18 +60,18 @@ On no: `git init -b main` and a first commit anyway, so the devlog terminal can 
 
 Go through `context/CONCEPT.md`, `MECHANIC.md`, `LOOK.md`, `SCOPE.md`, one section at a time:
 
+- Before CONCEPT, state the jam rule in one line: the game is built around one action the player repeats (jump, dodge, run, aim, time a tap), like Subway Surfers or Flappy Bird. At MECHANIC, their "one action" answer must name a single action; if it names more than one, ask which one is the game and offer to put the others in SCOPE Stretch.
+- At LOOK, look at what's in `context/references/` first. For each file, ask what it's there for (one line each) and write their answer under References. If the folder is empty, say they can drop screenshots or links in there any time.
 - Ask the section's question in your own plain words. Point at the example only if they're unsure what size of answer fits.
 - Write their answer into the file after the `>`, in their words. Tidy spelling; do not upgrade the idea, add detail, or merge in your preferences.
 - If an answer is vague ("something cool"), ask one follow-up. If it's still vague, write what they said and move on; they can revisit it.
 - If they have no idea at all: offer up to three one-line seeds or constraints, ask which sparks something and what they'd change, then step back. Never develop, rank, or pick for them.
 - Keep moving. The whole brief should take about 30 minutes. If they stall on LOOK or SCOPE, write what they have and say they can come back.
 
-## 5. Start the clock
+## 5. Save the start state
 
-Update `jam-state.md`:
+Update `jam-state.md` (`Start time` and `Phase` were set in step 1; leave them):
 - `Handle:` their handle
-- `Start time:` now, from `date +%Y-%m-%dT%H:%M` (if Nathan started the jam at a set time and they joined late, ask whether to use the official start instead)
-- `Phase:` concept
 - `Repo URL:` the GitHub URL, or `local only`
 
 Set `"handle"` in `meta.json`.

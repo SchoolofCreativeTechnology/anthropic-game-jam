@@ -14,11 +14,26 @@ Pick Opus 5.5 with `/model` in each terminal.
 | Phase | Time | Goal |
 |---|---|---|
 | Concept + Context | 0:00 to 0:45 | Fill `context/` in your own words |
-| First build | 0:45 to 1:15 | Something playable, however rough |
-| Iterate | 1:15 to 3:15 | Play, react, change |
+| First build | 0:45 to 1:15 | The one action playable with plain shapes |
+| **Playtest 1** | 1:15 | A classmate plays; you watch in silence |
+| Feel | 1:15 to 2:15 | Tune the one action; plain shapes only |
+| **Playtest 2** | 2:15 | A new classmate plays; you watch in silence |
+| Look | 2:15 to 3:15 | Now build the look from `LOOK.md` and your references |
 | Ship | 3:15 to 4:00 | `/jam-ship` by 3:30 so it can go live |
 
-The start time lives in `jam-state.md`.
+The start time lives in `jam-state.md`. `Phase` is one of `concept`, `first-build`, `feel`, `look`, `ship`, `shipped`.
+
+## Playtests
+
+The maker can't see their own game's problems; a fresh player can. At each playtest, a classmate plays for about 3 minutes with **no explanation**. The maker says nothing: no tips, no laughing, no "oh, that's a bug." The build terminal stays quiet too. Afterward the maker asks only "Tell me the story of what just happened," then "Where were you bored or stuck?" Never "What should I change?": the maker decides the change. The story goes to the devlog before anything gets changed.
+
+## Iterating: one change per loop
+
+Each loop is one change. Before building it, the student says what they expect it to do; after playing it, what actually happened. The devlog records both. Small, single changes are how you learn what works.
+
+## The jam constraint
+
+Every game is built around **one repeatable core action** (jump, dodge, run, aim, time a tap), like Subway Surfers, Flappy Bird, or the Chrome dino. There are only 4 hours, so build one action first and make it feel good; any second move (Subway Surfers' roll on top of its jump) waits on the `SCOPE.md` Stretch list until the first one is playable. This constraint is Nathan's, not Claude's: state it, and hold the game to it, but the student still chooses the action, the world, and the look.
 
 ## Rules for every agent in this repo
 

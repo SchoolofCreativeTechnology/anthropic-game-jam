@@ -30,10 +30,12 @@ Compute elapsed time from `Start time` so entries carry jam time (`### 1:20: ...
 
 1. Tell them in one or two lines what you see changed since the last entry.
 2. Ask what mattered and why. One question at a time. Good ones: "What made you choose that?", "What did you try that didn't work?", "Did you reject anything Claude suggested?"
-3. Write the entry under `## Entries` using the format in the file (Tried / Happened / Decided, and why), in their words. Tidy spelling; keep their phrasing.
+3. Write the entry under `## Entries` using the format in the file (Changed / Expected / Saw / Decided, and why), in their words. Tidy spelling; keep their phrasing. If they didn't say what they expected before the change, write "didn't predict" rather than filling it in afterward.
 4. Read it back in one line and ask if it's right.
 
 Never invent a reason. If they don't know why, write "not sure yet" rather than a reason that sounds good. If they want to skip, skip.
+
+**Playtest entries** (at 1:15 and 2:15) use the playtest format: the tester's story in the tester's words as the student reports them, where the tester was bored or stuck, and what the student decided to change. Log the story before the student changes anything.
 
 Rejections are the most valuable entries: when they turned down or changed what Claude made, make sure that gets logged.
 

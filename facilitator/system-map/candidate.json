@@ -1,0 +1,45 @@
+{
+  "schema_version": 1,
+  "diagram_type": "architecture",
+  "meta": {
+    "title": "Anthropic Game Jam: System Map",
+    "locale": "en",
+    "output": "facilitator/system-map/system-map.html",
+    "quality_profile": "showcase"
+  },
+  "components": [
+    { "id": "student", "type": "external", "icon": "person", "label": "Student", "sublabel": "directs, decides why", "pos": [40, 230], "size": [140, 64] },
+    { "id": "companion", "type": "backend", "label": "Build terminal", "sublabel": "jam-companion agent", "tag": "/jam-start", "pos": [270, 230], "size": [140, 64] },
+    { "id": "context", "type": "database", "label": "context/ brief", "sublabel": "+ references/ images", "pos": [270, 60], "size": [140, 64] },
+    { "id": "game", "type": "frontend", "label": "Game files", "sublabel": "index.html, main.js", "tag": "three.js 0.186.1", "pos": [500, 230], "size": [140, 64] },
+    { "id": "private", "type": "cloud", "label": "Private repo", "sublabel": "handle-jam-game", "pos": [500, 60], "size": [140, 64] },
+    { "id": "jamship", "type": "backend", "label": "/jam-ship", "sublabel": "check, consent, PR", "pos": [730, 230], "size": [140, 64] },
+    { "id": "gallery", "type": "cloud", "label": "jam-gallery repo", "sublabel": "PR check (CI)", "pos": [960, 230], "size": [140, 64] },
+    { "id": "nathan", "type": "external", "icon": "person", "label": "Nathan", "sublabel": "merges from 3:30", "pos": [960, 60], "size": [140, 64] },
+    { "id": "site", "type": "cloud", "label": "Gallery site", "sublabel": "jam-gallery.vercel.app", "pos": [1190, 230], "size": [140, 64] },
+    { "id": "devlog", "type": "backend", "label": "Devlog terminal", "sublabel": "devlog agent", "pos": [270, 400], "size": [140, 64] },
+    { "id": "devfile", "type": "database", "label": "DEVLOG.md", "sublabel": "changed, expected, saw", "pos": [270, 560], "size": [140, 64] },
+    { "id": "preview", "type": "frontend", "label": "Local preview", "sublabel": "localhost:8000", "pos": [500, 400], "size": [140, 64] },
+    { "id": "classmate", "type": "external", "icon": "person", "label": "Classmate", "sublabel": "plays in silence", "pos": [730, 400], "size": [140, 64] }
+  ],
+  "connections": [
+    { "id": "directs", "from": "student", "to": "companion", "label": "directs", "variant": "emphasis" },
+    { "id": "brief", "from": "context", "to": "companion", "label": "brief" },
+    { "id": "builds", "from": "companion", "to": "game", "label": "builds", "variant": "emphasis" },
+    { "id": "push", "from": "game", "to": "private", "label": "git push", "variant": "dashed" },
+    { "id": "ready", "from": "game", "to": "jamship", "label": "readiness", "variant": "emphasis" },
+    { "id": "pr", "from": "jamship", "to": "gallery", "label": "fork + PR", "variant": "emphasis" },
+    { "id": "merge", "from": "nathan", "to": "gallery", "label": "merges", "variant": "security" },
+    { "id": "deploy", "from": "gallery", "to": "site", "label": "deploys", "variant": "emphasis" },
+    { "id": "why", "from": "student", "to": "devlog", "label": "what + why" },
+    { "id": "writes", "from": "devlog", "to": "devfile", "label": "writes" },
+    { "id": "serves", "from": "game", "to": "preview", "label": "serves" },
+    { "id": "playtest", "from": "preview", "to": "classmate", "label": "playtest" }
+  ],
+  "cards": [
+    { "dot": "amber", "title": "Clock (4 hours)", "items": ["0:00 concept: brief in the student's words", "0:45 first build: one action, plain shapes", "1:15 Playtest 1, then feel until 2:15", "2:15 Playtest 2, then look until 3:15", "3:15 ship; /jam-ship by 3:30"] },
+    { "dot": "emerald", "title": "Rules every agent follows", "items": ["The idea is the student's; up to 3 seeds, then step back", "One repeatable action; extra moves go to Stretch", "One change per loop, predicted first", "Build terminal never writes devlog/; devlog never writes code"] },
+    { "dot": "cyan", "title": "What ships to the gallery", "items": ["index.html, meta.json, .js/.css, credited assets, DEVLOG.md", "context/ and references never ship", "Every downloaded file needs source + license; AI files go in ai_assets"] },
+    { "dot": "rose", "title": "Gates", "items": ["/jam-ship stops on any gap and asks consent before publishing", "Gallery CI: one new game folder per PR, assets credited", "Nathan merges; Vercel deploys main"] }
+  ]
+}

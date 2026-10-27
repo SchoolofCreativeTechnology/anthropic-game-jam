@@ -1,0 +1,51 @@
+{
+  "schemaVersion": 1,
+  "ok": true,
+  "command": "finalize",
+  "status": "pass",
+  "type": "architecture",
+  "quality": "showcase",
+  "specification": {
+    "path": "/Users/nathanmadrid/projects/anthropic-game-jam/facilitator/system-map/candidate.json",
+    "sha256": "996b64d0cef90e196d115ececf06ef6f73cf27f017d5cf647f626226e75cdceb",
+    "bytes": 4332
+  },
+  "artifact": {
+    "path": "/Users/nathanmadrid/projects/anthropic-game-jam/facilitator/system-map/system-map.html",
+    "sha256": "5149a43891ee2bba93b2692fbc2b3c1706ccb822221a52bf62f2831a9c92fae0",
+    "bytes": 833308
+  },
+  "gates": {
+    "validate": "pass",
+    "deliver": "pass",
+    "check": "pass",
+    "browser-check": "pass"
+  },
+  "diagnostics": [],
+  "diagnosticSummary": {
+    "total": 0,
+    "shown": 0,
+    "truncated": false
+  },
+  "evidence": {
+    "receipt": "/Users/nathanmadrid/projects/anthropic-game-jam/facilitator/system-map/system-map.finalize.json",
+    "summaryReceipt": "/Users/nathanmadrid/projects/anthropic-game-jam/facilitator/system-map/system-map.finalize-summary.json",
+    "browserCheckReceipt": "/Users/nathanmadrid/projects/anthropic-game-jam/facilitator/system-map/system-map.browser-check.json"
+  },
+  "update": {
+    "status": "current",
+    "installedVersion": "3.2.0",
+    "availableVersion": "3.2.0",
+    "releaseNotes": null,
+    "checkedAt": "2026-10-27T17:27:31.543Z",
+    "source": "network",
+    "noticeRequired": false,
+    "noticeText": null
+  },
+  "visualReview": "not-requested",
+  "durationMs": 2276,
+  "browserCheck": {
+    "requested": true,
+    "ran": true
+  }
+}

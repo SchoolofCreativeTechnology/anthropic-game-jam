@@ -1,0 +1,71 @@
+{
+  "schema_version": 2,
+  "diagram_type": "workflow",
+  "meta": {
+    "title": "Build Process: Neon Tracks Demo",
+    "locale": "en",
+    "quality_profile": "showcase",
+    "output": "facilitator/system-map/build-process.html"
+  },
+  "lanes": [
+    { "id": "student", "label": "Student" },
+    { "id": "build", "label": "Build terminal (jam-companion)" },
+    { "id": "files", "label": "Files in the repo" },
+    { "id": "devlog", "label": "Devlog terminal" },
+    { "id": "stop", "label": "Ship gate", "variant": "exception" }
+  ],
+  "phases": [
+    { "id": "concept", "label": "Concept 0:00-0:45", "fromCol": 0, "toCol": 0 },
+    { "id": "first", "label": "First build to 1:15", "fromCol": 1, "toCol": 1, "variant": "emphasis" },
+    { "id": "feel", "label": "Feel 1:15-2:15", "fromCol": 2, "toCol": 3 },
+    { "id": "look", "label": "Look 2:15-3:15", "fromCol": 4, "toCol": 4, "variant": "dashed" },
+    { "id": "ship", "label": "Ship to 4:00", "fromCol": 5, "toCol": 5, "variant": "security" }
+  ],
+  "mainPath": ["start", "brief", "first", "pt1", "predict", "change", "pt2", "look", "shipcmd", "readiness", "nopublish"],
+  "nodes": [
+    { "id": "start", "lane": "student", "col": 0, "type": "external", "label": "/jam-start", "sublabel": "brings references", "tag": "one action: switch lanes" },
+    { "id": "pt1", "lane": "student", "col": 2, "type": "external", "label": "Playtest 1", "sublabel": "maker stays silent", "tag": "1:15" },
+    { "id": "predict", "lane": "student", "col": 3, "type": "external", "label": "Predicts", "sublabel": "says what change will do" },
+    { "id": "pt2", "lane": "student", "col": 4, "type": "external", "label": "Playtest 2", "sublabel": "new classmate", "tag": "2:15" },
+    { "id": "shipcmd", "lane": "student", "col": 5, "type": "external", "label": "/jam-ship", "sublabel": "by 3:30, answers consent" },
+
+    { "id": "brief", "lane": "build", "col": 0, "type": "backend", "label": "Writes brief", "sublabel": "student's words", "tag": "849655d" },
+    { "id": "first", "lane": "build", "col": 1, "type": "backend", "label": "First playable", "sublabel": "score, fail cause, 1-key restart", "tag": "8f596b5" },
+    { "id": "change", "lane": "build", "col": 3, "type": "backend", "label": "One change per loop", "sublabel": "lane slide, then coins", "tag": "e1bd423, 36a7cbd" },
+    { "id": "look", "lane": "build", "col": 4, "type": "backend", "label": "Look from references", "sublabel": "seaside day theme", "tag": "4621441" },
+    { "id": "readiness", "lane": "build", "col": 5, "type": "security", "label": "Ship checks", "sublabel": "meta.json, asset credits" },
+
+    { "id": "context", "lane": "files", "col": 0, "type": "database", "label": "context/", "sublabel": "brief + references/" },
+    { "id": "game", "lane": "files", "col": 1, "type": "database", "label": "index.html, main.js", "sublabel": "plain shapes only" },
+    { "id": "mainjs", "lane": "files", "col": 3, "type": "database", "label": "main.js", "sublabel": "easing, coins, best score" },
+    { "id": "lookfiles", "lane": "files", "col": 4, "type": "database", "label": "main.js, textures/", "sublabel": "listed in ai_assets" },
+
+    { "id": "ptentry", "lane": "devlog", "col": 2, "type": "messagebus", "label": "Playtest entry", "sublabel": "their story, bored or stuck" },
+    { "id": "changeentry", "lane": "devlog", "col": 3, "type": "messagebus", "label": "Change entry", "sublabel": "Changed, Expected, Saw" },
+
+    { "id": "nopublish", "lane": "stop", "col": 5, "type": "security", "label": "Nothing published", "sublabel": "no repo, no gallery PR" }
+  ],
+  "edges": [
+    { "from": "start", "to": "brief", "label": "answers", "variant": "emphasis" },
+    { "from": "brief", "to": "context", "label": "writes" },
+    { "from": "brief", "to": "first", "variant": "emphasis" },
+    { "from": "first", "to": "game", "label": "commits" },
+    { "from": "first", "to": "pt1", "label": "swap", "variant": "emphasis" },
+    { "from": "pt1", "to": "ptentry", "label": "tells devlog", "variant": "dashed" },
+    { "from": "pt1", "to": "predict", "variant": "emphasis" },
+    { "from": "predict", "to": "change", "label": "asks for one", "variant": "emphasis" },
+    { "from": "change", "to": "mainjs", "label": "commits" },
+    { "from": "mainjs", "to": "changeentry", "label": "reads git log", "variant": "dashed", "role": "async" },
+    { "from": "change", "to": "pt2", "label": "swap", "variant": "emphasis" },
+    { "from": "pt2", "to": "look", "label": "look unlocks", "variant": "emphasis" },
+    { "from": "look", "to": "lookfiles", "label": "commits" },
+    { "from": "look", "to": "shipcmd", "variant": "emphasis" },
+    { "from": "shipcmd", "to": "readiness", "variant": "emphasis" },
+    { "from": "readiness", "to": "nopublish", "label": "consent: no", "variant": "security", "role": "error" }
+  ],
+  "cards": [
+    { "dot": "cyan", "title": "Jam rules", "items": ["One repeated action; extra moves go to Stretch", "Plain shapes until Playtest 2", "Tester gets no explanation; maker asks for the story", "Predict before each change, report after"] },
+    { "dot": "emerald", "title": "Who writes what", "items": ["Build terminal: game code, context/, meta.json", "Devlog terminal: devlog/ only, in the student's words", "References guide the look and never ship"] },
+    { "dot": "amber", "title": "Demo vs. this process", "items": ["Tags are real Neon Tracks sandbox commits", "Demo order differed: night city and day theme came before coins", "No classmate playtests ran; the demo took 33 minutes"] }
+  ]
+}

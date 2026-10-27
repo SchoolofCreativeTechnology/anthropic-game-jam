@@ -4,12 +4,20 @@ Your record of the jam, in your words. The devlog terminal (`claude --agent devl
 
 ## Entries
 
-Format for each entry:
+Format for each change (one change per entry):
 
 ### HH:MM: short title
-- **Tried:**
-- **Happened:**
+- **Changed:**
+- **Expected:**
+- **Saw:**
 - **Decided, and why:**
+
+Format for each playtest (1:15 and 2:15):
+
+### HH:MM: Playtest N
+- **Their story:**
+- **Bored or stuck:**
+- **What I'll change:**
 
 ## Reflection
 

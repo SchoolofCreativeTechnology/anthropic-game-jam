@@ -14,7 +14,7 @@ Do the steps in order. Stop at the first step that fails.
 Read `meta.json`, `jam-state.md`, and `devlog/DEVLOG.md`, and list the files in the project (`git ls-files`, plus untracked files from `git status --porcelain`). Collect **every** gap before reporting:
 
 - `meta.json`: `title`, `handle`, `description` are non-empty; `handle` matches `^[a-z0-9-]{2,30}$`.
-- Assets: every file except `index.html`, `meta.json`, `.js`/`.css` files, dotfiles (`.gitignore` and the like), and the template files (`context/`, `devlog/`, `.claude/`, `jam-state.md`, `AGENTS.md`, `CLAUDE.md`, `README.md`) must be listed in `meta.json` `assets` (with non-empty `source` and `license`) or in `ai_assets`. Name each unlisted file.
+- Assets: every file except `index.html`, `meta.json`, `.js`/`.css` files, dotfiles (`.gitignore` and the like), and the template files (`context/`, `devlog/`, `.claude/`, `jam-state.md`, `AGENTS.md`, `CLAUDE.md`, `README.md`, `STACK.md`) must be listed in `meta.json` `assets` (with non-empty `source` and `license`) or in `ai_assets`. Name each unlisted file.
 - `DEVLOG.md`: `## Reflection` and `## AI Use Disclosure` each have the student's own content, not just the template's italic prompt.
 - `index.html` exists and still loads `main.js`.
 

@@ -3,3 +3,9 @@
 *.sync-conflict-*
 .superpowers/
 dist/
+# references are images and links only; videos stay out of git
+context/references/*.mp4
+context/references/*.mov
+context/references/*.webm
+context/references/*.avi
+context/references/*.mkv
