@@ -2,6 +2,8 @@
 
 You direct. Claude builds. In the jam with Claude Code you can ship a small game that feels great to play. You can't ship a big one. This page tells you which is which, so you can plan around it.
 
+For a draft checklist of what AI or automated judging might look at (the rubric is not finalized), see [WHAT-GETS-JUDGED.md](../demos/zombie-runner-showcase/WHAT-GETS-JUDGED.md) in the showcase demo.
+
 ## The one rule
 Your game is built around **one action you repeat**: jump, dodge, aim, time a tap. Get that action feeling good first. Everything else goes on your Stretch list.
 

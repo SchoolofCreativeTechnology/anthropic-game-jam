@@ -60,4 +60,6 @@ In the build terminal: `/jam-ship`. Aim for 3:30 so your game is live by 4:00 at
 
 ## Example demo (optional)
 
-The repo includes a finished showcase game, [Zombie Runner](demos/zombie-runner-showcase/), to show what is possible in a jam—not a template to copy. From that folder, run a local server (same as above) and open the page it serves.
+The repo includes a finished showcase game, [Zombie Runner](demos/zombie-runner-showcase/), to show what is possible in a jam—not a template to copy. Live demo: https://zombie-runner-showcase.vercel.app. From that folder, run a local server (same as above) and open the page it serves.
+
+For a draft of what AI or automated evaluation might look at (the rubric is not finalized), see [WHAT-GETS-JUDGED.md](demos/zombie-runner-showcase/WHAT-GETS-JUDGED.md).

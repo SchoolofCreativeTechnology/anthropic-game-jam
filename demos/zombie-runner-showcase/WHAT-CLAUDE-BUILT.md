@@ -29,3 +29,22 @@ Only the characters. Everything in the scene is built in code with three.js.
   - a few hours of prompting gets most of the way there
 - **Hard or no:** the Blender character generator needs Blender installed plus a lot of render-check iteration. Students should use the provided GLBs (or the CC0 packs) instead.
 - Without real visual checks (screenshots), the agent's output looks worse. Tell students to screenshot often.
+
+## Showcase 2 additions (judging-oriented)
+- **World collision:** see the `COLLISION` section in `main.js`. It uses named AABBs for the player, obstacles and enemies.
+  - Tall trucks block the lane.
+  - Barricades, crates and car roofs are jumpable.
+  - Crate and car tops can be stood on, and you land on the ground.
+  - Enemies climb over obstacles.
+  - `?debug` draws the boxes.
+  - The test is `pwtest/tcol.mjs` (7 checks).
+- **Performance:**
+  - `?fps` or the F key shows the FPS panel: current, average and minimum FPS, draw calls and triangles.
+  - Adaptive quality goes HIGH, then MEDIUM, then LOW when the 3-second average stays under 30 FPS. `?noadapt` turns this off.
+  - Lamps and debris are instanced. Prop parts are merged per material. Materials and geometry are shared, spawns are pooled, scenery past the fog is culled, and buildings do not cast shadows.
+  - Draw calls went from 575 to about 220 at 1280x720 with full effects.
+- **Textures:** 27 or more canvas textures, all generated in code.
+  - Characters: skin with grime and veins, weave, stripes, denim, metal and hair. They get box-projected UVs at load, so the GLBs stay unchanged at about 80 KB each.
+  - Props: rusted paint, cracked glass, tread, planks, crate, container and concrete.
+  - Also the skyline and a cratered moon.
+- **Documents:** `WHAT-GETS-JUDGED.md` (student guide) and `AI-USE-LOG.md` (a template for students).
