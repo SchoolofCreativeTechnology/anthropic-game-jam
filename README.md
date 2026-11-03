@@ -57,3 +57,7 @@ Open http://localhost:8000. Don't double-click `index.html`; it won't load.
 ## Ship
 
 In the build terminal: `/jam-ship`. Aim for 3:30 so your game is live by 4:00 at https://jam-gallery.vercel.app.
+
+## Example demo (optional)
+
+The repo includes a finished showcase game, [Zombie Runner](demos/zombie-runner-showcase/), to show what is possible in a jam—not a template to copy. From that folder, run a local server (same as above) and open the page it serves.
