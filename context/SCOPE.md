@@ -1,6 +1,6 @@
 # Scope
 
-You have 4 hours. Decide now what's in, so cutting later is easy.
+You have the jam (11:00 AM to 4:00 PM). Decide now what's in, so cutting later is easy.
 
 ## In (must exist to call it a game)
 

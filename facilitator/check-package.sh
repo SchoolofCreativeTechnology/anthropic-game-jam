@@ -14,7 +14,7 @@ while read -r f; do
   case "$f" in docs/*|facilitator/*|dist/*|.superpowers/*) err "leaked into package: $f" ;; esac
 done <<< "$files"
 
-required="AGENTS.md CLAUDE.md README.md index.html main.js meta.json
+required="AGENTS.md CLAUDE.md README.md JUDGING.md index.html main.js meta.json
 context/CONCEPT.md context/MECHANIC.md context/LOOK.md context/SCOPE.md
 devlog/DEVLOG.md devlog/RUNBOOK.md devlog/AI-USE-LOG.md jam-state.md
 .claude/agents/jam-companion.md .claude/agents/devlog.md

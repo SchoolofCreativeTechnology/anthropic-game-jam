@@ -1,12 +1,12 @@
 # Anthropic Game Jam
 
-Build a browser game in 4 hours with three.js and Claude Code. You direct; Claude builds.
+Build a browser game during the jam (**11:00 AM to 4:00 PM**) with three.js and Claude Code. You direct; Claude builds.
 
 How the pieces fit together: [STACK.md](STACK.md).
 
 ## The one rule
 
-Your game is built around **one action the player repeats**: jump, dodge, run, aim, time a tap. Think Subway Surfers (switch lanes), Flappy Bird (tap to flap), or the Chrome dino (jump). You have 4 hours: pick one action, get it playable, then make it feel good. Extra moves go on your Stretch list. The idea, the world, and the look are yours.
+Your game is built around **one action the player repeats**: jump, dodge, run, aim, time a tap. Think Subway Surfers (switch lanes), Flappy Bird (tap to flap), or the Chrome dino (jump). The jam is short: pick one action, get it playable, then make it feel good. Extra moves go on your Stretch list. The idea, the world, and the look are yours.
 
 ## Before you start
 
@@ -32,9 +32,9 @@ It checks your setup, can create your own private GitHub repo, and walks you thr
 
 ## Playtests
 
-At **1:15** and **2:15** you'll swap with a classmate and play each other's games. When someone plays yours: say nothing, just watch. Then ask "Tell me the story of what just happened." Tell your devlog what you saw before you change anything.
+At **1:15 PM** and **2:15 PM** (official jam clock, even if you started late) you'll swap with a classmate and play each other's games. When someone plays yours: say nothing, just watch. Then ask "Tell me the story of what just happened." Tell your devlog what you saw before you change anything.
 
-Until the second playtest, keep the game in plain shapes and get the one action feeling right. The look comes after.
+Until the second playtest, keep the game in plain shapes and get the one action feeling right. The look comes after **2:15 PM**.
 
 ## Your devlog
 
@@ -56,10 +56,10 @@ Open http://localhost:8000. Don't double-click `index.html`; it won't load.
 
 ## Ship
 
-In the build terminal: `/jam-ship`. Aim for 3:30 so your game is live by 4:00 at https://jam-gallery.vercel.app.
+In the build terminal: `/jam-ship`. Aim for **3:30 PM** so your game is live by **4:00 PM** at https://jam-gallery.vercel.app.
 
 ## Example demo (optional)
 
 The repo includes a finished showcase game, [Zombie Runner](demos/zombie-runner-showcase/), to show what is possible in a jam—not a template to copy. Live demo: https://zombie-runner-showcase.vercel.app. From that folder, run a local server (same as above) and open the page it serves.
 
-For a draft of what AI or automated evaluation might look at (the rubric is not finalized), see [WHAT-GETS-JUDGED.md](demos/zombie-runner-showcase/WHAT-GETS-JUDGED.md).
+For a draft of what AI or automated evaluation might look at (the rubric is **not finalized**), see [JUDGING.md](JUDGING.md).

@@ -26,7 +26,7 @@ If anything failed: list each problem with its fix in plain language, say "Run `
 
 If everything passed, say so in one line and note which serve command they'll use (from `AGENTS.md`).
 
-**Start the clock now**, before the brief: the brief is part of the 0:00 to 0:45 Concept phase. If `Start time:` in `jam-state.md` is empty, set it from `date +%Y-%m-%dT%H:%M` and `Phase:` to `concept`. If it is already set (a rerun), keep it. If Nathan started the jam at a set time and they joined late, ask whether to use the official start instead.
+**Start the clock now**, before the brief: the brief is part of concept (official clock **11:00 to 11:45**). If `Start time:` in `jam-state.md` is empty, set it from `date +%Y-%m-%dT%H:%M` and `Phase:` to `concept`. If it is already set (a rerun), keep it. If Nathan started the jam at a set time and they joined late, tell them playtests and ship still follow the **official clock** (1:15 PM, 2:15 PM, 3:30 PM ship) and ask whether to note the official 11:00 AM start in conversation.
 
 **Git identity.** New installs often have no git name or email, and every commit fails without them. If `git config user.email` or `git config user.name` prints nothing, set them for this folder only (run `git init -b main` first if it is not a repo yet):
 
@@ -82,5 +82,6 @@ Commit: `git add -A && git commit -m "docs: context and start state"`, and `git 
 
 Tell them, briefly:
 1. Open a second terminal in this same folder and run `claude --agent devlog`. Tell it what you decide and why as you go.
-2. Start the preview server (their command from step 1) and open http://localhost:8000.
-3. Then tell me what to build first.
+2. Skim [`JUDGING.md`](JUDGING.md): draft technical checks AI evaluation may use (rubric **not finalized**). Your idea stays yours; these are quality bars only.
+3. Start the preview server (their command from step 1) and open http://localhost:8000.
+4. Then tell me what to build first.

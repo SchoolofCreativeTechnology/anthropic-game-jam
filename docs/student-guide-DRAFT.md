@@ -2,7 +2,7 @@
 
 You direct. Claude builds. In the jam with Claude Code you can ship a small game that feels great to play. You can't ship a big one. This page tells you which is which, so you can plan around it.
 
-For a draft checklist of what AI or automated judging might look at (the rubric is not finalized), see [WHAT-GETS-JUDGED.md](../demos/zombie-runner-showcase/WHAT-GETS-JUDGED.md) in the showcase demo.
+For a draft checklist of what AI or automated judging might look at (the rubric is **not finalized**), see [JUDGING.md](../JUDGING.md) in the kit root.
 
 ## The one rule
 Your game is built around **one action you repeat**: jump, dodge, aim, time a tap. Get that action feeling good first. Everything else goes on your Stretch list.
@@ -40,16 +40,20 @@ You may use an image or 3D generator for assets, if the jam rules allow it. A fe
 If your idea needs one of these, shrink it. Put the big version on your Stretch list.
 
 ## How to spend the jam
-| Time | Goal |
+
+Official clock **11:00 AM to 4:00 PM**. If you start late, playtests and ship still use these times.
+
+| Clock | Goal |
 |---|---|
-| 11:00 to 11:30 | Run `/jam-start`. Pick your one action. Write a three-line pitch and your Stretch list. |
-| 11:30 to 1:15 | A playable game in plain shapes: the action, one obstacle, a way to lose, restart. |
-| **1:15 playtest** | Is the one action fun? Fix the feel, not the art. |
-| 1:30 to 2:15 | Levels, score, kit art, and game feel. |
-| **2:15 playtest** | Try it on a classmate's machine. Cut anything that breaks. |
-| 2:30 to 3:15 | Polish: title and game-over screens, phone controls, speed check. |
-| 3:15 to 3:30 | Freeze. Run `/jam-ship`. No new features. |
-| 3:30 to 4:00 | Gallery time: play each other's games. |
+| 11:00 to 11:45 | Run `/jam-start`. Fill `context/` and pick your one action. |
+| 11:45 to 12:30 | First build: the action playable in plain shapes. |
+| **1:15 PM playtest** | Is the one action fun? Fix the feel, not the art. |
+| 12:30 to 2:15 PM | Feel: tune the action, plain shapes only. |
+| **2:15 PM playtest** | Fresh player. Cut anything that breaks. |
+| 2:15 PM to 3:15 PM | Look: art, textures, polish from `LOOK.md`. |
+| 3:15 PM | Self-check against [JUDGING.md](../JUDGING.md). Freeze new features. |
+| **3:30 PM** | Run `/jam-ship`. |
+| 3:30 to 4:00 PM | Gallery time: play each other's games. |
 
 ## Things that go wrong
 - **Don't double-click `index.html`.** Serve the folder with `python3 -m http.server 8000` and open localhost:8000.

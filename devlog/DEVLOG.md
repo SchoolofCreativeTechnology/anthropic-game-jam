@@ -21,7 +21,7 @@ Format for each playtest (1:15 and 2:15):
 
 ## Reflection
 
-*At the end: What did you decide that Claude didn't? What did you reject from Claude, and why? What would you do with another 4 hours?*
+*At the end: What did you decide that Claude didn't? What did you reject from Claude, and why? What would you do with another jam session?*
 
 ## AI Use Disclosure
 

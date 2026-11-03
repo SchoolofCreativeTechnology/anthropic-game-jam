@@ -1,27 +1,5 @@
-# What gets judged (student guide)
+# What gets judged
 
-**Be aware:** the real rubric has not been written yet. This page is our best guess at what an AI judge, or a script, can check automatically. Treat it as a checklist, not a promise.
+The student-facing checklist lives in **[JUDGING.md](../../JUDGING.md)** at the kit root. Edit that file only so the rubric does not drift.
 
-| Check | What it means | How you show it | What to tell Claude |
-|---|---|---|---|
-| **Loads with no errors** | The page opens and the console shows no red errors or warnings. | Open DevTools, then Console. Screenshot it clean. | "Run the game in a headless browser and fix every console error and warning." |
-| **World collision** | Solid things in the world stop you or hurt you. You land on the ground, not through it. | Add a `?debug` mode that draws every collider box. Write a short test: tall obstacle blocks you, low one can be jumped, you land on the ground. | "Add one small AABB collision section with named colliders. Tall obstacles block the lane, low ones can be jumped, crate tops can be stood on. Add `?debug` to draw the boxes and a Playwright test that proves it." |
-| **FPS / performance** | Runs smoothly. Target 60 FPS on a laptop and 30 FPS on a phone. | An on-screen counter (`?fps` or the F key) showing current, average and minimum FPS, draw calls and triangles. | "Add an FPS panel using renderer.info. Share materials and geometry, instance repeated props, pool spawns, cap particles. If the average is under 30 FPS for 3 seconds, lower the pixel ratio and turn off bloom and shadows automatically." |
-| **Texturization** | Big surfaces have texture maps, not just flat colour. | List your textures (for example `window.__textures` or a credits file). Show a closeup screenshot. | "Give every large surface a small canvas-generated texture (noise, grime, weave, stripes, planks). Keep the toon look and keep total assets under 3 MB." |
-| **Playable loop** | Start, play, lose, restart, all without reloading the page. | A title screen, a game-over screen with your score, and a key to play again. | "Make sure I can restart from game over with Space or a tap, and that the state fully resets." |
-| **Mobile controls** | Works on a phone with touch. | Swipe left or right to change lane, tap to jump. Test it in DevTools device mode. | "Add swipe and tap controls and test them at a 390x844 viewport." |
-| **Progression** | The game gets harder, with levels, speed, or new enemies. | A HUD with level and score. | "Add levels that raise speed and add a new enemy type every level." |
-| **Readable code** | One file, clear sections, and comments where something is tricky. | Section headers such as COLLISION, PERFORMANCE, TEXTURES. | "Group the code into named sections with a one-line comment each." |
-
-## Show your proof in one minute
-1. Open `/?fps` and play for 20 seconds. Screenshot the FPS panel.
-2. Open `/?debug`. Screenshot the collider boxes around an obstacle.
-3. Show a closeup of a character or prop where the texture is visible.
-4. Run your test script and paste the PASS lines into your README.
-
-## Keep an AI use log
-Fill in [`devlog/AI-USE-LOG.md`](../../devlog/AI-USE-LOG.md) while you build: every prompt that mattered, what Claude changed, and what you checked yourself. Judges (people or AI) may ask how you used AI. That log is the canonical record.
-
-## Honest limits
-- FPS depends on the machine. Say which machine you measured on.
-- A judge cannot feel how the game plays. Make the proof visible: overlays, tests and screenshots.
+This showcase implements many of those checks (`?debug`, `?fps`, procedural textures, tests in `tests/`). The rubric is **not finalized**.
