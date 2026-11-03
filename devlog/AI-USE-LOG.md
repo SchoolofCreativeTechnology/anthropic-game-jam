@@ -14,7 +14,9 @@ Add one row per use (newest first). Leave blank cells as `—` if they do not ap
 |------|--------------|------------------------------------------|----------------|-----------------------------------|-------------|
 | | | | | | |
 
-## Worked example (delete this section in your repo if you want; do not copy these rows into your log)
+## Worked example
+
+You can delete this section once you understand the format. Do not copy these rows into your log.
 
 | Time | Tool / model | What you asked (prompt or short summary) | What came back | Kept, changed, or rejected (why) | Game asset? |
 |------|--------------|------------------------------------------|----------------|-----------------------------------|-------------|
