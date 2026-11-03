@@ -19,7 +19,7 @@ Read `meta.json`, `jam-state.md`, and `devlog/DEVLOG.md`, and list the files in 
 - `devlog/AI-USE-LOG.md` exists. If **Your log** has no real entries yet (only the blank template row), **warn** them to update it in the devlog terminal. This does **not** block shipping by itself.
 - `index.html` exists and still loads `main.js`.
 
-If anything is missing: list every gap with how to fix it (asset credits and title in this terminal; reflection and disclosure in the devlog terminal), and **stop**. Do not fork, copy, or open anything.
+If anything **blocking** is missing: list every gap with how to fix it (asset credits and title in this terminal; reflection and disclosure in the devlog terminal), and **stop**. Do not fork, copy, or open anything. Report the AI use log warning separately; it does not block.
 
 ## 2. Consent
 
