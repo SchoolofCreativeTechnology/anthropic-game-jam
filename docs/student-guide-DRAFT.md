@@ -25,7 +25,7 @@ You may use an image or 3D generator for assets, if the jam rules allow it. A fe
 - **Use simple file types.** Use PNG for images and GLB for 3D models. Keep each file small.
 - **Know the limits.** Generated 3D models are usually still statues with no animation. Generated 2D characters rarely match from one frame to the next, so animating them is hard.
 - **Keep a fallback.** Always keep the kit art in your game, so a bad generation never blocks you.
-- **Write it down.** Tell your devlog which tool you used and your prompt. If a tool's license bars use in a game, don't use its output.
+- **Write it down.** Log each use in `devlog/AI-USE-LOG.md` as you go (the devlog agent can write rows in your words). If a tool's license bars use in a game, do not use its output.
 
 ## You can't build this in the jam
 - Hand-drawn or hand-modeled characters, or rigging them to animate.

@@ -52,7 +52,8 @@ Every game is built around **one repeatable core action** (jump, dodge, run, aim
 ## Files
 
 - `context/`: CONCEPT, MECHANIC, LOOK, SCOPE. The brief for every build.
-- `devlog/DEVLOG.md`: timestamped entries, reflection, AI use disclosure.
+- `devlog/DEVLOG.md`: timestamped entries, reflection, AI use disclosure (summary).
+- `devlog/AI-USE-LOG.md`: running log of each AI use during the jam (tool, prompt, outcome, assets).
 - `devlog/RUNBOOK.md`: how to run and ship this game.
 - `jam-state.md`: handle, start time, phase, repo URL, gallery PR.
 - `meta.json`: title, handle, description, asset credits. Shipped to the gallery.

@@ -44,7 +44,7 @@ Open a **second terminal** in the same folder:
 claude --agent devlog
 ```
 
-Tell it what you tried, what broke, and what you decided. It keeps your devlog in your words.
+Tell it what you tried, what broke, and what you decided. It keeps your devlog in your words and updates `devlog/AI-USE-LOG.md` when you use Claude or any other AI (generators, sound tools, and the like). Log each use as it happens so your end-of-jam disclosure is accurate.
 
 ## See your game
 

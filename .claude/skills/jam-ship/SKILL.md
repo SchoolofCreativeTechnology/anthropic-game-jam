@@ -16,6 +16,7 @@ Read `meta.json`, `jam-state.md`, and `devlog/DEVLOG.md`, and list the files in 
 - `meta.json`: `title`, `handle`, `description` are non-empty; `handle` matches `^[a-z0-9-]{2,30}$`.
 - Assets: every file except `index.html`, `meta.json`, `.js`/`.css` files, dotfiles (`.gitignore` and the like), and the template files (`context/`, `devlog/`, `.claude/`, `jam-state.md`, `AGENTS.md`, `CLAUDE.md`, `README.md`, `STACK.md`) must be listed in `meta.json` `assets` (with non-empty `source` and `license`) or in `ai_assets`. Name each unlisted file.
 - `DEVLOG.md`: `## Reflection` and `## AI Use Disclosure` each have the student's own content, not just the template's italic prompt.
+- `devlog/AI-USE-LOG.md` exists. If **Your log** has no real entries yet (only the blank template row), **warn** them to update it in the devlog terminal. This does **not** block shipping by itself.
 - `index.html` exists and still loads `main.js`.
 
 If anything is missing: list every gap with how to fix it (asset credits and title in this terminal; reflection and disclosure in the devlog terminal), and **stop**. Do not fork, copy, or open anything.

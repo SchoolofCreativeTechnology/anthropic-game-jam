@@ -25,4 +25,6 @@ Format for each playtest (1:15 and 2:15):
 
 ## AI Use Disclosure
 
-*What Claude did, what you did, and every AI-generated asset (images, sounds, models). Be accurate: neither more nor less than what happened.*
+Short summary for the gallery, taken from your running log in `devlog/AI-USE-LOG.md` (not from memory at the last minute). Say what you directed yourself, what Claude Code did in the build terminal, and what other AI tools did. List every AI-generated asset file again here, or cite the log row that names it.
+
+*Be accurate: neither more nor less than what happened.*

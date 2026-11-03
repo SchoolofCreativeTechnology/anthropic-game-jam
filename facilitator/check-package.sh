@@ -16,7 +16,7 @@ done <<< "$files"
 
 required="AGENTS.md CLAUDE.md README.md index.html main.js meta.json
 context/CONCEPT.md context/MECHANIC.md context/LOOK.md context/SCOPE.md
-devlog/DEVLOG.md devlog/RUNBOOK.md jam-state.md
+devlog/DEVLOG.md devlog/RUNBOOK.md devlog/AI-USE-LOG.md jam-state.md
 .claude/agents/jam-companion.md .claude/agents/devlog.md
 .claude/skills/jam-start/SKILL.md .claude/skills/jam-ship/SKILL.md"
 for r in $required; do
@@ -43,6 +43,9 @@ fi
 # Interfaces other files depend on: DEVLOG headings and jam-state fields.
 for h in '## Entries' '## Reflection' '## AI Use Disclosure'; do
   [ -f "$root/devlog/DEVLOG.md" ] && ! grep -qxF "$h" "$root/devlog/DEVLOG.md" && err "DEVLOG.md lacks heading: $h"
+done
+for h in '## Your log' '## Worked example'; do
+  [ -f "$root/devlog/AI-USE-LOG.md" ] && ! grep -qxF "$h" "$root/devlog/AI-USE-LOG.md" && err "AI-USE-LOG.md lacks heading: $h"
 done
 for f in '- Handle:' '- Start time:' '- Phase:' '- Repo URL:' '- Gallery PR:'; do
   [ -f "$root/jam-state.md" ] && ! grep -q "^$f" "$root/jam-state.md" && err "jam-state.md lacks field: $f"
