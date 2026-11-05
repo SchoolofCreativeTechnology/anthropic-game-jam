@@ -25,7 +25,7 @@ Excluded from the student package.
 - Watch for look work before **2:15 PM**: plain shapes until Playtest 2
 - At playtests and before ship: remind students to keep `devlog/AI-USE-LOG.md` updated (not only the end-of-jam disclosure in `DEVLOG.md`)
 - **3:15 PM**: remind students to run the `JUDGING.md` self-check with the build agent (rubric draft, not final)
-- From **3:30 PM** merge PRs: `gh pr list -R nmadrid27/jam-gallery`, check the PR check is green, `gh pr merge <n> -R nmadrid27/jam-gallery --squash`
+- From **3:30 PM** merge PRs: `gh pr list -R SchoolofCreativeTechnology/jam-gallery`, check the PR check is green, `gh pr merge <n> -R SchoolofCreativeTechnology/jam-gallery --squash`
 - Confirm each game plays at the gallery URL
 
 ## After

@@ -1,6 +1,6 @@
 ---
 name: jam-ship
-description: Use when the student types /jam-ship or says they're ready to ship or publish their Anthropic Game Jam game. Checks the game and devlog are complete, confirms public-gallery consent, and opens a pull request adding the game to nmadrid27/jam-gallery.
+description: Use when the student types /jam-ship or says they're ready to ship or publish their Anthropic Game Jam game. Checks the game and devlog are complete, confirms public-gallery consent, and opens a pull request adding the game to SchoolofCreativeTechnology/jam-gallery.
 ---
 
 # Jam Ship
@@ -30,7 +30,7 @@ Ask exactly: "Your game and devlog will be published to a public gallery under t
 
 ```bash
 gh auth status                                   # stop with "run gh auth login" if this fails
-gh api repos/nmadrid27/jam-gallery/contents/games/<handle> >/dev/null 2>&1 && echo TAKEN
+gh api repos/SchoolofCreativeTechnology/jam-gallery/contents/games/<handle> >/dev/null 2>&1 && echo TAKEN
 ```
 
 **Shipping again** (`Gallery PR:` in `jam-state.md` already has a URL, e.g. after a failed check): skip the `TAKEN` check, which would find nothing until merge, and follow the same steps below, but push with `git push --force -u origin game/<handle>` and skip `gh pr create`; the open PR updates itself. Tell them the check re-runs.
@@ -40,10 +40,10 @@ If `TAKEN`: the handle is used in the gallery. Ask for a new handle, update `met
 `<jam-folder>` below is the absolute path of their jam folder (`pwd` before you leave it). Then, from a temp folder (`tmp=$(mktemp -d)`; works in Git Bash too):
 
 ```bash
-gh repo fork nmadrid27/jam-gallery --clone=false   # fine if the fork already exists
+gh repo fork SchoolofCreativeTechnology/jam-gallery --clone=false   # fine if the fork already exists
 gh repo clone <their-login>/jam-gallery "$tmp/jam-gallery"
 cd "$tmp/jam-gallery"
-git remote add upstream https://github.com/nmadrid27/jam-gallery.git 2>/dev/null || true
+git remote add upstream https://github.com/SchoolofCreativeTechnology/jam-gallery.git 2>/dev/null || true
 git fetch upstream && git switch -C game/<handle> upstream/main
 git config user.email "$(git -C <jam-folder> config user.email)"   # same identity as their jam repo
 git config user.name "$(git -C <jam-folder> config user.name)"
@@ -56,7 +56,7 @@ Copy into `games/<handle>/`: `index.html`, `meta.json`, every `.js` and `.css` f
 git add games/<handle>
 git commit -m "game: <handle>"
 git push -u origin game/<handle>
-gh pr create -R nmadrid27/jam-gallery --head <their-login>:game/<handle> \
+gh pr create -R SchoolofCreativeTechnology/jam-gallery --head <their-login>:game/<handle> \
   --title "game: <handle>" --body "<title>: <description>"
 ```
 

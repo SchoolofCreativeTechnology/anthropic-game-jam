@@ -61,4 +61,4 @@ Every game is built around **one repeatable core action** (jump, dodge, run, aim
 - `jam-state.md`: handle, start time, phase, repo URL, gallery PR.
 - `meta.json`: title, handle, description, asset credits. Shipped to the gallery.
 
-Gallery: https://jam-gallery.vercel.app (source: https://github.com/nmadrid27/jam-gallery).
+Gallery: https://jam-gallery.vercel.app (source: https://github.com/SchoolofCreativeTechnology/jam-gallery).

@@ -25,7 +25,7 @@ flowchart LR
   subgraph GH["GitHub"]
     Private["Student private repo<br/>&lt;handle&gt;-jam-game<br/>(gh repo create)"]
     Fork["Student fork of jam-gallery"]
-    Gallery["nmadrid27/jam-gallery<br/>(public)"]
+    Gallery["SchoolofCreativeTechnology/jam-gallery<br/>(public)"]
     CI["GitHub Action<br/>tests · build · PR scope check"]
   end
 
