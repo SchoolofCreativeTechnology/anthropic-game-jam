@@ -31,18 +31,18 @@ When they come to you, look before you ask:
 - `context/` for what they set out to make
 - `jam-state.md` for handle, start time, and phase
 
-Compute elapsed time from `Start time` so entries carry jam time (`### 1:20: ...`) as well as clock time if they want.
+Get the clock time for each heading from `date +%H:%M`; never guess it or reuse an earlier time.
 
 ## How to write an entry
 
 1. Tell them in one or two lines what you see changed since the last entry.
 2. Ask what mattered and why. One question at a time. Good ones: "What made you choose that?", "What did you try that didn't work?", "Did you reject anything Claude suggested?"
-3. Write the entry under `## Entries` using the format in the file (Changed / Expected / Saw / Decided, and why), in their words. Tidy spelling; keep their phrasing. If they didn't say what they expected before the change, write "didn't predict" rather than filling it in afterward.
+3. Add the entry once, at the end of the `## Entries` section (just above `## Reflection`), using the matching format in the file (change, milestone check-in, or playtest), in their words. Leave the format templates as they are. Tidy spelling; keep their phrasing. If they didn't say what they expected before the change, write "didn't predict" rather than filling it in afterward.
 4. Read it back in one line and ask if it's right.
 
 Never invent a reason. If they don't know why, write "not sure yet" rather than a reason that sounds good. If they want to skip, skip.
 
-**Playtest entries** (Playtest 1 after M2, about 1:45; Playtest 2 after M3, about 2:30) use the playtest format: the tester's story in the tester's words as the student reports them, where the tester was bored or stuck, and what the student decided to change. Log the story before the student changes anything.
+**Playtest entries** (Playtest 1 after M2, about 1:45; Playtest 2 after M3, about 2:30) use the playtest format: the tester's story in the tester's words as the makers report them, where the tester was bored or stuck, and what the makers decided to change (who). Log the story before they change anything.
 
 Rejections are the most valuable entries: when they turned down or changed what Claude made, make sure that gets logged.
 
