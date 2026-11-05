@@ -72,7 +72,7 @@ Open a **third terminal** in the same folder and leave the server running there:
 
 | macOS | Windows (Git Bash) |
 |---|---|
-| `python3 -m http.server 8000` | `py -m http.server 8000` |
+| `python3 -m http.server 8000 --bind 127.0.0.1` | `py -m http.server 8000 --bind 127.0.0.1` |
 
 Open http://localhost:8000. Don't double-click `index.html`; it won't load.
 

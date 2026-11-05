@@ -45,8 +45,7 @@ If `TAKEN` (and this isn't a re-ship): the handle is used. Ask for a new handle,
 ```bash
 rm -rf dist/ship && mkdir -p dist/ship
 gh repo fork SchoolofCreativeTechnology/jam-gallery --clone=false     # fine if the fork already exists
-gh repo clone <login>/jam-gallery dist/ship/jam-gallery
-git -C dist/ship/jam-gallery remote add upstream https://github.com/SchoolofCreativeTechnology/jam-gallery.git
+gh repo clone <login>/jam-gallery dist/ship/jam-gallery     # also adds the upstream remote
 git -C dist/ship/jam-gallery fetch upstream
 git -C dist/ship/jam-gallery switch -C game/<handle> upstream/main
 git -C dist/ship/jam-gallery config user.name "<login>"
@@ -67,7 +66,7 @@ git -C dist/ship/jam-gallery push -u origin game/<handle>
 gh pr create -R SchoolofCreativeTechnology/jam-gallery --head <login>:game/<handle> --title "game: <handle>" --body "<title>: <description>"
 ```
 
-**Shipping again** (`Gallery PR:` already has a URL, e.g. after a failed check): skip the `TAKEN` check. If `dist/ship/jam-gallery` still exists, reuse it; otherwise clone and switch as above but use `git -C dist/ship/jam-gallery fetch origin` and `switch -C game/<handle> origin/game/<handle>`. Copy, run the key check, commit, then `git -C dist/ship/jam-gallery push --force -u origin game/<handle>`. Skip `gh pr create`; the open PR updates itself and its check re-runs.
+**Shipping again** (`Gallery PR:` already has a URL, e.g. after a failed check): skip the `TAKEN` check. If `dist/ship/jam-gallery` still exists, reuse it; otherwise clone and switch as above but use `git -C dist/ship/jam-gallery fetch origin` and `switch -C game/<handle> origin/game/<handle>`. Delete `dist/ship/jam-gallery/games/<handle>` (so files removed since the last ship go too), copy, run the key check, commit, then `git -C dist/ship/jam-gallery push --force -u origin game/<handle>`. Skip `gh pr create`; the open PR updates itself and its check re-runs.
 
 **If `gh` can't work for this entry** (no GitHub account, login fails, fork blocked): build a zip instead and stop. Copy the same files into `dist/zip/games/<handle>/`, run the key check on that folder, then `python3 -m zipfile -c dist/<handle>.zip dist/zip/games` (Windows: `py -m zipfile`; Git Bash has no `zip`). Tell them to bring `dist/<handle>.zip` to Nathan by AirDrop or USB stick; he opens the PR with `facilitator/ship-from-zip.sh`. Set `Gallery PR: zip to Nathan`.
 

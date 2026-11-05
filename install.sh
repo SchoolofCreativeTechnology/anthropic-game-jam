@@ -29,15 +29,10 @@ esac
 say() { printf '%s\n' "$*"; }
 
 # Claude Code's native installer puts claude in ~/.local/bin but doesn't always add
-# that to PATH. Find it there, add it for this run and for new terminals.
+# that to PATH. Use it from there now; add it for new terminals once the tool check passes.
 newterm=no
 if ! command -v claude >/dev/null 2>&1 && { [ -x "$HOME/.local/bin/claude" ] || [ -x "$HOME/.local/bin/claude.exe" ]; }; then
   export PATH="$HOME/.local/bin:$PATH"
-  rc="$HOME/.bashrc"; [ "$os" = mac ] && rc="$HOME/.zshrc"
-  grep -qsF '.local/bin' "$rc" || printf '\nexport PATH="$HOME/.local/bin:$PATH"\n' >> "$rc"
-  # Git Bash warns on every new window if .bashrc exists without a profile that loads it.
-  [ "$os" = win ] && ! [ -e "$HOME/.bash_profile" ] && ! [ -e "$HOME/.bash_login" ] && ! [ -e "$HOME/.profile" ] \
-    && printf 'test -f ~/.bashrc && . ~/.bashrc\n' > "$HOME/.bash_profile"
   newterm=yes
 fi
 fix() { if [ "$os" = win ]; then say "    fix: $2"; else say "    fix: $1"; fi; }
@@ -66,6 +61,18 @@ for b in blender /Applications/Blender.app/Contents/MacOS/Blender "/c/Program Fi
 done
 if [ "$blender" = yes ]; then say "  Blender: found"; else say "  Blender: not found (optional; you can still make the game)"; fi
 say "  All required tools found."
+if [ "$newterm" = yes ]; then
+  case "$os:${SHELL:-}" in
+    win:*) rc="$HOME/.bashrc" ;;
+    mac:*bash) rc="$HOME/.bash_profile" ;;
+    *) rc="$HOME/.zshrc" ;;
+  esac
+  grep -qsF '.local/bin' "$rc" || printf '\nexport PATH="$HOME/.local/bin:$PATH"\n' >> "$rc"
+  # Git Bash warns on every new window if .bashrc exists without a profile that loads it.
+  if [ "$os" = win ] && ! [ -e "$HOME/.bash_profile" ] && ! [ -e "$HOME/.bash_login" ] && ! [ -e "$HOME/.profile" ]; then
+    printf 'test -f ~/.bashrc && . ~/.bashrc\n' > "$HOME/.bash_profile"
+  fi
+fi
 
 # 2. The kit. A rerun with the kit already here skips the download.
 if [ -f "$DIR/AGENTS.md" ] && [ -f "$DIR/.claude/agents/jam-companion.md" ]; then
@@ -99,7 +106,7 @@ while :; do
       exit 1
     fi
     tries=$((tries + 1))
-    [ "$tries" -le 3 ] || { say "No key entered. Run the install command again when you have your slip."; exit 1; }
+    [ "$tries" -le 3 ] || { say "Three tries used. Check the key on your slip, then run the install command again."; exit 1; }
     printf 'Paste the gateway key from your slip (it stays hidden), then press Enter: '
     IFS= read -rs key < /dev/tty || key=""
     printf '\n'
@@ -121,7 +128,8 @@ while :; do
     401) say "  The gateway rejected that key (401). Check it against your slip and try again."; key=""; [ -z "${JAM_GATEWAY_KEY:-}" ] || exit 1; continue ;;
     402) say "  This key's budget is used up (402). Ask Nathan for another slip."; exit 1 ;;
     403) say "  The gateway blocked the model (403). Ask Nathan."; exit 1 ;;
-    *) say "  Could not test the key (HTTP ${code:-none}); saving it anyway. Check your internet."; break ;;
+    000|"") say "  Could not reach the gateway to test the key; saving it anyway. Check your internet."; break ;;
+    *) say "  The gateway answered HTTP $code; saving the key anyway. Tell Nathan this number."; break ;;
   esac
 done
 
