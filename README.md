@@ -1,42 +1,58 @@
 # Anthropic Game Jam
 
-Build a browser game during the jam (**11:00 AM to 4:00 PM**) with three.js and Claude Code. You direct; Claude builds.
+Build one small browser game in a day with three.js and Claude Code: solo, or as a team of up to three on one laptop. You think and decide; Claude plans with you, then builds.
 
 How the pieces fit together: [STACK.md](STACK.md).
 
+## The day
+
+| Time | What |
+|---|---|
+| **10:00** | Onboarding: install, key, GitHub login (`/jam-start`) |
+| **11:00** | Plan: research, pick a card, write your context kit and build plan (`/jam-plan`) |
+| **12:30** | Break |
+| **12:45** | Build: milestones M1 to M5, two playtests |
+| **3:30 PM** | Ship (`/jam-ship`) |
+| **4:00 PM** | Games live in the gallery; judging until 5:30 |
+
 ## The one rule
 
-Your game is built around **one action the player repeats**: jump, dodge, run, aim, time a tap. Think Subway Surfers (switch lanes), Flappy Bird (tap to flap), or the Chrome dino (jump). The jam is short: pick one action, get it playable, then make it feel good. Extra moves go on your Stretch list. The idea, the world, and the look are yours.
+Your game is built around **one action the player repeats**, from one starter card in [`context/STARTERS.md`](context/STARTERS.md): lane runner, jumper, shooter, dodger, or timing tapper. Each card has an **Allowed** list; anything else waits for Stretch. The world, the character, and the twist are yours.
 
-## Before you start
+## Before you come
 
-- A GitHub account and the GitHub CLI (macOS: `brew install gh`; Windows: `winget install GitHub.cli`), logged in: `gh auth login`
-- Claude Code installed and logged in
-- Python 3 for the local preview (macOS: `xcode-select --install`; Windows: `winget install Python.Python.3.12`)
-- Windows: run everything in **Git Bash**
-- **References:** collect images (screenshots, photos, sketches) and links (in `links.md`) that show the look and feel you want, and drop them in `context/references/`. Claude builds from them; they never ship.
+- A laptop (macOS, or Windows with **Git Bash**; run every command in Git Bash)
+- A GitHub account
+- These installed:
+
+| | macOS | Windows (Git Bash) |
+|---|---|---|
+| git | `xcode-select --install` | Git for Windows: https://git-scm.com |
+| GitHub CLI | `brew install gh` | `winget install GitHub.cli` |
+| Python 3 | comes with `xcode-select --install` | `winget install Python.Python.3.12` |
+| Claude Code | `curl -fsSL https://claude.ai/install.sh \| bash` | PowerShell: `irm https://claude.ai/install.ps1 \| iex` |
+| Blender (optional) | https://www.blender.org/download | same |
+
+Then log in to GitHub: `gh auth login`. You don't need a Claude account: the jam gives you a key.
+
+## Install (at 10:00)
+
+You'll get a slip with a gateway key. From the folder where you want the kit (your Desktop is fine):
+
+```bash
+curl -fsSL https://raw.githubusercontent.com/SchoolofCreativeTechnology/anthropic-game-jam/main/install.sh | bash
+```
+
+It checks your tools, downloads the kit into `anthropic-game-jam/`, and asks for the key (typing stays hidden). The key is saved in `.claude/settings.local.json`, which is never committed or shipped. Don't paste it anywhere else.
 
 ## Start
 
 ```bash
-git clone https://github.com/SchoolofCreativeTechnology/anthropic-game-jam
 cd anthropic-game-jam
 claude --agent jam-companion
 ```
 
-In Claude, run `/model` and choose **Opus 5.5**, then type:
-
-```
-/jam-start
-```
-
-It checks your setup, can create your own private GitHub repo, and walks you through describing your game.
-
-## Playtests
-
-At **1:15 PM** and **2:15 PM** (official jam clock, even if you started late) you'll swap with a classmate and play each other's games. When someone plays yours: say nothing, just watch. Then ask "Tell me the story of what just happened." Tell your devlog what you saw before you change anything.
-
-Until the second playtest, keep the game in plain shapes and get the one action feeling right. The look comes after **2:15 PM**.
+Then type `/jam-start`. At 11:00, `/jam-plan`. At 12:45, run `/model claude-code/vmc/jam-lead` and start building.
 
 ## Your devlog
 
@@ -46,7 +62,7 @@ Open a **second terminal** in the same folder:
 claude --agent devlog
 ```
 
-Tell it what you tried, what broke, and what you decided. It keeps your devlog in your words and updates `devlog/AI-USE-LOG.md` when you use Claude or any other AI (generators, sound tools, and the like). Log each use as it happens so your end-of-jam disclosure is accurate.
+Tell it what you tried, what broke, and what you decided (on a team, who decided). It keeps your devlog in your words and logs each AI use in `devlog/AI-USE-LOG.md`.
 
 ## See your game
 
@@ -56,12 +72,16 @@ Tell it what you tried, what broke, and what you decided. It keeps your devlog i
 
 Open http://localhost:8000. Don't double-click `index.html`; it won't load.
 
+## Playtests
+
+After M2 (about 1:45) and M3 (about 2:30), someone from another entry plays yours for 3 minutes. Say nothing; just watch. Then ask "Tell me the story of what just happened." Tell your devlog what you saw before you change anything.
+
 ## Ship
 
-In the build terminal: `/jam-ship`. Aim for **3:30 PM** so your game is live by **4:00 PM** at https://jam-gallery.vercel.app.
+In the build terminal: `/jam-ship` by **3:30 PM**, so your game is live by **4:00 PM** at https://stec-jam-gallery.vercel.app.
 
-## Example demo (optional)
+## Example demo
 
-The repo includes a finished showcase game, [Zombie Runner](demos/zombie-runner-showcase/), to show what is possible in a jam—not a template to copy. Live demo: https://zombie-runner-showcase.vercel.app. From that folder, run a local server (same as above) and open the page it serves.
+[Zombie Runner](demos/zombie-runner-showcase/) shows what a finished lane runner can look like. It's not a template. Run a local server in that folder and open the page.
 
-For a draft of what AI or automated evaluation might look at (the rubric is **not finalized**), see [JUDGING.md](JUDGING.md).
+For a draft of what evaluation might look at (rubric **not finalized**), see [JUDGING.md](JUDGING.md).

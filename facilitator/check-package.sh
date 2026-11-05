@@ -17,8 +17,10 @@ done <<< "$files"
 required="AGENTS.md CLAUDE.md README.md JUDGING.md index.html main.js meta.json
 context/CONCEPT.md context/MECHANIC.md context/LOOK.md context/SCOPE.md
 devlog/DEVLOG.md devlog/RUNBOOK.md devlog/AI-USE-LOG.md jam-state.md
+context/STARTERS.md context/BUILD-PLAN.md install.sh .gitignore .claude/settings.json
 .claude/agents/jam-companion.md .claude/agents/devlog.md
-.claude/skills/jam-start/SKILL.md .claude/skills/jam-ship/SKILL.md"
+.claude/agents/jam-builder.md .claude/agents/jam-helper.md
+.claude/skills/jam-start/SKILL.md .claude/skills/jam-plan/SKILL.md .claude/skills/jam-ship/SKILL.md"
 for r in $required; do
   grep -qxF "$r" <<< "$files" || err "missing: $r"
 done
@@ -29,11 +31,16 @@ unzip -q "$zip" -d "$tmp"
 root="$tmp/anthropic-game-jam"
 for a in "$root"/.claude/agents/*.md; do
   [ -e "$a" ] || continue
-  grep -q '^model: inherit$' "$a" || err "agent lacks 'model: inherit': ${a#$root/}"
+  grep -qE '^model: (inherit|claude-code/vmc/jam-[a-z]+)$' "$a" || err "agent model must be inherit or claude-code/vmc/jam-*: ${a#$root/}"
 done
-if grep -rlE 'nathan@nathanmadrid\.com|sk-ant-' "$root" >/dev/null 2>&1; then
-  err "personal email or API key in: $(grep -rlE 'nathan@nathanmadrid\.com|sk-ant-' "$root" | sed "s#$root/##" | tr '\n' ' ')"
+secret='nathan@nathanmadrid\.com|sk-ant-|vck_[A-Za-z0-9_-]{20,}'
+if grep -rlE "$secret" "$root" >/dev/null 2>&1; then
+  err "personal email or API key in: $(grep -rlE "$secret" "$root" | sed "s#$root/##" | tr '\n' ' ')"
 fi
+[ -e "$root/.claude/settings.local.json" ] && err "gateway key file leaked into package: .claude/settings.local.json"
+grep -qxF '.claude/settings.local.json' "$root/.gitignore" || err ".gitignore lacks .claude/settings.local.json"
+bash -n "$root/install.sh" || err "install.sh has a syntax error"
+python3 -m json.tool "$root/.claude/settings.json" >/dev/null || err ".claude/settings.json is not valid JSON"
 
 # npx serve defaults to port 3000; every doc sends students to :8000.
 if grep -rnE 'npx serve' "$root" | grep -v 'npx serve -l 8000' >/dev/null; then
@@ -47,7 +54,7 @@ done
 for h in '## Your log' '## Worked example'; do
   [ -f "$root/devlog/AI-USE-LOG.md" ] && ! grep -qxF "$h" "$root/devlog/AI-USE-LOG.md" && err "AI-USE-LOG.md lacks heading: $h"
 done
-for f in '- Handle:' '- Start time:' '- Phase:' '- Repo URL:' '- Gallery PR:'; do
+for f in '- Team:' '- Card:' '- Handle:' '- Start time:' '- Phase:' '- Repo URL:' '- Gallery PR:'; do
   [ -f "$root/jam-state.md" ] && ! grep -q "^$f" "$root/jam-state.md" && err "jam-state.md lacks field: $f"
 done
 

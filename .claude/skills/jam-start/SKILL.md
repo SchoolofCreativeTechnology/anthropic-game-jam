@@ -1,89 +1,71 @@
 ---
 name: jam-start
-description: Use at the start of the Anthropic Game Jam, when the student types /jam-start, says "let's start", or jam-state.md has no Handle. Checks setup on macOS or Windows, sets the student's public handle, offers to create their private GitHub repo, and interviews them through context/ in their own words.
+description: Use at the start of the Anthropic Game Jam, when the makers type /jam-start, say "let's start", or jam-state.md has no Handle. Confirms setup on macOS or Windows, signs in to GitHub, records solo or team and the public handle, and offers a private repo. The brief comes next, in /jam-plan.
 ---
 
 # Jam Start
 
-Get the student from unzipped folder to a filled-in brief, fast. Setup should take minutes, not the first hour. Stay warm and brief; they are about to make something.
+Get the makers from installed kit to ready-to-plan in under 15 minutes (onboarding is 10:00 to 11:00). Stay warm and brief. Do the steps in order.
 
-Do the steps in order. Do not skip ahead.
-
-## 1. Check setup
+## 1. Confirm setup
 
 Detect the OS with `uname -s`: `Darwin` is macOS; `MINGW*` or `MSYS*` is Windows (Git Bash).
 
-Run each check and collect every problem before reporting:
+Collect every problem before reporting:
 
 | Check | Command | Fix: macOS | Fix: Windows (Git Bash) |
 |---|---|---|---|
-| git | `git --version` | `xcode-select --install` | install Git for Windows from https://git-scm.com, then reopen Git Bash |
-| GitHub CLI | `gh --version` | `brew install gh` | `winget install GitHub.cli`, then reopen Git Bash |
+| Kit installed | `.claude/settings.local.json` exists (`test -f`; never read or print it) | rerun the install command from the README | same |
+| git | `git --version` | `xcode-select --install` | install Git for Windows, reopen Git Bash |
+| GitHub CLI | `gh --version` | `brew install gh` | `winget install GitHub.cli`, reopen Git Bash |
 | GitHub login | `gh auth status` | `gh auth login` | `gh auth login` |
-| Local server | first that works of `python3 --version`, `py --version`, `python --version`, `npx --version` | `xcode-select --install` (brings python3) | `winget install Python.Python.3.12` |
+| Local server | first that works of `python3 --version`, `py --version`, `python --version` | `xcode-select --install` | `winget install Python.Python.3.12` |
+| Blender (optional) | `command -v blender` or `/Applications/Blender.app` | warn only | warn only |
 
-If anything failed: list each problem with its fix in plain language, say "Run `/jam-start` again when that's done," and **stop**. Write no files.
+The gateway key was tested by the installer; you're already running on it, so it works.
 
-If everything passed, say so in one line and note which serve command they'll use (from `AGENTS.md`).
+If anything required failed: list each problem with its fix in plain language, say "Run `/jam-start` again when that's done," and **stop**. Write no files.
 
-**Start the clock now**, before the brief: the brief is part of concept (official clock **11:00 to 11:45**). If `Start time:` in `jam-state.md` is empty, set it from `date +%Y-%m-%dT%H:%M` and `Phase:` to `concept`. If it is already set (a rerun), keep it. If Nathan started the jam at a set time and they joined late, tell them playtests and ship still follow the **official clock** (1:15 PM, 2:15 PM, 3:30 PM ship) and ask whether to note the official 11:00 AM start in conversation.
+If everything passed, say so in one line and name the preview command they'll use (from `AGENTS.md`).
 
-**Git identity.** New installs often have no git name or email, and every commit fails without them. If `git config user.email` or `git config user.name` prints nothing, set them for this folder only (run `git init -b main` first if it is not a repo yet):
+## 2. Git
+
+If this folder is not a git repo, run `git init -b main`. If they cloned the kit instead of installing it, `origin` points at the kit repo and their work must never push there: if `git remote get-url origin` succeeds and contains `anthropic-game-jam`, run `git remote remove origin`.
+
+**Git identity.** If `git config user.email` or `git config user.name` prints nothing, set them for this folder only:
 
 ```bash
 git config user.email "$(gh api user --jq '"\(.id)+\(.login)@users.noreply.github.com"')"
 git config user.name "$(gh api user --jq '.login')"
 ```
 
-The noreply address also avoids GitHub's email-privacy push block.
+## 3. Solo or team
 
-## 2. Handle
+Ask: "Solo, or a team? If a team (up to three on this machine), give me each person's initials." Write `Team: solo` or `Team: <initials, comma-separated>` in `jam-state.md`. Initials only; no full names.
 
-Ask for a handle: "This name shows publicly in the jam gallery next to your game. It doesn't have to be your real name."
+**Start the clock:** if `Start time:` is empty, set it from `date +%Y-%m-%dT%H:%M` and `Phase:` to `onboarding`. If they joined late, tell them the plan block and milestones still follow the official clock in `AGENTS.md`.
 
-It must match `^[a-z0-9-]{2,30}$` (lowercase letters, numbers, dashes). If it doesn't, suggest a cleaned-up version and ask them to confirm.
+## 4. Handle
 
-## 3. Their own repo (ask first)
+Ask for one handle for the entry: "This name shows publicly in the jam gallery next to your game. It doesn't have to be a real name."
 
-Ask: "Want me to create your own private GitHub repo for this game? It saves your work as you go." Do nothing until they answer.
+It must match `^[a-z0-9-]{2,30}$`. If it doesn't, suggest a cleaned-up version and ask them to confirm. Write it to `jam-state.md` `Handle:` and `meta.json` `"handle"`.
 
-Either way, first: if they cloned the kit, `origin` points at the kit repo, and their work must never push there. If `git remote get-url origin` succeeds and contains `anthropic-game-jam`, run `git remote remove origin`.
+## 5. Private repo (optional)
+
+Ask: "Want a private GitHub repo for this game? It backs up your work. Local git is enough for the jam." Do nothing until they answer.
 
 On yes:
-1. `git init -b main` if this folder is not already a git repo.
-2. `git add -A && git commit -m "start: <handle>"`
-3. `gh repo create <handle>-jam-game --private --source . --push`
-4. If the push fails with an email-privacy error ("push declined due to email privacy restrictions"): run `gh api user --jq '"\(.id)+\(.login)@users.noreply.github.com"'`, set it with `git config user.email <that>` (this repo only), `git commit --amend --reset-author --no-edit`, and `git push -u origin main`. Retry once; if it still fails, show the error and tell them to ask Nathan.
-5. If the repo name is taken, offer `<handle>-jam-game-2`.
+1. `git add -A && git commit -m "start: <handle>"` (`.gitignore` keeps the key file out; confirm with `git check-ignore .claude/settings.local.json`).
+2. `gh repo create <handle>-jam-game --private --source . --push`
+3. If the push fails with "push declined due to email privacy restrictions": set `git config user.email` to the noreply address above, `git commit --amend --reset-author --no-edit`, `git push -u origin main`. Retry once; if it still fails, show the error and tell them to ask Nathan.
+4. If the name is taken, offer `<handle>-jam-game-2`.
 
-On no: `git init -b main` and a first commit anyway, so the devlog terminal can read their history. Leave Repo URL as `local only`.
-
-## 4. The brief, in their words
-
-Go through `context/CONCEPT.md`, `MECHANIC.md`, `LOOK.md`, `SCOPE.md`, one section at a time:
-
-- Before CONCEPT, state the jam rule in one line: the game is built around one action the player repeats (jump, dodge, run, aim, time a tap), like Subway Surfers or Flappy Bird. At MECHANIC, their "one action" answer must name a single action; if it names more than one, ask which one is the game and offer to put the others in SCOPE Stretch.
-- At LOOK, look at what's in `context/references/` first. For each file, ask what it's there for (one line each) and write their answer under References. If the folder is empty, say they can drop screenshots or links in there any time.
-- Ask the section's question in your own plain words. Point at the example only if they're unsure what size of answer fits.
-- Write their answer into the file after the `>`, in their words. Tidy spelling; do not upgrade the idea, add detail, or merge in your preferences.
-- If an answer is vague ("something cool"), ask one follow-up. If it's still vague, write what they said and move on; they can revisit it.
-- If they have no idea at all: offer up to three one-line seeds or constraints, ask which sparks something and what they'd change, then step back. Never develop, rank, or pick for them.
-- Keep moving. The whole brief should take about 30 minutes. If they stall on LOOK or SCOPE, write what they have and say they can come back.
-
-## 5. Save the start state
-
-Update `jam-state.md` (`Start time` and `Phase` were set in step 1; leave them):
-- `Handle:` their handle
-- `Repo URL:` the GitHub URL, or `local only`
-
-Set `"handle"` in `meta.json`.
-
-Commit: `git add -A && git commit -m "docs: context and start state"`, and `git push` if they have a remote.
+On no: `git add -A && git commit -m "start: <handle>"`, and set `Repo URL: local only`.
 
 ## 6. Hand off
 
-Tell them, briefly:
-1. Open a second terminal in this same folder and run `claude --agent devlog`. Tell it what you decide and why as you go.
-2. Skim [`JUDGING.md`](JUDGING.md): draft technical checks AI evaluation may use (rubric **not finalized**). Your idea stays yours; these are quality bars only.
-3. Start the preview server (their command from step 1) and open http://localhost:8000.
-4. Then tell me what to build first.
+Commit `jam-state.md` and `meta.json` (`git add -A -- . ':!devlog' && git commit -m "docs: start state"`). Then tell them, briefly:
+1. Open a second terminal in this folder and run `claude --agent devlog`. Tell it what you decide and why as you go.
+2. Start the preview server (their command) and open http://localhost:8000. They should see a cube.
+3. At **11:00**, type `/jam-plan` here to research, pick a card, and plan the game.

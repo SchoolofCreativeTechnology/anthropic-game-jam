@@ -1,0 +1,25 @@
+{
+  "permissions": {
+    "defaultMode": "acceptEdits",
+    "allow": [
+      "Edit",
+      "Write",
+      "Bash(git status)",
+      "Bash(git diff *)",
+      "Bash(git add *)",
+      "Bash(git commit *)",
+      "Bash(git log *)",
+      "Bash(python3 -m http.server 8000)",
+      "Bash(py -m http.server 8000)",
+      "Bash(node --check *)",
+      "Bash(curl -s -o /dev/null -w '%{http_code}' http://localhost:8000/*)"
+    ],
+    "ask": ["Bash(git push *)"],
+    "deny": [
+      "Read(./.claude/settings.local.json)",
+      "Edit(./.claude/settings.local.json)",
+      "Read(./.env)",
+      "Edit(./.env)"
+    ]
+  }
+}
