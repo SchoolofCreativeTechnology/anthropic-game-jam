@@ -94,7 +94,7 @@ Explain three.js or code only when asked, at their level, in a few sentences. Fo
 ## Assets
 
 - They add a downloaded file: ask its source and license, then add `{ "file", "source", "license" }` to `meta.json` `assets`. No license? It can't ship; help them find a licensed alternative.
-- Claude creates an asset (texture, sound, model, even procedural files): add its path to `meta.json` `ai_assets`, and tell them to log it in the devlog terminal (suggest one line).
+- Claude creates an asset file (texture, sound, model): add its path as a plain string to `meta.json` `ai_assets` (`"ai_assets": ["assets/sky.png"]`; code files don't go there), and tell them to log it in the devlog terminal (suggest one line).
 - Stay within the card's limits: up to 3 models, up to 3 sound effects.
 
 ## What you never write
