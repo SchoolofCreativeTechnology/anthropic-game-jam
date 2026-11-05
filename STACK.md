@@ -6,12 +6,14 @@ How the pieces of the jam fit together. You only work in the left box; `/jam-shi
 flowchart LR
   subgraph Student["Student machine (macOS or Windows / Git Bash)"]
     direction TB
-    Zip["anthropic-game-jam.zip<br/>(from Nathan)"] --> Folder["Jam folder"]
+    Zip["install.sh<br/>(curl | bash, key from slip)"] --> Folder["Jam folder"]
     subgraph T1["Terminal 1: build"]
-      Companion["claude --agent jam-companion<br/>Opus 5.5<br/>/jam-start · /jam-ship"]
+      Companion["claude --agent jam-companion<br/>vmc/jam-guide, then vmc/jam-lead<br/>/jam-start · /jam-plan · /jam-ship"]
+      Builders["jam-builder · jam-helper subagents<br/>vmc/jam-build · vmc/jam-cheap"]
+      Companion --> Builders
     end
     subgraph T2["Terminal 2: devlog"]
-      Devlog["claude --agent devlog<br/>Opus 5.5"]
+      Devlog["claude --agent devlog<br/>vmc/jam-cheap"]
     end
     Folder --> Companion
     Folder --> Devlog
@@ -25,13 +27,13 @@ flowchart LR
   subgraph GH["GitHub"]
     Private["Student private repo<br/>&lt;handle&gt;-jam-game<br/>(gh repo create)"]
     Fork["Student fork of jam-gallery"]
-    Gallery["nmadrid27/jam-gallery<br/>(public)"]
+    Gallery["SchoolofCreativeTechnology/jam-gallery<br/>(public)"]
     CI["GitHub Action<br/>tests · build · PR scope check"]
   end
 
   subgraph Vercel["Vercel"]
     Build["build-index.mjs<br/>validates games, writes games.json"]
-    Site["jam-gallery.vercel.app<br/>games/&lt;handle&gt;/"]
+    Site["stec-jam-gallery.vercel.app<br/>games/&lt;handle&gt;/"]
   end
 
   Companion -- git push --> Private
@@ -44,12 +46,12 @@ flowchart LR
 
 | Layer | Tool | Notes |
 |---|---|---|
-| Schedule | 11:00 AM to 4:00 PM | Playtests at **1:15 PM** and **2:15 PM**; ship by **3:30 PM**. See `AGENTS.md`. |
+| Schedule | 10:00 onboarding; 11:00 AM to 4:00 PM | Plan 11:00 to 12:30; build from 12:45; playtests after M2 and M3; ship by **3:30 PM**. See `AGENTS.md`. |
 | Game | three.js 0.186.1 | Loaded from a CDN in `index.html`. Plain HTML and JavaScript modules; nothing to install. |
-| AI | Claude Code, Opus 5.5 | Build terminal (`jam-companion`) writes the game from your direction. Devlog terminal (`devlog`) records your decisions in your words. |
-| Preview | Python or Node | `python3 -m http.server 8000` (Windows: `py -m http.server 8000`) or `npx serve -l 8000`, then http://localhost:8000. |
+| AI | Claude Code on jam models (Vercel AI Gateway, capped key) | Build terminal (`jam-companion`) plans with you and sends tasks to builder subagents. Devlog terminal (`devlog`) records your decisions in your words. |
+| Preview | Python or Node | `python3 -m http.server 8000` (Windows: `py -m http.server 8000`) then http://localhost:8000. |
 | Saving work | git + GitHub CLI (`gh`) | Your own private repo, created by `/jam-start` if you want one. |
-| Publishing | GitHub + Vercel | `/jam-ship` opens a pull request to the public gallery; once merged, the game goes live at https://jam-gallery.vercel.app. |
+| Publishing | GitHub + Vercel | `/jam-ship` opens a pull request to the public gallery; once merged, the game goes live at https://stec-jam-gallery.vercel.app. |
 
 ## Inspiration
 

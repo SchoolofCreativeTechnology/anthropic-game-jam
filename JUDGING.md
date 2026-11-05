@@ -13,7 +13,7 @@ These are **technical quality** checks, not design direction. Your idea stays yo
 | **Playable loop** | Start, play, lose, restart, all without reloading the page. | A title screen, a game-over screen with your score, and a key to play again. | "Make sure I can restart from game over with Space or a tap, and that the state fully resets." |
 | **Mobile controls** | Works on a phone with touch. | Swipe left or right to change lane, tap to jump. Test it in DevTools device mode. | "Add swipe and tap controls and test them at a 390x844 viewport." |
 | **Progression** | The game gets harder, with levels, speed, or new enemies. | A HUD with level and score. | "Add levels that raise speed and add a new enemy type every level." |
-| **Readable code** | One file, clear sections, and comments where something is tricky. | Section headers such as COLLISION, PERFORMANCE, TEXTURES. | "Group the code into named sections with a one-line comment each." |
+| **Readable code** | Small files, clear sections, and comments where something is tricky. | Section headers such as COLLISION, PERFORMANCE, TEXTURES. | "Group the code into named sections with a one-line comment each." |
 
 ## Show your proof in one minute
 1. Open `/?fps` and play for 20 seconds. Screenshot the FPS panel.

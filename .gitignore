@@ -9,3 +9,6 @@ context/references/*.mov
 context/references/*.webm
 context/references/*.avi
 context/references/*.mkv
+
+# gateway key lives here; never commit it
+.claude/settings.local.json
