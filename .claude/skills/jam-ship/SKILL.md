@@ -5,7 +5,7 @@ description: Use when the student types /jam-ship or says they're ready to ship 
 
 # Jam Ship
 
-Get the game into the public gallery. Nathan merges PRs from 3:30, so shipping by then means it's live by 4:00.
+Get the game into the public gallery. Nathan merges PRs from **3:30 PM**, so shipping by then means it's live by **4:00 PM**.
 
 Do the steps in order. Stop at the first step that fails.
 
@@ -16,9 +16,11 @@ Read `meta.json`, `jam-state.md`, and `devlog/DEVLOG.md`, and list the files in 
 - `meta.json`: `title`, `handle`, `description` are non-empty; `handle` matches `^[a-z0-9-]{2,30}$`.
 - Assets: every file except `index.html`, `meta.json`, `.js`/`.css` files, dotfiles (`.gitignore` and the like), and the template files (`context/`, `devlog/`, `.claude/`, `jam-state.md`, `AGENTS.md`, `CLAUDE.md`, `README.md`, `STACK.md`) must be listed in `meta.json` `assets` (with non-empty `source` and `license`) or in `ai_assets`. Name each unlisted file.
 - `DEVLOG.md`: `## Reflection` and `## AI Use Disclosure` each have the student's own content, not just the template's italic prompt.
+- `devlog/AI-USE-LOG.md` exists. If **Your log** has no real entries yet (only the blank template row), **warn** them to update it in the devlog terminal. This does **not** block shipping by itself.
 - `index.html` exists and still loads `main.js`.
+- **`JUDGING.md` self-check (non-blocking):** Read the checklist. Warn if they have likely gaps (console not checked, no real collision when the game needs it, restart loop missing, no thought given to FPS on a weak laptop). Suggest fixes; do **not** block ship on this list alone.
 
-If anything is missing: list every gap with how to fix it (asset credits and title in this terminal; reflection and disclosure in the devlog terminal), and **stop**. Do not fork, copy, or open anything.
+If anything **blocking** is missing: list every gap with how to fix it (asset credits and title in this terminal; reflection and disclosure in the devlog terminal), and **stop**. Do not fork, copy, or open anything. Report the AI use log warning and `JUDGING.md` warnings separately; they do not block.
 
 ## 2. Consent
 

@@ -16,7 +16,7 @@ flowchart LR
     Folder --> Companion
     Folder --> Devlog
     Companion -- writes --> Game["Game code<br/>index.html · main.js · assets<br/>meta.json · context/"]
-    Devlog -- writes --> Log["devlog/<br/>DEVLOG.md · RUNBOOK.md"]
+    Devlog -- writes --> Log["devlog/<br/>DEVLOG.md · AI-USE-LOG.md · RUNBOOK.md"]
     Game --> Three["three.js 0.186.1<br/>CDN import map, no build step"]
     Game --> Serve["Local preview<br/>python3 / py -m http.server 8000<br/>or npx serve -l 8000"]
     Serve --> Browser["Browser<br/>localhost:8000"]
@@ -38,12 +38,13 @@ flowchart LR
   Companion -- "/jam-ship: fork, copy, PR" --> Fork
   Fork -- pull request --> Gallery
   Gallery --> CI
-  Nathan(["Nathan merges<br/>from 3:30"]) --> Gallery
+  Nathan(["Nathan merges<br/>from 3:30 PM"]) --> Gallery
   Gallery -- push to main --> Build --> Site
 ```
 
 | Layer | Tool | Notes |
 |---|---|---|
+| Schedule | 11:00 AM to 4:00 PM | Playtests at **1:15 PM** and **2:15 PM**; ship by **3:30 PM**. See `AGENTS.md`. |
 | Game | three.js 0.186.1 | Loaded from a CDN in `index.html`. Plain HTML and JavaScript modules; nothing to install. |
 | AI | Claude Code, Opus 5.5 | Build terminal (`jam-companion`) writes the game from your direction. Devlog terminal (`devlog`) records your decisions in your words. |
 | Preview | Python or Node | `python3 -m http.server 8000` (Windows: `py -m http.server 8000`) or `npx serve -l 8000`, then http://localhost:8000. |
