@@ -10,8 +10,9 @@ Your game is built around **one action the player repeats**: jump, dodge, run, a
 
 ## Before you start
 
-- A GitHub account, logged in: `gh auth login`
+- A GitHub account and the GitHub CLI (macOS: `brew install gh`; Windows: `winget install GitHub.cli`), logged in: `gh auth login`
 - Claude Code installed and logged in
+- Python 3 for the local preview (macOS: `xcode-select --install`; Windows: `winget install Python.Python.3.12`)
 - Windows: run everything in **Git Bash**
 - **References:** collect images (screenshots, photos, sketches) and links (in `links.md`) that show the look and feel you want, and drop them in `context/references/`. Claude builds from them; they never ship.
 
