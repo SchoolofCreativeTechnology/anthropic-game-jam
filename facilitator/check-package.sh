@@ -33,7 +33,7 @@ for a in "$root"/.claude/agents/*.md; do
   [ -e "$a" ] || continue
   grep -qE '^model: (inherit|claude-code/vmc/jam-[a-z]+)$' "$a" || err "agent model must be inherit or claude-code/vmc/jam-*: ${a#$root/}"
 done
-secret='nathan@nathanmadrid\.com|sk-ant-|vck_[A-Za-z0-9_-]{20,}'
+secret='nathan@nathanmadrid\.com|sk-ant-[A-Za-z0-9_-]{20,}|vck_[A-Za-z0-9_-]{20,}'
 if grep -rlE "$secret" "$root" >/dev/null 2>&1; then
   err "personal email or API key in: $(grep -rlE "$secret" "$root" | sed "s#$root/##" | tr '\n' ' ')"
 fi

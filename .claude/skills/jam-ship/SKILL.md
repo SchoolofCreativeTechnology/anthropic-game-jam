@@ -58,7 +58,7 @@ The gallery commit uses their GitHub login and noreply address, never their pers
 
 Copy into `dist/ship/jam-gallery/games/<handle>/`: `index.html`, `meta.json`, every `.js` and `.css` file of the game (not the kit folders `assets-packs/`, `demos/`, `docs/`, `facilitator/`, `dist/`, `.claude/`), every asset listed in `meta.json` (including any the game loads from `assets-packs/`), and `devlog/DEVLOG.md` (as `DEVLOG.md`). Keep the relative folder layout so paths in the code still work. **Never copy `.claude/`** (it holds the gateway key).
 
-**Key check, before committing:** `grep -rlE 'vck_[A-Za-z0-9_-]{20,}|sk-ant-' dist/ship/jam-gallery/games/<handle>` must print nothing. If it prints a file, stop: remove the key from that file in the jam folder (it must never be in game code or the devlog), then copy again.
+**Key check, before committing:** `grep -rlE 'vck_[A-Za-z0-9_-]{20,}|sk-ant-[A-Za-z0-9_-]{20,}' dist/ship/jam-gallery/games/<handle>` must print nothing. If it prints a file, stop: remove the key from that file in the jam folder (it must never be in game code or the devlog), then copy again.
 
 ```bash
 git -C dist/ship/jam-gallery add games/<handle>
