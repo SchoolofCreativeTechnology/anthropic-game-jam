@@ -35,6 +35,9 @@ if ! command -v claude >/dev/null 2>&1 && { [ -x "$HOME/.local/bin/claude" ] || 
   export PATH="$HOME/.local/bin:$PATH"
   rc="$HOME/.bashrc"; [ "$os" = mac ] && rc="$HOME/.zshrc"
   grep -qsF '.local/bin' "$rc" || printf '\nexport PATH="$HOME/.local/bin:$PATH"\n' >> "$rc"
+  # Git Bash warns on every new window if .bashrc exists without a profile that loads it.
+  [ "$os" = win ] && ! [ -e "$HOME/.bash_profile" ] && ! [ -e "$HOME/.bash_login" ] && ! [ -e "$HOME/.profile" ] \
+    && printf 'test -f ~/.bashrc && . ~/.bashrc\n' > "$HOME/.bash_profile"
   newterm=yes
 fi
 fix() { if [ "$os" = win ]; then say "    fix: $2"; else say "    fix: $1"; fi; }
