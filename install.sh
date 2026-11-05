@@ -27,6 +27,16 @@ case "$(uname -s)" in
 esac
 
 say() { printf '%s\n' "$*"; }
+
+# Claude Code's native installer puts claude in ~/.local/bin but doesn't always add
+# that to PATH. Find it there, add it for this run and for new terminals.
+newterm=no
+if ! command -v claude >/dev/null 2>&1 && { [ -x "$HOME/.local/bin/claude" ] || [ -x "$HOME/.local/bin/claude.exe" ]; }; then
+  export PATH="$HOME/.local/bin:$PATH"
+  rc="$HOME/.bashrc"; [ "$os" = mac ] && rc="$HOME/.zshrc"
+  grep -qsF '.local/bin' "$rc" || printf '\nexport PATH="$HOME/.local/bin:$PATH"\n' >> "$rc"
+  newterm=yes
+fi
 fix() { if [ "$os" = win ]; then say "    fix: $2"; else say "    fix: $1"; fi; }
 
 # 1. Tools. Collect every problem, then stop before writing anything.
@@ -133,6 +143,7 @@ key=""
 
 say ""
 say "Done. Next:"
+[ "$newterm" = yes ] && say "  Open a new terminal window first (Claude Code was added to your PATH)."
 say "  cd $DIR"
 say "  claude --agent jam-companion"
 say "Then type /jam-start"
