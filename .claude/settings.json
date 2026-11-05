@@ -12,9 +12,31 @@
       "Bash(python3 -m http.server 8000)",
       "Bash(py -m http.server 8000)",
       "Bash(node --check *)",
-      "Bash(curl -s -o /dev/null -w '%{http_code}' http://localhost:8000/*)"
+      "Bash(curl -s -o /dev/null -w '%{http_code}' http://localhost:8000/*)",
+      "Bash(git init*)",
+      "Bash(git config *)",
+      "Bash(git remote *)",
+      "Bash(git check-ignore *)",
+      "Bash(git ls-files*)",
+      "Bash(git rev-parse *)",
+      "Bash(git --version)",
+      "Bash(gh --version)",
+      "Bash(gh auth status*)",
+      "Bash(gh api user*)",
+      "Bash(python3 --version)",
+      "Bash(py --version)",
+      "Bash(python --version)",
+      "Bash(uname *)",
+      "Bash(date *)",
+      "Bash(command -v *)",
+      "Bash(which *)",
+      "Bash(ls *)",
+      "Bash(mkdir *)",
+      "Bash(sleep *)"
     ],
-    "ask": ["Bash(git push *)"],
+    "ask": [
+      "Bash(git push *)"
+    ],
     "deny": [
       "Read(./.claude/settings.local.json)",
       "Edit(./.claude/settings.local.json)",
