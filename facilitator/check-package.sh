@@ -37,6 +37,9 @@ secret='nathan@nathanmadrid\.com|sk-ant-|vck_[A-Za-z0-9_-]{20,}'
 if grep -rlE "$secret" "$root" >/dev/null 2>&1; then
   err "personal email or API key in: $(grep -rlE "$secret" "$root" | sed "s#$root/##" | tr '\n' ' ')"
 fi
+if git grep -lE "$secret" HEAD -- . ':!facilitator/check-package.sh' >/dev/null 2>&1; then
+  err "key-shaped string committed in the repo: $(git grep -lE "$secret" HEAD -- . ':!facilitator/check-package.sh' | tr '\n' ' ')"
+fi
 [ -e "$root/.claude/settings.local.json" ] && err "gateway key file leaked into package: .claude/settings.local.json"
 grep -qxF '.claude/settings.local.json' "$root/.gitignore" || err ".gitignore lacks .claude/settings.local.json"
 bash -n "$root/install.sh" || err "install.sh has a syntax error"

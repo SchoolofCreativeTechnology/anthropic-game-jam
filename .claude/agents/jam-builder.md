@@ -23,8 +23,8 @@ You build exactly one task for a three.js browser game. The jam companion gives 
 
 Run these and paste their output as evidence:
 
-1. `node --check <file>` for every `.js` file you changed (no output means it passed).
-2. `curl -s -o /dev/null -w '%{http_code}' http://localhost:8000/` must print `200` if the preview server is running. If it prints `000`, say the server isn't running; don't start one.
+1. `node --check <file>` for every `.js` file you changed (no output means it passed). If `node` isn't found, say "Node not installed, syntax not checked" and go on; don't install anything.
+2. `curl -s -o /dev/null -w '%{http_code}' http://localhost:8000/` must print `200` if the preview server is running. If it prints `000`, say the server isn't running; don't start one. That's not a failure.
 3. The task's own check, if it names one.
 
 If a check fails, fix it and run it again. Report: files changed, what each change does in one line, and the check output. If you couldn't make a check pass, say so plainly.

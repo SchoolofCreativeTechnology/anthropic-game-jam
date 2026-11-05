@@ -14,7 +14,9 @@ cd "$tmp/g"
 [ -e "games/$handle" ] && { echo "games/$handle already exists in the gallery" >&2; exit 1; }
 git switch -q -c "game/$handle"
 cp -R "$tmp/unz/games/$handle" games/
+if grep -rlE 'vck_[A-Za-z0-9_-]{20,}|sk-ant-' "games/$handle"; then echo "key-shaped string in the game; not shipping" >&2; exit 1; fi
 node scripts/build-index.mjs >/dev/null   # same validation the PR check runs
 git add "games/$handle" && git commit -qm "game: $handle"
+node scripts/build-index.mjs --pr-scope origin/main   # the fork-only PR check skips same-repo branches
 git push -q -u origin "game/$handle"
 gh pr create -R "$gallery" --head "game/$handle" --title "game: $handle" --body "Shipped from zip by the facilitator."

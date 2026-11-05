@@ -31,15 +31,17 @@ Your game is built around **one action the player repeats**, from one starter ca
 | GitHub CLI | `brew install gh` | `winget install GitHub.cli` |
 | Python 3 | comes with `xcode-select --install` | `winget install Python.Python.3.12` |
 | Claude Code | `curl -fsSL https://claude.ai/install.sh \| bash` | PowerShell: `irm https://claude.ai/install.ps1 \| iex` |
+| Node (optional) | `brew install node` | `winget install OpenJS.NodeJS.LTS` |
 | Blender (optional) | https://www.blender.org/download | same |
 
 Then log in to GitHub: `gh auth login`. You don't need a Claude account: the jam gives you a key.
 
 ## Install (at 10:00)
 
-You'll get a slip with a gateway key. From the folder where you want the kit (your Desktop is fine):
+You'll get a slip with a gateway key. Run this from your home folder (not Desktop or Documents if they sync to OneDrive or iCloud):
 
 ```bash
+cd ~
 curl -fsSL https://raw.githubusercontent.com/SchoolofCreativeTechnology/anthropic-game-jam/main/install.sh | bash
 ```
 
@@ -59,12 +61,14 @@ Then type `/jam-start`. At 11:00, `/jam-plan`. At 12:45, run `/model claude-code
 Open a **second terminal** in the same folder:
 
 ```bash
-claude --agent devlog
+claude --agent devlog --model claude-code/vmc/jam-cheap
 ```
 
 Tell it what you tried, what broke, and what you decided (on a team, who decided). It keeps your devlog in your words and logs each AI use in `devlog/AI-USE-LOG.md`.
 
 ## See your game
+
+Open a **third terminal** in the same folder and leave the server running there:
 
 | macOS | Windows (Git Bash) |
 |---|---|
@@ -82,6 +86,6 @@ In the build terminal: `/jam-ship` by **3:30 PM**, so your game is live by **4:0
 
 ## Example demo
 
-[Zombie Runner](demos/zombie-runner-showcase/) shows what a finished lane runner can look like. It's not a template. Run a local server in that folder and open the page.
+[Zombie Runner](demos/zombie-runner-showcase/) shows what a finished lane runner can look like. It's not a template. With your preview server running, open http://localhost:8000/demos/zombie-runner-showcase/.
 
 For a draft of what evaluation might look at (rubric **not finalized**), see [JUDGING.md](JUDGING.md).

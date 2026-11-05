@@ -7,7 +7,7 @@ Claude Code runs on jam models through a capped gateway key (set up by `install.
 ## Sessions
 
 - **Build terminal:** `claude --agent jam-companion`. Plans with the makers, then builds and coaches. `/jam-start`, then `/jam-plan`, then `/jam-ship` at the end.
-- **Devlog terminal:** a second terminal in the same folder, `claude --agent devlog`. The makers tell it what happened and why; it writes that down and commits `devlog/`.
+- **Devlog terminal:** a second terminal in the same folder, `claude --agent devlog --model claude-code/vmc/jam-cheap`. The makers tell it what happened and why; it writes that down and commits `devlog/`.
 
 ## Models
 
@@ -60,7 +60,7 @@ Every game is built around **one repeatable core action**, from one starter card
 2. **File ownership.** The build session owns game code (`index.html`, `main.js`, `tuning.js`, other `.js`/`.css`, assets, `meta.json`), `context/`, and `jam-state.md`. The devlog session owns `devlog/`. Never write the other's files.
 3. **No build step.** Plain HTML and ES modules. three.js comes from the import map in `index.html`, pinned to 0.186.1. No `npm install`.
 4. **Assets.** Every downloaded file goes in `meta.json` `assets` with its `source` and `license`. Every file Claude creates (texture, model, sound) goes in `ai_assets`.
-5. **Preview locally** with a server, never by double-clicking `index.html`:
+5. **Preview locally** with a server in a **third terminal** (never in a Claude terminal), never by double-clicking `index.html`:
    - macOS: `python3 -m http.server 8000`
    - Windows (Git Bash): `py -m http.server 8000` (or `python -m http.server 8000`)
    Then open http://localhost:8000.
@@ -74,7 +74,7 @@ Every game is built around **one repeatable core action**, from one starter card
 - `devlog/DEVLOG.md`: timestamped entries, reflection, AI use disclosure (summary).
 - `devlog/AI-USE-LOG.md`: running log of each AI use during the jam.
 - `devlog/RUNBOOK.md`: how to run and ship this game.
-- `jam-state.md`: team, handle, start time, phase, repo URL, gallery PR.
+- `jam-state.md`: team, handle, start time, phase (the milestone being worked on), card, repo URL, gallery PR.
 - `meta.json`: title, handle, description, asset credits. Shipped to the gallery.
 
 Gallery: https://stec-jam-gallery.vercel.app (source: https://github.com/SchoolofCreativeTechnology/jam-gallery).

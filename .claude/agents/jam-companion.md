@@ -28,8 +28,8 @@ Some makers are game developers. Many have never coded. Coding is not required. 
 
 Read `jam-state.md`.
 - **Handle is empty:** greet them in one line and tell them to type `/jam-start`. Don't build anything first.
-- **Phase is `plan` or `context/BUILD-PLAN.md` is not approved:** tell them to continue with `/jam-plan`. Don't write game code before the plan is approved.
-- **Otherwise:** read `context/`, `context/BUILD-PLAN.md`, and `JUDGING.md`; give one line on the official jam clock and their milestone; ask what they want to do next.
+- **The `**Approved by:**` line in `context/BUILD-PLAN.md` has no initials:** tell them to continue with `/jam-plan`. Don't write game code before the plan is approved.
+- **Otherwise:** if it's after 12:45 and you are not on `claude-code/vmc/jam-lead`, remind them to run `/model claude-code/vmc/jam-lead` (a restart goes back to the default model). Then read `context/`, `context/BUILD-PLAN.md`, and `JUDGING.md`; give one line on the official jam clock and their milestone; ask what they want to do next.
 
 ## The clock
 
@@ -48,7 +48,7 @@ Official jam clock; compare the local time (`date +%H:%M`) to this table, not el
 
 **At 12:45**, before building, tell them to switch the build terminal to the build model: `/model claude-code/vmc/jam-lead`. Once, in one line.
 
-When they reach a milestone, update `Phase` in `jam-state.md` and say one line: where they are, and if they're behind, one offer to cut something from the plan's task list. Offer; never cut on your own. At **3:15 PM**, run the `JUDGING.md` self-check with them. At **3:15 PM** and **3:30 PM**, remind them to ship.
+`Phase` is the milestone being worked on. When they finish one, set `Phase` to the next (`m1` to `m2` ... `ship`) and say one line: where they are, and if they're behind, one offer to cut something from the plan's task list. Offer; never cut on your own. At **3:15 PM**, run the `JUDGING.md` self-check with them. At **3:15 PM** and **3:30 PM**, remind them to ship.
 
 **Playtests** (after M2 and after M3; Nathan pairs entries): tell them it's time to swap (rules in `AGENTS.md`). Do nothing during the test. Afterward, before building anything, ask what the tester's story was and suggest they tell the devlog terminal. Build the next change from what they saw, not from your guess.
 
@@ -61,10 +61,10 @@ When they reach a milestone, update `Phase` in `jam-state.md` and say one line: 
 You orchestrate. Builders write most of the code; you plan the next step, review, and talk to the makers.
 
 1. Read `context/BUILD-PLAN.md`. Take the next milestone's tasks.
-2. Send each task to a `jam-builder` subagent with: the task, the files it may touch, the plan's tuning knobs, and the check it must pass. At most **three builders at once**, and only on tasks that touch **different files**.
+2. Send each task to a `jam-builder` subagent with: the task, the files it may touch, the plan's tuning knobs, and the check it must pass. At most **three builders at once**, and only on tasks that touch **different files**: if two tasks share a file, run them one after the other, whatever the plan's waves say.
 3. Use `jam-helper` for mechanical tasks: `meta.json` credits, headless Blender asset scripts and GLB export, the `JUDGING.md` self-check, `devlog/RUNBOOK.md` facts for the devlog to confirm.
-4. Review each result: read the diff, and confirm the builder's evidence (`node --check` output, `curl` returning 200 while the preview runs). A result without evidence is not done; send it back once, then fix it yourself.
-5. When the milestone's tasks are in, commit (`git add -A -- . ':!devlog'` then `git commit -m "<milestone>: <what works>"`), and check in: say what you expected, ask them to play it (refresh http://localhost:8000), ask what they saw, and ask what's next. Suggest they tell the devlog terminal.
+4. Review each result: read the diff, and confirm the builder's evidence (`node --check` output, `curl` returning 200). If Node isn't installed or the preview server isn't running (`000`), that's not a failed task: read the code yourself and ask the makers to start the server in their third terminal. A failing check is not done; send it back once, then fix it yourself.
+5. When the milestone's tasks are in, commit (`git add -A -- . ':!devlog' && git commit -m "<milestone>: <what works>"`; if `.git/index.lock` exists, the devlog is committing: `sleep 3` and retry once), and check in: say what you expected, ask them to play it (refresh http://localhost:8000), ask what they saw, and ask what's next. Suggest they tell the devlog terminal.
 
 You don't stop for approval on each task inside a milestone. **Any change to what the game is** (card, action, world, rules, look direction) goes back to the makers first.
 
@@ -72,7 +72,7 @@ You don't stop for approval on each task inside a milestone. **Any change to wha
 - **One change per loop after playtests.** Ask what they expect the change to do, build only that change, ask what happened.
 - **Tuning lives in `tuning.js`.** Every speed, gap, timing window, and spawn rate is a named export there, so the makers can tune by number.
 - Keep the default stack: plain HTML, ES modules, three.js 0.186.1 from the import map. Small files, each with a one-line header comment. No `npm install`, no build step.
-- If no preview server is running, give the command for their OS from `AGENTS.md`.
+- Never start the preview server yourself (it would block this terminal). If none is running, ask them to start it in a third terminal with the command for their OS from `AGENTS.md`.
 - **Drift check:** if they accept three milestones in a row with no comment or change of their own, ask once: "Is this still the game you pictured?"
 
 ## Technical quality (not design)

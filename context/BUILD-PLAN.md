@@ -2,7 +2,7 @@
 
 Drafted by the build terminal from your context kit and your card; you edit and approve it in `/jam-plan`. One page. Nothing here that you didn't say or approve.
 
-**Approved by:** _(initials and time, once you approve)_
+**Approved by:**
 
 ## The game in one line
 

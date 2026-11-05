@@ -18,21 +18,21 @@ Collect every problem before reporting:
 | Kit installed | `.claude/settings.local.json` exists (`test -f`; never read or print it) | rerun the install command from the README | same |
 | git | `git --version` | `xcode-select --install` | install Git for Windows, reopen Git Bash |
 | GitHub CLI | `gh --version` | `brew install gh` | `winget install GitHub.cli`, reopen Git Bash |
-| GitHub login | `gh auth status` | `gh auth login` | `gh auth login` |
+| GitHub login (warn only) | `gh auth status` | `gh auth login` | `gh auth login` |
 | Local server | first that works of `python3 --version`, `py --version`, `python --version` | `xcode-select --install` | `winget install Python.Python.3.12` |
 | Blender (optional) | `command -v blender` or `/Applications/Blender.app` | warn only | warn only |
 
 The gateway key was tested by the installer; you're already running on it, so it works.
 
-If anything required failed: list each problem with its fix in plain language, say "Run `/jam-start` again when that's done," and **stop**. Write no files.
+GitHub login is needed to ship to the gallery, but not to build; if it fails, give the fix and carry on (`/jam-ship` has a zip fallback). If anything else required failed: list each problem with its fix in plain language, say "Run `/jam-start` again when that's done," and **stop**. Write no files.
 
 If everything passed, say so in one line and name the preview command they'll use (from `AGENTS.md`).
 
 ## 2. Git
 
-If this folder is not a git repo, run `git init -b main`. If they cloned the kit instead of installing it, `origin` points at the kit repo and their work must never push there: if `git remote get-url origin` succeeds and contains `anthropic-game-jam`, run `git remote remove origin`.
+If `git rev-parse --show-toplevel` fails or doesn't print this folder (`pwd`), run `git init -b main` (a parent folder's repo doesn't count). If they cloned the kit instead of installing it, `origin` points at the kit repo and their work must never push there: if `git remote get-url origin` succeeds and contains `anthropic-game-jam`, run `git remote remove origin`.
 
-**Git identity.** If `git config user.email` or `git config user.name` prints nothing, set them for this folder only:
+**Git identity.** If `git config user.email` or `git config user.name` prints nothing, set them for this folder only (if GitHub login failed, wait until step 4 and use `<handle>` and `<handle>@users.noreply.github.com`):
 
 ```bash
 git config user.email "$(gh api user --jq '"\(.id)+\(.login)@users.noreply.github.com"')"
@@ -57,7 +57,7 @@ Ask: "Want a private GitHub repo for this game? It backs up your work. Local git
 
 On yes:
 1. `git add -A && git commit -m "start: <handle>"` (`.gitignore` keeps the key file out; confirm with `git check-ignore .claude/settings.local.json`).
-2. `gh repo create <handle>-jam-game --private --source . --push`
+2. `gh repo create <handle>-jam-game --private --source . --push`, then write the URL (`gh repo view --json url --jq .url`) to `Repo URL:`.
 3. If the push fails with "push declined due to email privacy restrictions": set `git config user.email` to the noreply address above, `git commit --amend --reset-author --no-edit`, `git push -u origin main`. Retry once; if it still fails, show the error and tell them to ask Nathan.
 4. If the name is taken, offer `<handle>-jam-game-2`.
 
@@ -65,7 +65,7 @@ On no: `git add -A && git commit -m "start: <handle>"`, and set `Repo URL: local
 
 ## 6. Hand off
 
-Commit `jam-state.md` and `meta.json` (`git add -A -- . ':!devlog' && git commit -m "docs: start state"`). Then tell them, briefly:
+Commit `jam-state.md` and `meta.json` (`git add -A -- . ':!devlog' && git commit -m "docs: start state"`; "nothing to commit" is fine). Then tell them, briefly:
 1. Open a second terminal in this folder and run `claude --agent devlog`. Tell it what you decide and why as you go.
-2. Start the preview server (their command) and open http://localhost:8000. They should see a cube.
+2. Open a **third** terminal in this folder for the preview server (their command), leave it running, and open http://localhost:8000. They should see a cube.
 3. At **11:00**, type `/jam-plan` here to research, pick a card, and plan the game.

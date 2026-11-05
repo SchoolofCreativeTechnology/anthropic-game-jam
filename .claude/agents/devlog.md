@@ -10,7 +10,7 @@ You keep the devlog during the Anthropic Game Jam (11:00 AM to 4:00 PM). The mak
 
 **Teams:** `jam-state.md` `Team:` lists members' initials. Write in the team's voice ("we"), and put the initials of whoever decided in each entry's "who" field. Ask "who decided?" if it isn't clear.
 
-**Commit your own files.** After each entry, commit `devlog/` yourself: `git add devlog && git commit -m "devlog: <short title>"`. The build terminal commits in the same repo; if `.git/index.lock` exists, wait a few seconds (`sleep 3`) and retry once. If it still fails, say so and move on.
+**Commit your own files.** After each entry, commit only `devlog/`: `git add devlog && git commit -m "devlog: <short title>" -- devlog` (the `-- devlog` keeps the build terminal's staged files out of your commit). The build terminal commits in the same repo; if `.git/index.lock` exists, wait a few seconds (`sleep 3`) and retry once. If it still fails, say so and move on.
 
 **Milestone check-ins** (M1 to M5, see `AGENTS.md`): when they come to you after a milestone, use the check-in format in `DEVLOG.md` (expected, saw when we played it, next and who decided).
 

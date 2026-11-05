@@ -10,9 +10,10 @@ cfg=${VERCEL_CFG:-$HOME/.vercel-scad}; scope=${VERCEL_SCOPE:-nmadrid-6296s-proje
 umask 077; mkdir -p dist; out=dist/keys.txt; touch "$out"
 for n in $(seq "$first" $((first + count - 1))); do
   name=$(printf 'jam-entry-%02d' "$n")
-  key=$(vercel --global-config "$cfg" --scope "$scope" ai-gateway api-keys create \
-    --name "$name" --limit "$limit" --expiration 7d --non-interactive 2>&1 | grep -oE 'vck_[A-Za-z0-9_-]+' | head -1)
-  [ -n "$key" ] || { echo "FAIL: could not create $name" >&2; exit 1; }
+  res=$(vercel --global-config "$cfg" --scope "$scope" ai-gateway api-keys create \
+    --name "$name" --limit "$limit" --expiration 7d --non-interactive 2>&1 </dev/null) || true
+  key=$(grep -oE 'vck_[A-Za-z0-9_-]+' <<< "$res" | head -1 || true)
+  [ -n "$key" ] || { echo "FAIL: could not create $name:" >&2; grep -vE 'vck_' <<< "$res" | tail -5 >&2; exit 1; }
   printf '%s  %s\n' "$name" "$key" >> "$out"
   echo "created $name (\$$limit)"
 done

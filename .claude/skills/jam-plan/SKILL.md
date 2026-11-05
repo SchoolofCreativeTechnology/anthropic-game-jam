@@ -12,7 +12,7 @@ Set `Phase: plan` in `jam-state.md`. Keep moving: if a step runs long, write wha
 ## 1. Research (about 20 min)
 
 - Show the five cards in `context/STARTERS.md` in one short list (name and action only).
-- Offer the showcase: `demos/zombie-runner-showcase/` (run the preview server from that folder). It shows what a finished card looks like; it's not a template.
+- Offer the showcase at http://localhost:8000/demos/zombie-runner-showcase/ (with the preview server running). It shows what a finished card looks like; it's not a template.
 - Ask what games they love that use one action. Look at `context/references/`; for each file, ask what it's there for and note their answer for LOOK. If it's empty, say they can drop screenshots or links (`links.md`) in any time. Images and links only.
 
 ## 2. Ideate (about 25 min)
@@ -47,7 +47,7 @@ Draft `context/BUILD-PLAN.md` from the context kit and the card, using the templ
 - **Assets plan:** within the card's limits (up to 3 models, up to 3 sounds).
 - **Cut list** and **Stretch**.
 
-Read it back to them **section by section**. They edit; you apply only their edits. When they approve, write their initials and the time on the **Approved by** line, commit (`git commit -am "docs: build plan approved"`, after `git add context`), and tell them:
+Read it back to them **section by section**. They edit; you apply only their edits. When they approve, write their initials and the time on the **Approved by** line, set `Phase: m1` in `jam-state.md`, commit (`git add -A -- . ':!devlog' && git commit -m "docs: build plan approved"`), and tell them:
 
 1. Tell the devlog terminal what you chose and why (card, world, twist).
 2. Break at 12:30. At **12:45**, run `/model claude-code/vmc/jam-lead` in this terminal, then say "build M1".

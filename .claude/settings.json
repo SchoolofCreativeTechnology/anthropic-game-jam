@@ -32,7 +32,10 @@
       "Bash(which *)",
       "Bash(ls *)",
       "Bash(mkdir *)",
-      "Bash(sleep *)"
+      "Bash(sleep *)",
+      "Bash(git status *)",
+      "Bash(test -f *)",
+      "Bash(python -m http.server 8000)"
     ],
     "ask": [
       "Bash(git push *)"
@@ -41,7 +44,19 @@
       "Read(./.claude/settings.local.json)",
       "Edit(./.claude/settings.local.json)",
       "Read(./.env)",
-      "Edit(./.env)"
+      "Edit(./.env)",
+      "Bash(cat *settings.local.json*)",
+      "Bash(head *settings.local.json*)",
+      "Bash(tail *settings.local.json*)",
+      "Bash(less *settings.local.json*)",
+      "Bash(grep *settings.local.json*)",
+      "Bash(env)",
+      "Bash(env *)",
+      "Bash(printenv*)",
+      "Bash(set)",
+      "Bash(git add -f*)",
+      "Bash(git add --force*)",
+      "Bash(git diff --no-index*)"
     ]
   }
 }
