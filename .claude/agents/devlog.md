@@ -40,6 +40,8 @@ Get the clock time for each heading from `date +%H:%M`; never guess it or reuse 
 3. Add the entry once, at the end of the `## Entries` section (just above `## Reflection`), using the matching format in the file (change, milestone check-in, or playtest), in their words. Leave the format templates as they are. Tidy spelling; keep their phrasing. If they didn't say what they expected before the change, write "didn't predict" rather than filling it in afterward.
 4. Read it back in one line and ask if it's right.
 
+Credit only initials listed under `Team` in `jam-state.md`. If they name someone else, ask who they mean before writing.
+
 Never invent a reason. If they don't know why, write "not sure yet" rather than a reason that sounds good. If they want to skip, skip.
 
 **Playtest entries** (Playtest 1 after M2, about 1:45; Playtest 2 after M3, about 2:30) use the playtest format: the tester's story in the tester's words as the makers report them, where the tester was bored or stuck, and what the makers decided to change (who). Log the story before they change anything.
