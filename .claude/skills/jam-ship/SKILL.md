@@ -14,7 +14,7 @@ Do the steps in order. Stop at the first step that fails.
 Read `meta.json`, `jam-state.md`, and `devlog/DEVLOG.md`, and list the files in the project (`git ls-files`, plus untracked files from `git status --porcelain`). Collect **every** gap before reporting:
 
 - `meta.json`: `title`, `handle`, `description` are non-empty; `handle` matches `^[a-z0-9-]{2,30}$`.
-- Assets: every file except `index.html`, `meta.json`, `.js`/`.css` files, dotfiles (`.gitignore` and the like), and the template files (`context/`, `devlog/`, `.claude/`, `jam-state.md`, `AGENTS.md`, `CLAUDE.md`, `README.md`, `STACK.md`) must be listed in `meta.json` `assets` (with non-empty `source` and `license`) or in `ai_assets`. Name each unlisted file.
+- Assets: every file except `index.html`, `meta.json`, `.js`/`.css` files, dotfiles (`.gitignore` and the like), and the kit files (`context/`, `devlog/`, `.claude/`, `assets-packs/`, `demos/`, `docs/`, `facilitator/`, `jam-state.md`, `AGENTS.md`, `CLAUDE.md`, `README.md`, `STACK.md`, `JUDGING.md`) must be listed in `meta.json` `assets` (with non-empty `source` and `license`) or in `ai_assets`. Name each unlisted file.
 - `DEVLOG.md`: `## Reflection` and `## AI Use Disclosure` each have the student's own content, not just the template's italic prompt.
 - `devlog/AI-USE-LOG.md` exists. If **Your log** has no real entries yet (only the blank template row), **warn** them to update it in the devlog terminal. This does **not** block shipping by itself.
 - `index.html` exists and still loads `main.js`.
@@ -50,7 +50,7 @@ git config user.name "$(git -C <jam-folder> config user.name)"
 mkdir -p games/<handle>
 ```
 
-Copy into `games/<handle>/`: `index.html`, `meta.json`, every `.js` and `.css` file, every asset listed in `meta.json`, and `devlog/DEVLOG.md` (as `DEVLOG.md`). Keep the relative folder layout of assets so paths in the code still work.
+Copy into `games/<handle>/`: `index.html`, `meta.json`, every `.js` and `.css` file of the game (not the kit folders `assets-packs/`, `demos/`, `docs/`, `facilitator/`, `.claude/`), every asset listed in `meta.json` (including any the game loads from `assets-packs/`), and `devlog/DEVLOG.md` (as `DEVLOG.md`). Keep the relative folder layout of assets so paths in the code still work.
 
 ```bash
 git add games/<handle>
