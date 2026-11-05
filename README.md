@@ -19,6 +19,7 @@ Your game is built around **one action the player repeats**: jump, dodge, run, a
 ## Start
 
 ```bash
+git clone https://github.com/SchoolofCreativeTechnology/anthropic-game-jam
 cd anthropic-game-jam
 claude --agent jam-companion
 ```
