@@ -47,6 +47,8 @@ It must match `^[a-z0-9-]{2,30}$` (lowercase letters, numbers, dashes). If it do
 
 Ask: "Want me to create your own private GitHub repo for this game? It saves your work as you go." Do nothing until they answer.
 
+Either way, first: if they cloned the kit, `origin` points at the kit repo, and their work must never push there. If `git remote get-url origin` succeeds and contains `anthropic-game-jam`, run `git remote remove origin`.
+
 On yes:
 1. `git init -b main` if this folder is not already a git repo.
 2. `git add -A && git commit -m "start: <handle>"`
