@@ -8,7 +8,7 @@ dump() { "$chrome" --headless=new --disable-gpu --use-angle=swiftshader --virtua
 fail=0
 
 port=$((18760 + RANDOM % 100))
-python3 -m http.server "$port" >/dev/null 2>&1 &
+python3 -m http.server "$port" --bind 127.0.0.1 >/dev/null 2>&1 &
 srv=$!
 trap 'kill $srv 2>/dev/null' EXIT
 sleep 1

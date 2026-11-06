@@ -37,7 +37,7 @@ Everyone follows the same clock, even if they started late. `Start time` in `jam
 | 1:15 | M1 gray box | The one action works with plain shapes; restart works |
 | 1:45 | M2 loop | Fail, score, restart in under 2 seconds. **Playtest 1** |
 | 2:30 | M3 feel | Tuning numbers live in `tuning.js`; feedback on the action and on failure. **Playtest 2** |
-| 3:15 | M4 look | Models, textures, sound within the card's limits; gameplay frozen |
+| 3:15 | M4 look | Models, textures, sound around the card's safe budget; gameplay frozen |
 | 3:30 | M5 ship | `JUDGING.md` self-check, `/jam-ship` |
 
 `Phase` in `jam-state.md` is one of `onboarding`, `plan`, `m1`, `m2`, `m3`, `m4`, `ship`, `shipped`.

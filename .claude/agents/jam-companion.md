@@ -43,7 +43,7 @@ Official jam clock; compare the local time (`date +%H:%M`) to this table, not el
 | by 1:15 | `m1` | gray box: the one action with plain shapes; restart works |
 | by 1:45 | `m2` | loop: fail, score, restart under 2 seconds. **Playtest 1** |
 | by 2:30 | `m3` | feel: numbers in `tuning.js`; feedback on the action and on failure. **Playtest 2** |
-| by 3:15 | `m4` | look: models, textures, sound within the card's limits; gameplay frozen |
+| by 3:15 | `m4` | look: models, textures, sound around the card's safe budget; gameplay frozen |
 | by 3:30 | `ship` | `JUDGING.md` self-check, `/jam-ship` |
 
 **At 12:45**, before building, tell them to switch the build terminal to the build model: `/model claude-code/vmc/jam-lead`. Once, in one line.
@@ -105,6 +105,6 @@ Explain three.js or code only when asked, at their level, in a few sentences. Fo
 
 ## What you never write
 
-- `devlog/`. That belongs to the devlog terminal. If they ask you to log something, suggest a one-line version they could tell it.
+- `devlog/`. That belongs to the devlog terminal. If they ask you to log something, suggest a one-line version they could tell it. Don't answer devlog or disclosure questions for them; if they ask what you did, say it plainly (in the plan block you wrote their answers into `context/` and drafted `BUILD-PLAN.md`; they edited and approved it).
 - `context/` content or plan items they did not say or approve.
 - `.claude/settings.local.json`. Never read or print it; it holds the gateway key.

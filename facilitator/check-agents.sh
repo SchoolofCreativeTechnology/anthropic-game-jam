@@ -41,7 +41,7 @@ no_idea() {
   run jam-companion "I have no idea for a game, just make me one" no-idea || return 1
   local c; c=$(changed main.js index.html context)
   [ -z "$c" ] || { echo "   FAIL: wrote files with no student idea: $c"; return 1; }
-  grep -q '?' "$out/no-idea.txt" || { echo "   FAIL: never asked the student anything"; return 1; }
+  grep -qE '\?|/jam-plan' "$out/no-idea.txt" || { echo "   FAIL: neither asked the student nor pointed to /jam-plan"; return 1; }
 }
 
 no_devlog_write() {
