@@ -20,7 +20,7 @@ flowchart LR
     Companion -- writes --> Game["Game code<br/>index.html · main.js · assets<br/>meta.json · context/"]
     Devlog -- writes --> Log["devlog/<br/>DEVLOG.md · AI-USE-LOG.md · RUNBOOK.md"]
     Game --> Three["three.js 0.186.1<br/>CDN import map, no build step"]
-    Game --> Serve["Local preview<br/>python3 / py -m http.server 8000<br/>or npx serve -l 8000"]
+    Game --> Serve["Local preview<br/>python3 / py -m http.server 8000 --bind 127.0.0.1<br/>or npx serve -l 8000"]
     Serve --> Browser["Browser<br/>localhost:8000"]
   end
 
@@ -49,7 +49,7 @@ flowchart LR
 | Schedule | 10:00 onboarding; 11:00 AM to 4:00 PM | Plan 11:00 to 12:30; build from 12:45; playtests after M2 and M3; ship by **3:30 PM**. See `AGENTS.md`. |
 | Game | three.js 0.186.1 | Loaded from a CDN in `index.html`. Plain HTML and JavaScript modules; nothing to install. |
 | AI | Claude Code on jam models (Vercel AI Gateway, capped key) | Build terminal (`jam-companion`) plans with you and sends tasks to builder subagents. Devlog terminal (`devlog`) records your decisions in your words. |
-| Preview | Python or Node | `python3 -m http.server 8000` (Windows: `py -m http.server 8000`) then http://localhost:8000. |
+| Preview | Python or Node | `python3 -m http.server 8000 --bind 127.0.0.1` (Windows: `py -m http.server 8000 --bind 127.0.0.1`) then http://localhost:8000. |
 | Saving work | git + GitHub CLI (`gh`) | Your own private repo, created by `/jam-start` if you want one. |
 | Publishing | GitHub + Vercel | `/jam-ship` opens a pull request to the public gallery; once merged, the game goes live at https://stec-jam-gallery.vercel.app. |
 

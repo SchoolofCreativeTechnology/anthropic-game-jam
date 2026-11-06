@@ -21,16 +21,16 @@ Your game is built around **one action the player repeats**, from one starter ca
 
 ## Before you come
 
-- A laptop (macOS, or Windows with **Git Bash**; run every command in Git Bash)
+- A laptop (macOS, or Windows with **Git Bash**; after the installs below, run every jam command in Git Bash)
 - A GitHub account
 - These installed:
 
-| | macOS | Windows (Git Bash) |
+| | macOS (Terminal) | Windows (PowerShell) |
 |---|---|---|
-| git | `xcode-select --install` | Git for Windows: https://git-scm.com |
+| git | `xcode-select --install` | Git for Windows (includes Git Bash): https://git-scm.com |
 | GitHub CLI | `brew install gh` | `winget install GitHub.cli` |
 | Python 3 | comes with `xcode-select --install` | `winget install Python.Python.3.12` |
-| Claude Code | `curl -fsSL https://claude.ai/install.sh \| bash` | PowerShell: `irm https://claude.ai/install.ps1 \| iex` |
+| Claude Code | `curl -fsSL https://claude.ai/install.sh \| bash` | `irm https://claude.ai/install.ps1 \| iex` |
 | Node (optional) | `brew install node` | `winget install OpenJS.NodeJS.LTS` |
 | Blender (optional) | https://www.blender.org/download | same |
 
@@ -45,7 +45,7 @@ cd ~
 curl -fsSL https://raw.githubusercontent.com/SchoolofCreativeTechnology/anthropic-game-jam/main/install.sh | bash
 ```
 
-It checks your tools, downloads the kit into `anthropic-game-jam/`, and asks for the key (typing stays hidden). The key is saved in `.claude/settings.local.json`, which is never committed or shipped. Don't paste it anywhere else.
+It checks your tools, downloads the kit into `anthropic-game-jam/`, and asks for the key (typing stays hidden). Paste with Cmd+V on a Mac; in Git Bash, right-click and choose Paste, or press Shift+Insert (Ctrl+V doesn't paste there). The key is saved in `.claude/settings.local.json`, which is never committed or shipped. Don't paste it anywhere else.
 
 ## Start
 
@@ -58,9 +58,10 @@ Then type `/jam-start`. At 11:00, `/jam-plan`. At 12:45, run `/model claude-code
 
 ## Your devlog
 
-Open a **second terminal** in the same folder:
+Open a **second terminal** (it starts in your home folder, so move into the kit first):
 
 ```bash
+cd ~/anthropic-game-jam
 claude --agent devlog --model claude-code/vmc/jam-cheap
 ```
 
@@ -68,13 +69,13 @@ Tell it what you tried, what broke, and what you decided (on a team, who decided
 
 ## See your game
 
-Open a **third terminal** in the same folder and leave the server running there:
+Open a **third terminal**, run `cd ~/anthropic-game-jam`, then start the server and leave it running there:
 
 | macOS | Windows (Git Bash) |
 |---|---|
-| `python3 -m http.server 8000` | `py -m http.server 8000` |
+| `python3 -m http.server 8000 --bind 127.0.0.1` | `py -m http.server 8000 --bind 127.0.0.1` (if `py` isn't found: `python -m http.server 8000 --bind 127.0.0.1`) |
 
-Open http://localhost:8000. Don't double-click `index.html`; it won't load.
+The window may stay blank; that's fine, leave it open. Open http://localhost:8000. Don't double-click `index.html`; it won't load.
 
 ## Playtests
 

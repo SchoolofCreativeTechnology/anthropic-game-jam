@@ -20,7 +20,7 @@ Collect every problem before reporting:
 | GitHub CLI | `gh --version` | `brew install gh` | `winget install GitHub.cli`, reopen Git Bash |
 | GitHub login (warn only) | `gh auth status` | `gh auth login` | `gh auth login` |
 | Local server | first that works of `python3 --version`, `py --version`, `python --version` | `xcode-select --install` | `winget install Python.Python.3.12` |
-| Blender (optional) | `command -v blender` or `/Applications/Blender.app` | warn only | warn only |
+| Blender (optional) | `command -v blender`, or `/Applications/Blender.app`, or `ls "/c/Program Files/Blender Foundation"/Blender*/blender.exe` | warn only | warn only |
 
 The gateway key was tested by the installer; you're already running on it, so it works.
 
@@ -30,13 +30,15 @@ If everything passed, say so in one line and name the preview command they'll us
 
 ## 2. Git
 
-If `git rev-parse --show-toplevel` fails or doesn't print this folder (`pwd`), run `git init -b main` (a parent folder's repo doesn't count). If they cloned the kit instead of installing it, `origin` points at the kit repo and their work must never push there: if `git remote get-url origin` succeeds and contains `anthropic-game-jam`, run `git remote remove origin`.
+If `git rev-parse --show-prefix` fails or prints anything (a parent folder's repo doesn't count), run `git init -b main`. It prints an empty line only when this folder is already its own repo. If they cloned the kit instead of installing it, `origin` points at the kit repo and their work must never push there: if `git remote get-url origin` succeeds and contains `anthropic-game-jam`, run `git remote remove origin`.
 
 **Git identity.** If `git config user.email` or `git config user.name` prints nothing, set them for this folder only (if GitHub login failed, wait until step 4 and use `<handle>` and `<handle>@users.noreply.github.com`):
 
+Run `gh api user --jq '"\(.id)+\(.login)@users.noreply.github.com"'` and `gh api user --jq '.login'` first, then pass the printed values literally (no `$(...)`, so no permission prompt):
+
 ```bash
-git config user.email "$(gh api user --jq '"\(.id)+\(.login)@users.noreply.github.com"')"
-git config user.name "$(gh api user --jq '.login')"
+git config user.email "<id>+<login>@users.noreply.github.com"
+git config user.name "<login>"
 ```
 
 ## 3. Solo or team
@@ -66,6 +68,6 @@ On no: `git add -A && git commit -m "start: <handle>"`, and set `Repo URL: local
 ## 6. Hand off
 
 Commit `jam-state.md` and `meta.json` (`git add -A -- . ':!devlog' && git commit -m "docs: start state"`; "nothing to commit" is fine). Then tell them, briefly:
-1. Open a second terminal in this folder and run `claude --agent devlog`. Tell it what you decide and why as you go.
-2. Open a **third** terminal in this folder for the preview server (their command), leave it running, and open http://localhost:8000. They should see a cube.
+1. Open a second terminal. New terminals start in the home folder, so first run `cd <this folder>` (print the real path from `pwd`), then `claude --agent devlog`. Tell it what you decide and why as you go.
+2. Open a **third** terminal, `cd` the same way, start the preview server (their command from `AGENTS.md`), and leave it running; the window may stay blank. Open http://localhost:8000. They should see a cube.
 3. At **11:00**, type `/jam-plan` here to research, pick a card, and plan the game.

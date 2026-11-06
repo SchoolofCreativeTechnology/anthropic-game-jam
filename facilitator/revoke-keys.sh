@@ -4,7 +4,7 @@
 set -euo pipefail
 cfg=${VERCEL_CFG:-$HOME/.vercel-scad}; scope=${VERCEL_SCOPE:-nmadrid-6296s-projects}
 v() { vercel --global-config "$cfg" --scope "$scope" "$@" </dev/null; }
-raw=$(v ai-gateway api-keys list 2>&1) || { echo "FAIL: could not list keys:" >&2; echo "$raw" | tail -5 >&2; exit 1; }
+raw=$(v ai-gateway api-keys list --limit 100 --query jam-entry 2>&1) || { echo "FAIL: could not list keys:" >&2; echo "$raw" | tail -5 >&2; exit 1; }
 ids=$(python3 -c '
 import sys,json
 t=sys.stdin.read()
