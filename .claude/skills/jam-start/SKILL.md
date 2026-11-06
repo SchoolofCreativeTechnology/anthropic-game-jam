@@ -17,7 +17,7 @@ Collect every problem before reporting:
 |---|---|---|---|
 | Kit installed | `.claude/settings.local.json` exists (`test -f`; never read or print it) | rerun the install command from the README | same |
 | git | `git --version` | `xcode-select --install` | install Git for Windows, reopen Git Bash |
-| GitHub CLI | `gh --version` | `brew install gh` | `winget install GitHub.cli`, reopen Git Bash |
+| GitHub CLI (warn only) | `gh --version` | `brew install gh` | `winget install GitHub.cli`, reopen Git Bash |
 | GitHub login (warn only) | `gh auth status` | `gh auth login` | `gh auth login` |
 | Local server | first that works of `python3 --version`, `py --version`, `python --version` | `xcode-select --install` | `winget install Python.Python.3.12` |
 | Blender (optional) | `command -v blender`, or `/Applications/Blender.app`, or `ls "/c/Program Files/Blender Foundation"/Blender*/blender.exe` | warn only | warn only |
@@ -68,6 +68,6 @@ On no: `git add -A && git commit -m "start: <handle>"`, and set `Repo URL: local
 ## 6. Hand off
 
 Commit `jam-state.md` and `meta.json` (`git add -A -- . ':!devlog' && git commit -m "docs: start state"`; "nothing to commit" is fine). Then tell them, briefly:
-1. Open a second terminal. New terminals start in the home folder, so first run `cd <this folder>` (print the real path from `pwd`), then `claude --agent devlog`. Tell it what you decide and why as you go.
+1. Open a second terminal. New terminals start in the home folder, so first run `cd <this folder>` (print the real path from `pwd`), then `claude --agent devlog --model claude-code/vmc/jam-cheap`. Tell it what you decide and why as you go.
 2. Open a **third** terminal, `cd` the same way, start the preview server (their command from `AGENTS.md`), and leave it running; the window may stay blank. Open http://localhost:8000. They should see a cube.
 3. At **11:00**, type `/jam-plan` here to research, pick a card, and plan the game.

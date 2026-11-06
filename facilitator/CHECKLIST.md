@@ -20,7 +20,8 @@ Excluded from the student package. Gateway commands: [GATEWAY.md](GATEWAY.md).
 
 - Hand out key slips (one per entry). Teams: one machine, one slip.
 - Students run the install command from the README, then `claude --agent jam-companion` and `/jam-start`.
-- Common fixes: `gh auth login`; reopen Git Bash after `winget` installs; `rm .claude/settings.local.json` and rerun the installer for a mistyped key (the installer refuses an existing folder: move it first).
+- Tell everyone: answer **Yes** when Claude Code asks to trust the folder; "No" drops every jam permission.
+- Common fixes: `gh auth login`; reopen Git Bash after `winget` installs; `rm .claude/settings.local.json` and rerun the installer for a mistyped key (a rerun keeps the kit and only asks for the key).
 
 ## During
 

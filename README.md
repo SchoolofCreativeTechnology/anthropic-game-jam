@@ -28,7 +28,7 @@ Your game is built around **one action the player repeats**, from one starter ca
 | | macOS (Terminal) | Windows (PowerShell) |
 |---|---|---|
 | git | `xcode-select --install` | Git for Windows (includes Git Bash): https://git-scm.com |
-| GitHub CLI | `brew install gh` | `winget install GitHub.cli` |
+| GitHub CLI (to ship) | `brew install gh`, or the .pkg from https://github.com/cli/cli/releases/latest | `winget install GitHub.cli` |
 | Python 3 | comes with `xcode-select --install` | `winget install Python.Python.3.12` |
 | Claude Code | `curl -fsSL https://claude.ai/install.sh \| bash` | `irm https://claude.ai/install.ps1 \| iex` |
 | Node (optional) | `brew install node` | `winget install OpenJS.NodeJS.LTS` |
@@ -54,7 +54,7 @@ cd anthropic-game-jam
 claude --agent jam-companion
 ```
 
-Then type `/jam-start`. At 11:00, `/jam-plan`. At 12:45, run `/model claude-code/vmc/jam-lead` and start building.
+When Claude asks whether to trust this folder, choose **Yes** (otherwise the jam settings don't load). Then type `/jam-start`. At 11:00, `/jam-plan`. At 12:45, run `/model claude-code/vmc/jam-lead` and start building.
 
 ## Your devlog
 

@@ -44,7 +44,6 @@ need() { # name, check command, mac fix, windows fix
 }
 say "Checking your tools..."
 need git "git --version" "xcode-select --install" "install Git for Windows from https://git-scm.com, then reopen Git Bash"
-need "GitHub CLI (gh)" "gh --version" "brew install gh" "winget install GitHub.cli, then reopen Git Bash"
 need "Python 3" "python3 --version || py --version || python --version" "xcode-select --install" "winget install Python.Python.3.12, then reopen Git Bash"
 need "Claude Code" "claude --version" "curl -fsSL https://claude.ai/install.sh | bash" "in PowerShell: irm https://claude.ai/install.ps1 | iex, then reopen Git Bash"
 need curl "curl --version" "comes with macOS" "comes with Git Bash"
@@ -53,6 +52,10 @@ if [ "$missing" -ne 0 ]; then
   say ""
   say "Install what's missing, then run this command again. Nothing was written."
   exit 1
+fi
+if command -v gh >/dev/null 2>&1 </dev/null; then say "  GitHub CLI: found"; else
+  say "  GitHub CLI (gh): not found (you can build without it; needed to ship to the gallery)"
+  fix "download the macOS .pkg from https://github.com/cli/cli/releases/latest" "winget install GitHub.cli, then reopen Git Bash"
 fi
 command -v node >/dev/null 2>&1 </dev/null && say "  Node: found" || say "  Node: not found (optional; Claude checks code with it when it's there)"
 blender=no
@@ -75,6 +78,8 @@ if [ "$newterm" = yes ]; then
 fi
 
 # 2. The kit. A rerun with the kit already here skips the download.
+# Rerun from inside the kit folder: use it, don't nest a second kit inside.
+if [ -z "${JAM_DIR:-}" ] && [ -f AGENTS.md ] && [ -f .claude/agents/jam-companion.md ]; then DIR=.; fi
 if [ -f "$DIR/AGENTS.md" ] && [ -f "$DIR/.claude/agents/jam-companion.md" ]; then
   say "  Kit already in $DIR/; keeping it."
 elif [ -e "$DIR" ]; then
@@ -156,8 +161,9 @@ key=""
 say ""
 say "Done. Next:"
 [ "$newterm" = yes ] && say "  Open a new terminal window first (Claude Code was added to your PATH)."
-say "  cd $DIR"
+[ "$DIR" = . ] || say "  cd $DIR"
 say "  claude --agent jam-companion"
+say "  When Claude asks whether to trust this folder, choose Yes."
 say "Then type /jam-start"
 }
 
