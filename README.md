@@ -42,19 +42,21 @@ You'll get a slip with a gateway key. Run this from your home folder (not Deskto
 
 ```bash
 cd ~
-curl -fsSL https://raw.githubusercontent.com/SchoolofCreativeTechnology/anthropic-game-jam/main/install.sh | bash
+bash <(curl -fsSL https://raw.githubusercontent.com/SchoolofCreativeTechnology/anthropic-game-jam/main/install.sh)
 ```
 
 It checks your tools, downloads the kit into `anthropic-game-jam/`, and asks for the key (typing stays hidden). Paste with Cmd+V on a Mac; in Git Bash, right-click and choose Paste, or press Shift+Insert (Ctrl+V doesn't paste there). The key is saved in `.claude/settings.local.json`, which is never committed or shipped. Don't paste it anywhere else.
 
 ## Start
 
+The installer opens Claude for you and starts `/jam-start`. To come back later (or if it didn't open):
+
 ```bash
-cd anthropic-game-jam
+cd ~/anthropic-game-jam
 claude --agent jam-companion
 ```
 
-When Claude asks whether to trust this folder, choose **Yes** (otherwise the jam settings don't load). Then type `/jam-start`. At 11:00, `/jam-plan`. At 12:45, run `/model claude-code/vmc/jam-lead` and start building.
+When Claude asks whether you trust this folder, press **↓** to **Yes, I trust this folder**, then Enter (the default is No, which closes Claude). If you opened Claude yourself, type `/jam-start`. At 11:00, `/jam-plan`. At 12:45, run `/model claude-code/vmc/jam-lead` and start building.
 
 ## Your devlog
 

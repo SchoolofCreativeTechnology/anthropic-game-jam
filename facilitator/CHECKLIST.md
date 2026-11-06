@@ -19,8 +19,8 @@ Excluded from the student package. Gateway commands: [GATEWAY.md](GATEWAY.md).
 ## 10:00 onboarding
 
 - Hand out key slips (one per entry). Teams: one machine, one slip.
-- Students run the install command from the README, then `claude --agent jam-companion` and `/jam-start`.
-- Tell everyone: answer **Yes** when Claude Code asks to trust the folder; "No" drops every jam permission.
+- Students run the install command from the README; it opens Claude in the kit and starts `/jam-start` (they answer the theme and trust-folder prompts). Reopen later with `cd ~/anthropic-game-jam && claude --agent jam-companion`.
+- Tell everyone: at "Do you trust this folder?", press **↓** to **Yes, I trust this folder**, then Enter. The default is No, which closes Claude; rerun the install command (it keeps the kit) or `cd ~/anthropic-game-jam && claude --agent jam-companion`.
 - Common fixes: `gh auth login`; reopen Git Bash after `winget` installs; `rm .claude/settings.local.json` and rerun the installer for a mistyped key (a rerun keeps the kit and only asks for the key).
 
 ## During

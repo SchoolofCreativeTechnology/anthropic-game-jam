@@ -3,7 +3,7 @@
 #
 # Usage, from your home folder (not a OneDrive or iCloud synced folder):
 #   cd ~
-#   curl -fsSL https://raw.githubusercontent.com/SchoolofCreativeTechnology/anthropic-game-jam/main/install.sh | bash
+#   bash <(curl -fsSL https://raw.githubusercontent.com/SchoolofCreativeTechnology/anthropic-game-jam/main/install.sh)
 #
 # It checks your tools, downloads the kit into ./anthropic-game-jam, asks for the
 # gateway key on your slip (typing is hidden), and tests the key. Run it again
@@ -158,12 +158,56 @@ EOF
 umask 022
 key=""
 
+# Fresh Claude Code installs show a login screen before the folder's settings
+# (with the gateway key) load. Mark first-run onboarding done so Claude goes
+# straight to the trust prompt. Only adds missing fields; skips an unreadable file.
+cfg="${CLAUDE_CONFIG_DIR:-$HOME}/.claude.json"
+for py in python3 py python; do
+  if "$py" --version >/dev/null 2>&1 </dev/null; then
+    "$py" - "$cfg" <<'PY' || true
+import json, os, sys
+p = sys.argv[1]
+try:
+    d = json.load(open(p)) if os.path.exists(p) else {}
+except Exception:
+    sys.exit(0)
+if d.get("hasCompletedOnboarding") and d.get("theme"):
+    sys.exit(0)
+d.setdefault("hasCompletedOnboarding", True)
+d.setdefault("theme", "dark")
+tmp = p + ".jam-tmp"
+with open(tmp, "w") as f:
+    json.dump(d, f, indent=2)
+os.replace(tmp, p)
+PY
+    break
+  fi
+done
+
+# 4. Open Claude in the kit and start /jam-start, so there's nothing to type.
+#    Only when this script's input is the terminal (bash <(curl ...)); under
+#    curl | bash it isn't, and Claude can't take over the terminal, so print the steps.
+#    JAM_NO_LAUNCH=1 (facilitator dry runs) also prints the steps.
 say ""
-say "Done. Next:"
+if [ -z "${JAM_NO_LAUNCH:-}" ] && [ -t 0 ]; then
+  say "Done. Opening Claude now."
+  say "When it asks whether you trust this folder, press the down arrow to \"Yes, I trust this folder\", then Enter."
+  say "(The default is No, which closes Claude.) Then it starts /jam-start for you."
+  say ""
+  if claude --agent jam-companion "/jam-start"; then
+    say ""
+    say "To come back to Claude later: cd ~/$(basename "$PWD") && claude --agent jam-companion"
+    exit 0
+  fi
+  say ""
+  say "Claude didn't open. Start it yourself:"
+else
+  say "Done. Next:"
+fi
 [ "$newterm" = yes ] && say "  Open a new terminal window first (Claude Code was added to your PATH)."
 [ "$DIR" = . ] || say "  cd $DIR"
 say "  claude --agent jam-companion"
-say "  When Claude asks whether to trust this folder, choose Yes."
+say "  When Claude asks whether you trust this folder, press the down arrow to Yes, then Enter."
 say "Then type /jam-start"
 }
 

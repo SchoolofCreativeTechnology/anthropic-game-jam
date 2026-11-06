@@ -53,7 +53,7 @@ The team model allowlist (only the four targets and fallbacks) is set in the das
 Students run, from the folder where they want the kit:
 
 ```bash
-curl -fsSL https://raw.githubusercontent.com/SchoolofCreativeTechnology/anthropic-game-jam/main/install.sh | bash
+bash <(curl -fsSL https://raw.githubusercontent.com/SchoolofCreativeTechnology/anthropic-game-jam/main/install.sh)
 ```
 
 Dry run against a local checkout (no download, key from env):
