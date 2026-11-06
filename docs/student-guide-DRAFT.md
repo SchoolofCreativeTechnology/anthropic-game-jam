@@ -56,7 +56,7 @@ Official clock **11:00 AM to 4:00 PM**. If you start late, playtests and ship st
 | 3:30 to 4:00 PM | Gallery time: play each other's games. |
 
 ## Things that go wrong
-- **Don't double-click `index.html`.** Serve the folder with `python3 -m http.server 8000` and open localhost:8000.
+- **Don't double-click `index.html`.** Serve the folder with `python3 -m http.server 8000 --bind 127.0.0.1` and open localhost:8000.
 - **File names are case-sensitive on the gallery host.** `Zombie.glb` and `zombie.glb` are different files there.
 - **Sound starts only after the first click or key press.**
 - **Glow and shadow effects can make a game choppy.** Add a way to turn them off.

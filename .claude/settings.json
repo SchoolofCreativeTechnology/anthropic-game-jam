@@ -32,7 +32,9 @@
       "Bash(py --version)",
       "Bash(python --version)",
       "Bash(uname *)",
-      "Bash(date *)",
+      "Bash(date)",
+      "Bash(date +%H:%M)",
+      "Bash(date +%Y-%m-%dT%H:%M)",
       "Bash(command -v *)",
       "Bash(which *)",
       "Bash(ls *)",
@@ -55,7 +57,6 @@
       "Bash(git -C dist/ship/jam-gallery switch *)",
       "Bash(git -C dist/ship/jam-gallery add games/*)",
       "Bash(git -C dist/ship/jam-gallery commit *)",
-      "Bash(git -C dist/ship/jam-gallery push *)",
       "Bash(git -C dist/ship/jam-gallery config user.name *)",
       "Bash(git -C dist/ship/jam-gallery config user.email *)",
       "Bash(rm -rf dist/ship)",
@@ -64,14 +65,15 @@
       "Bash(cp * dist/zip/games/*)",
       "Bash(grep -rlE * dist/ship/jam-gallery/games/*)",
       "Bash(grep -rlE * dist/zip/games/*)",
-      "Bash(python3 -m zipfile -c dist/*)",
-      "Bash(py -m zipfile -c dist/*)",
-      "Bash(python -m zipfile -c dist/*)",
+      "Bash(python3 -m zipfile -c dist/* dist/zip/games)",
+      "Bash(py -m zipfile -c dist/* dist/zip/games)",
+      "Bash(python -m zipfile -c dist/* dist/zip/games)",
       "Bash(open dist)",
       "Bash(explorer.exe dist)"
     ],
     "ask": [
-      "Bash(git push *)"
+      "Bash(git push *)",
+      "Bash(git -C dist/ship/jam-gallery push *)"
     ],
     "deny": [
       "Read(./.claude/settings.local.json)",
@@ -113,7 +115,27 @@
       "Bash(. *settings.local.json*)",
       "Bash(cp *.claude*)",
       "Bash(git -C * add -f*)",
-      "Bash(git -C * add --force*)"
+      "Bash(git -C * add --force*)",
+      "Bash(git add * -f*)",
+      "Bash(git add * --force*)",
+      "Bash(git add -Af*)",
+      "Bash(git add -fA*)",
+      "Bash(git -C * add * -f*)",
+      "Bash(git -C * add * --force*)",
+      "Bash(git commit -F*)",
+      "Bash(git commit * -F*)",
+      "Bash(git commit *--file*)",
+      "Bash(gh *--body-file*)",
+      "Bash(gh * -F *)",
+      "Bash(cp -r . *)",
+      "Bash(cp -R . *)",
+      "Bash(cp -a . *)",
+      "Bash(cp -r ./ *)",
+      "Bash(cp -R ./ *)",
+      "Bash(cp -a ./ *)",
+      "Bash(python3 -m zipfile -c * .)",
+      "Bash(py -m zipfile -c * .)",
+      "Bash(python -m zipfile -c * .)"
     ]
   }
 }

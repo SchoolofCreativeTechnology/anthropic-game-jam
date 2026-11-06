@@ -50,8 +50,8 @@ python3 -m json.tool "$root/.claude/settings.json" >/dev/null || err ".claude/se
 if grep -rnE 'npx serve' "$root" >/dev/null; then
   err "npx serve in docs (use the bound http.server form): $(grep -rnE 'npx serve' "$root" | sed "s#$root/##" | cut -d: -f1,2 | tr '\n' ' ')"
 fi
-if grep -rn 'http.server 8000' "$root" | grep -v -- '--bind 127.0.0.1' >/dev/null; then
-  err "http.server 8000 without --bind 127.0.0.1: $(grep -rn 'http.server 8000' "$root" | grep -v -- '--bind 127.0.0.1' | sed "s#$root/##" | cut -d: -f1,2 | tr '\n' ' ')"
+if grep -rnE 'http\.server' "$root" | grep -v -- '--bind 127.0.0.1' >/dev/null; then
+  err "http.server without --bind 127.0.0.1: $(grep -rnE 'http\.server' "$root" | grep -v -- '--bind 127.0.0.1' | sed "s#$root/##" | cut -d: -f1,2 | tr '\n' ' ')"
 fi
 
 # Interfaces other files depend on: DEVLOG headings and jam-state fields.
