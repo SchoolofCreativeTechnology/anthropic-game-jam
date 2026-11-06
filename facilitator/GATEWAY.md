@@ -16,7 +16,7 @@ The kit only names these four. Point them anywhere, any time, without touching t
 | `vmc/jam-guide` | companion, onboarding and plan | `deepseek/deepseek-v4.1-flash` | `anthropic/claude-haiku-5.5` |
 | `vmc/jam-lead` | companion, build block | `moonshotai/kimi-k2.7-code` | `deepseek/deepseek-v4.1-flash` |
 | `vmc/jam-build` | `jam-builder` subagent | `deepseek/deepseek-v4.1-flash` | `anthropic/claude-haiku-5.5` |
-| `vmc/jam-cheap` | `jam-helper`, devlog terminal | `zai/glm-4.7-flash` | `anthropic/claude-haiku-5.5` |
+| `vmc/jam-cheap` | `jam-helper`, devlog terminal | `anthropic/claude-haiku-5.5` (was `zai/glm-4.7-flash`) | |
 
 ```bash
 vs ai-gateway virtual-models list
