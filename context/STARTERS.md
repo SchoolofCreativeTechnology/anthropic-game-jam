@@ -1,17 +1,16 @@
 # Starter Cards
 
-Pick **one** card. The card sets the one action and a closed **Allowed** list: anything not listed is out. **Stretch** items wait until M4 (look) is done. You bring the world, the character, and the twist.
+Pick **one** card. The card sets the one action you'll build around. Its **Allowed** list is the safe path: what the jam models can build well in a day. **Stretch** items wait until the core loop is fun (after M4). You bring the world, the character, and the twist.
 
-These limits are Nathan's, sized for what the jam models can build in a day.
+This is Nathan's guidance, not a fence. Richer art, more juice, and a bigger world are fine as long as the game stays one repeated action. Claude will point out when an idea gets big and remind you of the clock; then it's your call.
 
 ## Every card
 
-- Up to **3 models** (from `assets-packs/`, CC0 downloads, or headless Blender scripts)
-- Up to **3 sound effects**
+- About **3 models** (from `assets-packs/`, CC0 downloads, or headless Blender scripts) and **3 sound effects** is a safe budget; more costs build time
 - Textures: canvas-drawn or small image files
 - Input: keyboard, plus tap or click
 - Title screen, score, game over, restart
-- **Never:** multiplayer, saves or accounts, levels built by hand, story or dialogue, inventory or shop, physics engines, complex enemy AI, cutscenes
+- **Off the jam path** (these break the one-action loop or the clock): multiplayer, saves or accounts, menus beyond title and game over, long story or dialogue trees, inventory or shop, levels built by hand, physics engines, complex enemy AI, cutscenes
 
 ## 1. Lane runner
 

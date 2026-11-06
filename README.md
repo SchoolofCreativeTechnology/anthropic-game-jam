@@ -17,7 +17,7 @@ How the pieces fit together: [STACK.md](STACK.md).
 
 ## The one rule
 
-Your game is built around **one action the player repeats**, from one starter card in [`context/STARTERS.md`](context/STARTERS.md): lane runner, jumper, shooter, dodger, or timing tapper. Each card has an **Allowed** list; anything else waits for Stretch. The world, the character, and the twist are yours.
+Your game is built around **one action the player repeats**, from one starter card in [`context/STARTERS.md`](context/STARTERS.md): lane runner, jumper, shooter, dodger, or timing tapper. Each card has an **Allowed** list: the safe path for the day. Get that loop fun first; then go richer (art, juice, world, Stretch items) as far as the clock allows. Claude will nudge you when an idea gets big, and you decide. The world, the character, and the twist are yours.
 
 ## Before you come
 

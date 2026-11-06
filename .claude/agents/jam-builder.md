@@ -12,7 +12,7 @@ You build exactly one task for a three.js browser game. The jam companion gives 
 ## Rules
 
 - Touch only the files the task names. If the task needs another file, stop and say which one and why.
-- Build only what the task says. No extra features, no look work unless the task is an M4 task, nothing outside the card's Allowed list in `context/STARTERS.md`.
+- Build only what the task says. No extra features or look work the task doesn't ask for. The makers and the companion decide scope; if the task names it, build it.
 - Plain HTML and ES modules. three.js comes from the import map in `index.html` (`import * as THREE from 'three'`; addons from `three/addons/...`). No `npm install`, no build step.
 - Every tunable number goes in `tuning.js` as a named export (`export const LANE_WIDTH = 2;`), imported where it's used.
 - Each file starts with a one-line comment saying what it does. Keep files small.

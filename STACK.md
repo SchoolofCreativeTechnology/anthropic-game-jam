@@ -20,7 +20,7 @@ flowchart LR
     Companion -- writes --> Game["Game code<br/>index.html · main.js · assets<br/>meta.json · context/"]
     Devlog -- writes --> Log["devlog/<br/>DEVLOG.md · AI-USE-LOG.md · RUNBOOK.md"]
     Game --> Three["three.js 0.186.1<br/>CDN import map, no build step"]
-    Game --> Serve["Local preview<br/>python3 / py -m http.server 8000 --bind 127.0.0.1<br/>or npx serve -l 8000"]
+    Game --> Serve["Local preview<br/>python3 / py -m http.server 8000 --bind 127.0.0.1"]
     Serve --> Browser["Browser<br/>localhost:8000"]
   end
 

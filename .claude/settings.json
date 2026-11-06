@@ -42,7 +42,33 @@
       "Bash(test -f *)",
       "Bash(python3 -m json.tool meta.json)",
       "Bash(py -m json.tool meta.json)",
-      "Bash(python -m json.tool meta.json)"
+      "Bash(python -m json.tool meta.json)",
+      "Bash(python3 -m http.server 8000 --bind 127.0.0.1)",
+      "Bash(py -m http.server 8000 --bind 127.0.0.1)",
+      "Bash(python -m http.server 8000 --bind 127.0.0.1)",
+      "Bash(gh api repos/SchoolofCreativeTechnology/jam-gallery/contents/*)",
+      "Bash(gh repo fork SchoolofCreativeTechnology/jam-gallery --clone=false)",
+      "Bash(gh repo clone * dist/ship/jam-gallery)",
+      "Bash(gh pr create -R SchoolofCreativeTechnology/jam-gallery *)",
+      "Bash(gh pr checks *)",
+      "Bash(git -C dist/ship/jam-gallery fetch *)",
+      "Bash(git -C dist/ship/jam-gallery switch *)",
+      "Bash(git -C dist/ship/jam-gallery add games/*)",
+      "Bash(git -C dist/ship/jam-gallery commit *)",
+      "Bash(git -C dist/ship/jam-gallery push *)",
+      "Bash(git -C dist/ship/jam-gallery config user.name *)",
+      "Bash(git -C dist/ship/jam-gallery config user.email *)",
+      "Bash(rm -rf dist/ship)",
+      "Bash(rm -rf dist/zip)",
+      "Bash(cp * dist/ship/jam-gallery/games/*)",
+      "Bash(cp * dist/zip/games/*)",
+      "Bash(grep -rlE * dist/ship/jam-gallery/games/*)",
+      "Bash(grep -rlE * dist/zip/games/*)",
+      "Bash(python3 -m zipfile -c dist/*)",
+      "Bash(py -m zipfile -c dist/*)",
+      "Bash(python -m zipfile -c dist/*)",
+      "Bash(open dist)",
+      "Bash(explorer.exe dist)"
     ],
     "ask": [
       "Bash(git push *)"
@@ -84,7 +110,10 @@
       "Bash(cp *settings.local.json*)",
       "Bash(mv *settings.local.json*)",
       "Bash(source *settings.local.json*)",
-      "Bash(. *settings.local.json*)"
+      "Bash(. *settings.local.json*)",
+      "Bash(cp *.claude*)",
+      "Bash(git -C * add -f*)",
+      "Bash(git -C * add --force*)"
     ]
   }
 }

@@ -2,7 +2,7 @@
 
 Onboarding **10:00**, jam **11:00 AM to 4:00 PM**. Each entry (solo, or a team of up to three on one machine) builds one small three.js browser game with Claude Code. The makers think and decide; Claude plans with them, then builds. The game idea, the decisions, and the record of those decisions belong to the makers.
 
-Claude Code runs on jam models through a capped gateway key (set up by `install.sh`, stored in `.claude/settings.local.json`). The models are small and cheap, so the game is small too: one action, the allowed list on your starter card, nothing else.
+Claude Code runs on jam models through a capped gateway key (set up by `install.sh`, stored in `.claude/settings.local.json`). The models are small and cheap, so keep the core small: one repeatable action from your starter card. Around that loop, the game can be as rich as the makers choose once it's fun.
 
 ## Sessions
 
@@ -52,7 +52,13 @@ Each loop is one change. Before building it, the makers say what they expect it 
 
 ## The jam constraint
 
-Every game is built around **one repeatable core action**, from one starter card in `context/STARTERS.md`. Each card has a closed **Allowed** list: anything not on it is out. **Stretch** items wait until M4 is done. These limits are Nathan's, not Claude's: state them, hold the game to them, and offer Stretch, but the makers still choose the card, the world, the character, and the twist.
+Every game is built around **one repeatable core action**, from one starter card in `context/STARTERS.md`. The card's **Allowed** list is the safe jam-day path; **Stretch** waits until the core loop is fun (after M4). This is Nathan's guidance, and agents coach it rather than enforce it:
+
+- **Nudge, don't block.** When an idea gets big, name the one simple dynamic, suggest deferring the extra to Stretch, and remind them of the clock. Then build what the makers choose once they've decided clearly.
+- **Richer is fine.** Better art, more juice, a richer world, and more enemies after M4 are all OK while the loop stays one action. Never refuse something only because it is "beyond the card."
+- **What actually breaks a jam game** is complexity that breaks the one-action loop: menus, saves, multiplayer, long narrative trees. Say so plainly when an idea heads there.
+
+The makers choose the card, the world, the character, the twist, and how far past the skeleton to go.
 
 ## Rules for every agent in this repo
 

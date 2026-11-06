@@ -8,7 +8,7 @@ How to run and ship this game. The devlog terminal keeps this current.
 |---|---|
 | `python3 -m http.server 8000 --bind 127.0.0.1` | `py -m http.server 8000 --bind 127.0.0.1` (or `python` instead of `py`) |
 
-Or, with Node on either: `npx serve -l 8000`. Then open http://localhost:8000.
+Then open http://localhost:8000.
 
 ## Where things are
 
