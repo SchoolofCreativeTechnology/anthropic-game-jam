@@ -64,7 +64,7 @@ Every game is built around **one repeatable core action**, from one starter card
    - macOS: `python3 -m http.server 8000 --bind 127.0.0.1`
    - Windows (Git Bash): `py -m http.server 8000 --bind 127.0.0.1` (or `python -m http.server 8000 --bind 127.0.0.1`)
    Then open http://localhost:8000.
-6. **Mac and Windows.** Makers use both. Give the Windows (Git Bash) variant whenever a command differs. Detect the OS with `uname -s` (`Darwin` or `MINGW*`/`MSYS*`); on Windows use GNU tools (`sed -i`, not `sed -i ''`) and `py` if `python3` is missing.
+6. **Mac and Windows.** Makers use both. Give the Windows (Git Bash) variant whenever a command differs. Detect the OS with `uname -s` (`Darwin` or `MINGW*`/`MSYS*`); on Windows use GNU tools (`sed -i`, not `sed -i ''`) and `py` (or `python`) if `python3` is missing. Git's "LF will be replaced by CRLF" warnings on Windows are harmless; ignore them.
 7. **No secrets.** Never read, print, or edit `.claude/settings.local.json` (it holds the gateway key). No keys in any file, commit, or message.
 
 ## Files

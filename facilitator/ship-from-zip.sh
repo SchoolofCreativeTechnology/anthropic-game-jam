@@ -9,14 +9,16 @@ handle=$(basename "$zip" .zip)
 tmp=$(mktemp -d); trap 'rm -rf "$tmp"' EXIT
 gh repo clone "$gallery" "$tmp/g" -- -q
 python3 -m zipfile -e "$zip" "$tmp/unz"
-[ -d "$tmp/unz/games/$handle" ] || { echo "zip must contain games/$handle/" >&2; exit 1; }
+[ -d "$tmp/unz/games/$handle" ] || { echo "zip must contain games/$handle/ (have the team rebuild it with /jam-ship; the zip name must be the handle)" >&2; exit 1; }
 cd "$tmp/g"
 [ -e "games/$handle" ] && { echo "games/$handle already exists in the gallery" >&2; exit 1; }
 git switch -q -c "game/$handle"
 cp -R "$tmp/unz/games/$handle" games/
+find "games/$handle" \( -name .DS_Store -o -name Thumbs.db -o -name '._*' \) -delete   # OS junk fails the credit check
 if grep -rlE 'vck_[A-Za-z0-9_-]{20,}|sk-ant-[A-Za-z0-9_-]{20,}' "games/$handle"; then echo "key-shaped string in the game; not shipping" >&2; exit 1; fi
 node scripts/build-index.mjs >/dev/null   # same validation the PR check runs
 git add "games/$handle" && git commit -qm "game: $handle"
 node scripts/build-index.mjs --pr-scope origin/main   # the fork-only PR check skips same-repo branches
-git push -q -u origin "game/$handle"
+git push -q -f -u origin "game/$handle"   # -f: a re-shipped zip replaces the earlier one
+gh pr view "game/$handle" -R "$gallery" >/dev/null 2>&1 && { echo "updated the existing PR for game/$handle"; exit 0; }
 gh pr create -R "$gallery" --head "game/$handle" --title "game: $handle" --body "Shipped from zip by the facilitator."

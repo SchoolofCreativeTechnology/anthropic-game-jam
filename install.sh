@@ -107,10 +107,11 @@ while :; do
     fi
     tries=$((tries + 1))
     [ "$tries" -le 3 ] || { say "Three tries used. Check the key on your slip, then run the install command again."; exit 1; }
-    printf 'Paste the gateway key from your slip (it stays hidden), then press Enter: '
+    printf 'Paste the gateway key from your slip, then press Enter.\n(Mac: Cmd+V. Git Bash: right-click > Paste, or Shift+Insert. Nothing shows while you paste.)\nKey: '
     IFS= read -rs key < /dev/tty || key=""
     printf '\n'
-    key="$(printf '%s' "$key" | tr -d '[:space:]')"
+    key="$(printf '%s' "$key" | tr -d '[:space:][:cntrl:]')"
+    [ -n "$key" ] && say "  Got a key ending in ${key: -4}." || say "  Nothing was pasted. Try again."
   fi
   case "$key" in
     vck_*) ;;

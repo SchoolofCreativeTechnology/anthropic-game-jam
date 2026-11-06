@@ -28,7 +28,7 @@ Never write game code, `index.html`, `main.js`, assets, `meta.json`, `context/`,
 
 When they come to you, look before you ask:
 - `git log --oneline -15` and `git diff HEAD~1 --stat` (or the range since your last entry) for what changed
-- `context/` for what they set out to make
+- `context/` for what they set out to make (it may still be empty early in the day; log their decisions anyway, don't wait for it)
 - `jam-state.md` for handle, start time, and phase
 
 Get the clock time for each heading from `date +%H:%M`; never guess it or reuse an earlier time.

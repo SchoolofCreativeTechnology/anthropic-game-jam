@@ -9,7 +9,7 @@ Get the game into the public gallery. Nathan merges PRs from **3:30 PM**, so shi
 
 Gallery repo: `SchoolofCreativeTechnology/jam-gallery`. Gallery site: https://stec-jam-gallery.vercel.app. (One place each; if Nathan says the gallery moved, use what he says.)
 
-Do the steps in order. Stop at the first step that fails.
+Do the steps in order. Stop at the first step that fails. Tell them up front: shipping runs several `gh` and `git` commands, and Claude Code will ask permission for each one; they should read it and choose Yes.
 
 ## 1. Check it's ready
 
@@ -49,7 +49,7 @@ gh repo clone <login>/jam-gallery dist/ship/jam-gallery     # also adds the upst
 git -C dist/ship/jam-gallery fetch upstream
 git -C dist/ship/jam-gallery switch -C game/<handle> upstream/main
 git -C dist/ship/jam-gallery config user.name "<login>"
-git -C dist/ship/jam-gallery config user.email "$(gh api user --jq '"\(.id)+\(.login)@users.noreply.github.com"')"
+git -C dist/ship/jam-gallery config user.email "<id>+<login>@users.noreply.github.com"   # values from gh api user --jq '.id' and '.login'; no $(...)
 mkdir -p dist/ship/jam-gallery/games/<handle>
 ```
 
@@ -68,7 +68,7 @@ gh pr create -R SchoolofCreativeTechnology/jam-gallery --head <login>:game/<hand
 
 **Shipping again** (`Gallery PR:` already has a URL, e.g. after a failed check): skip the `TAKEN` check. If `dist/ship/jam-gallery` still exists, reuse it; otherwise clone and switch as above but use `git -C dist/ship/jam-gallery fetch origin` and `switch -C game/<handle> origin/game/<handle>`. Delete `dist/ship/jam-gallery/games/<handle>` (so files removed since the last ship go too), copy, run the key check, commit, then `git -C dist/ship/jam-gallery push --force -u origin game/<handle>`. Skip `gh pr create`; the open PR updates itself and its check re-runs.
 
-**If `gh` can't work for this entry** (no GitHub account, login fails, fork blocked): build a zip instead and stop. Copy the same files into `dist/zip/games/<handle>/`, run the key check on that folder, then `python3 -m zipfile -c dist/<handle>.zip dist/zip/games` (Windows: `py -m zipfile`; Git Bash has no `zip`). Tell them to bring `dist/<handle>.zip` to Nathan by AirDrop or USB stick; he opens the PR with `facilitator/ship-from-zip.sh`. Set `Gallery PR: zip to Nathan`.
+**If `gh` can't work for this entry** (no GitHub account, login fails, fork blocked): build a zip instead and stop. Delete `dist/zip` first, copy the same files into `dist/zip/games/<handle>/`, run the key check on that folder, then `python3 -m zipfile -c dist/<handle>.zip dist/zip/games` (Windows: `py -m zipfile`; Git Bash has no `zip`). Show them where it is (macOS: `open dist`; Windows: `explorer.exe dist`) and tell them to bring `dist/<handle>.zip` to Nathan (AirDrop, USB stick, or however he says); he opens the PR with `facilitator/ship-from-zip.sh`. Set `Gallery PR: zip to Nathan`.
 
 ## 4. Done
 
