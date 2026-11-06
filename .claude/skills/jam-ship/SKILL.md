@@ -9,7 +9,7 @@ Get the game into the public gallery. Nathan merges PRs from **3:30 PM**, so shi
 
 Gallery repo: `SchoolofCreativeTechnology/jam-gallery`. Gallery site: https://stec-jam-gallery.vercel.app. (One place each; if Nathan says the gallery moved, use what he says.)
 
-Do the steps in order. Stop at the first step that fails. Tell them up front: shipping runs several `gh` and `git` commands, and Claude Code will ask permission for each one; they should read it and choose Yes.
+Do the steps in order. Stop at the first step that fails. Tell them up front: shipping runs several `gh` and `git` commands. Most are pre-approved in `.claude/settings.json`; if Claude Code asks permission for one, they should read it and choose Yes.
 
 ## 1. Check it's ready
 

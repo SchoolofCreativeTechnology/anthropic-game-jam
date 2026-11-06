@@ -32,6 +32,12 @@
     // Browsers block game code opened straight from a file. Say so instead of showing a blank page.
     if (location.protocol === 'file:') document.getElementById('file-warning').hidden = false;
   </script>
+  <!-- Starter hint, shown only on your own machine. Delete it once your game has a title screen. -->
+  <div id="start-hint" hidden style="position:fixed;left:0;right:0;bottom:12px;text-align:center;color:#aaa;font:14px/1.4 system-ui,sans-serif;pointer-events:none">
+    New here? Read <code>README.md</code>, then type <code>/jam-start</code> in Claude Code.</div>
+  <script>
+    if (location.hostname === 'localhost' || location.hostname === '127.0.0.1') document.getElementById('start-hint').hidden = false;
+  </script>
   <script type="module" src="./main.js"></script>
 </body>
 </html>
