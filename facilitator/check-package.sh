@@ -46,12 +46,12 @@ grep -qxF '.claude/settings.local.json' "$root/.gitignore" || err ".gitignore la
 bash -n "$root/install.sh" || err "install.sh has a syntax error"
 python3 -m json.tool "$root/.claude/settings.json" >/dev/null || err ".claude/settings.json is not valid JSON"
 
-# Preview must stay on loopback: no npx serve (binds every interface), no unbound http.server 8000.
+# Preview must stay on loopback: no npx serve (binds every interface), no http.server without --bind.
 if grep -rnE 'npx serve' "$root" >/dev/null; then
   err "npx serve in docs (use the bound http.server form): $(grep -rnE 'npx serve' "$root" | sed "s#$root/##" | cut -d: -f1,2 | tr '\n' ' ')"
 fi
-if grep -rn 'http.server 8000' "$root" | grep -v -- '--bind 127.0.0.1' >/dev/null; then
-  err "http.server 8000 without --bind 127.0.0.1: $(grep -rn 'http.server 8000' "$root" | grep -v -- '--bind 127.0.0.1' | sed "s#$root/##" | cut -d: -f1,2 | tr '\n' ' ')"
+if grep -rnE -- '-m http\.server' "$root" | grep -v -- '--bind 127.0.0.1' >/dev/null; then
+  err "http.server without --bind 127.0.0.1: $(grep -rnE -- '-m http\.server' "$root" | grep -v -- '--bind 127.0.0.1' | sed "s#$root/##" | cut -d: -f1,2 | tr '\n' ' ')"
 fi
 
 # Interfaces other files depend on: DEVLOG headings and jam-state fields.

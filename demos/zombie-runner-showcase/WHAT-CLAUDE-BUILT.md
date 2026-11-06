@@ -1,6 +1,6 @@
 # What Claude built: zombie runner showcase
 
-Open it with `python3 -m http.server`, then go to `/` (or `/?lowfx` for weak machines).
+Open it with `python3 -m http.server 8000 --bind 127.0.0.1`, then go to `/` (or `/?lowfx` for weak machines).
 
 ## Techniques
 - **Characters (Blender, headless Python):** five rigged low-poly characters with beveled smooth parts, faces, straps, torn hems and distinct silhouettes (the brute has shoulder spikes). They have Idle, Run, Walk, Jump, Attack and Lunge clips and are 72 to 90 KB each, about 400 KB in total. Smooth shading, no UVs and frame-step-2 animation keep the files small.

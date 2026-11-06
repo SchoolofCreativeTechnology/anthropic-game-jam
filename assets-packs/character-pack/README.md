@@ -58,4 +58,4 @@ Rotation conventions: a positive spine X rotation leans forward, and a positive 
 
 ## Preview
 
-Serve the folder (`python3 -m http.server`) and open `test.html`. Optional query settings: `?clip=Run`, `?only=Brute`, `&close`, `&side`.
+Serve the folder (`python3 -m http.server 8000 --bind 127.0.0.1`) and open `test.html`. Optional query settings: `?clip=Run`, `?only=Brute`, `&close`, `&side`.

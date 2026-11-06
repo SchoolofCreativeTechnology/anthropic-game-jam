@@ -47,7 +47,7 @@ Drafted by the build terminal from your context kit and your card; you edit and 
 
 - 
 
-## Assets plan (within the card's limits)
+## Assets plan (the card's safe budget)
 
 - 
 

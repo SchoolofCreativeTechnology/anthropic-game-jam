@@ -43,7 +43,7 @@ Official jam clock; compare the local time (`date +%H:%M`) to this table, not el
 | by 1:15 | `m1` | gray box: the one action with plain shapes; restart works |
 | by 1:45 | `m2` | loop: fail, score, restart under 2 seconds. **Playtest 1** |
 | by 2:30 | `m3` | feel: numbers in `tuning.js`; feedback on the action and on failure. **Playtest 2** |
-| by 3:15 | `m4` | look: models, textures, sound within the card's limits; gameplay frozen |
+| by 3:15 | `m4` | look: models, textures, sound around the card's safe budget; gameplay frozen |
 | by 3:30 | `ship` | `JUDGING.md` self-check, `/jam-ship` |
 
 **At 12:45**, before building, tell them to switch the build terminal to the build model: `/model claude-code/vmc/jam-lead`. Once, in one line.
