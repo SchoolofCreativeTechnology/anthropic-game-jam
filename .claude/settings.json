@@ -64,14 +64,15 @@
       "Bash(cp * dist/zip/games/*)",
       "Bash(grep -rlE * dist/ship/jam-gallery/games/*)",
       "Bash(grep -rlE * dist/zip/games/*)",
-      "Bash(python3 -m zipfile -c dist/*)",
-      "Bash(py -m zipfile -c dist/*)",
-      "Bash(python -m zipfile -c dist/*)",
+      "Bash(python3 -m zipfile -c dist/* dist/zip/games)",
+      "Bash(py -m zipfile -c dist/* dist/zip/games)",
+      "Bash(python -m zipfile -c dist/* dist/zip/games)",
       "Bash(open dist)",
       "Bash(explorer.exe dist)"
     ],
     "ask": [
-      "Bash(git push *)"
+      "Bash(git push *)",
+      "Bash(git -C * push*)"
     ],
     "deny": [
       "Read(./.claude/settings.local.json)",
@@ -113,7 +114,11 @@
       "Bash(. *settings.local.json*)",
       "Bash(cp *.claude*)",
       "Bash(git -C * add -f*)",
-      "Bash(git -C * add --force*)"
+      "Bash(git -C * add --force*)",
+      "Bash(gh *settings.local.json*)",
+      "Bash(gh *.claude*)",
+      "Bash(git -C * add * -f*)",
+      "Bash(git -C * add * --force*)"
     ]
   }
 }

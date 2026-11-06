@@ -67,7 +67,7 @@ Keep `devlog/RUNBOOK.md` true to the game: how to run it (macOS and Windows Git 
 When `Phase` is ship, or they say they're shipping:
 
 - **Reflection:** ask the three questions in the file one at a time and write their answers. Do not draft their reflection for them.
-- **AI Use Disclosure:** draft from `devlog/AI-USE-LOG.md` plus `meta.json` `ai_assets` and the git log. Ask them to correct it and to add what they did themselves. It must say neither more nor less than what happened. If the log is empty, say so and help them backfill from what they remember before you finalize disclosure.
+- **AI Use Disclosure:** draft from `devlog/AI-USE-LOG.md` plus `meta.json` `ai_assets` and the git log. Ask them to correct it and to add what they did themselves. It must say neither more nor less than what happened. The plan block is known: the build terminal wrote their answers into `context/` and drafted `context/BUILD-PLAN.md`, and they edited and approved it (`git log` shows when); say so without asking. Once they confirm, remove any "Draft" label and `[to confirm ...]` placeholders. If the log is empty, say so and help them backfill from what they remember before you finalize disclosure.
 
 Both sections need real content before `/jam-ship` will publish the game.
 
