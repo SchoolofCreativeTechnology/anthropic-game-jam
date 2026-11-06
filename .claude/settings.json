@@ -135,7 +135,24 @@
       "Bash(cp -a ./ *)",
       "Bash(python3 -m zipfile -c * .)",
       "Bash(py -m zipfile -c * .)",
-      "Bash(python -m zipfile -c * .)"
+      "Bash(python -m zipfile -c * .)",
+      "Bash(export -p*)",
+      "Bash(export)",
+      "Bash(declare*)",
+      "Bash(typeset*)",
+      "Bash(node -e*)",
+      "Bash(node -p*)",
+      "Bash(node --eval*)",
+      "Bash(node --print*)",
+      "Bash(python3 -c*)",
+      "Bash(py -c*)",
+      "Bash(python -c*)",
+      "Bash(*AUTH_TOKEN*)",
+      "Bash(*ANTHROPIC_*)",
+      "Bash(*os.environ*)",
+      "Bash(*process.env*)",
+      "Bash(*getenv*)",
+      "Bash(*/environ*)"
     ]
   }
 }
