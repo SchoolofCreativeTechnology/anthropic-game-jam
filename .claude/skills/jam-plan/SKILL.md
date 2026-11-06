@@ -28,7 +28,7 @@ Go through `context/CONCEPT.md`, `MECHANIC.md`, `LOOK.md`, `SCOPE.md`, one secti
 
 - Ask the section's question in your own plain words. Point at the example only if they're unsure what size of answer fits.
 - Write their answer after the `>`, in their words. Tidy spelling; don't upgrade the idea or add detail.
-- MECHANIC's one action is the card's action. SCOPE's In list starts from the card's Allowed list plus anything past it they chose to keep in after the nudge; Stretch is the card's Stretch plus what they chose to defer.
+- MECHANIC's one action is the card's action. SCOPE's In list starts from the card's Allowed list plus anything past it they chose to keep in after the nudge; Stretch is the card's Stretch plus what they chose to defer, in their words. What they defer goes in Stretch, not Out (Out is only what they chose to drop); a cheaper version you suggested goes in only if they picked it.
 - On a team, if members disagree, ask them to decide and note whose call it was.
 - Vague answer: one follow-up, then write what they said and move on.
 
