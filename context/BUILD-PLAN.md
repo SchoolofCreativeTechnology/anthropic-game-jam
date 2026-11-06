@@ -24,9 +24,9 @@ Drafted by the build terminal from your context kit and your card; you edit and 
 
 | Milestone | By | Done when (your words) |
 |---|---|---|
-| M1 gray box | 1:15 | |
-| M2 loop | 1:45 | |
-| M3 feel | 2:30 | |
+| M1 gray box | 1:30 | |
+| M2 loop | 2:00 | |
+| M3 feel | 2:45 | |
 | M4 look | 3:15 | |
 | M5 ship | 3:30 | |
 

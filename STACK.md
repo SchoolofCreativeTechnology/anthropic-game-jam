@@ -46,7 +46,7 @@ flowchart LR
 
 | Layer | Tool | Notes |
 |---|---|---|
-| Schedule | 10:00 onboarding; 11:00 AM to 4:00 PM | Plan 11:00 to 12:30; build from 12:45; playtests after M2 and M3; ship by **3:30 PM**. See `AGENTS.md`. |
+| Schedule | 11:00 onboarding; to 4:00 PM | Plan 11:30 to 12:45; build from 1:00; playtests after M2 and M3; ship by **3:30 PM**. See `AGENTS.md`. |
 | Game | three.js 0.186.1 | Loaded from a CDN in `index.html`. Plain HTML and JavaScript modules; nothing to install. |
 | AI | Claude Code on jam models (Vercel AI Gateway, capped key) | Build terminal (`jam-companion`) plans with you and sends tasks to builder subagents. Devlog terminal (`devlog`) records your decisions in your words. |
 | Preview | Python or Node | `python3 -m http.server 8000 --bind 127.0.0.1` (Windows: `py -m http.server 8000 --bind 127.0.0.1`) then http://localhost:8000. |

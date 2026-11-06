@@ -1,6 +1,6 @@
 # Anthropic Game Jam
 
-Onboarding **10:00**, jam **11:00 AM to 4:00 PM**. Each entry (solo, or a team of up to three on one machine) builds one small three.js browser game with Claude Code. The makers think and decide; Claude plans with them, then builds. The game idea, the decisions, and the record of those decisions belong to the makers.
+Onboarding **11:00**, jam to **4:00 PM**. Each entry (solo, or a team of up to three on one machine) builds one small three.js browser game with Claude Code. The makers think and decide; Claude plans with them, then builds. The game idea, the decisions, and the record of those decisions belong to the makers.
 
 Claude Code runs on jam models through a capped gateway key (set up by `install.sh`, stored in `.claude/settings.local.json`). The models are small and cheap, so keep the core small: one repeatable action from your starter card. Around that loop, the game can be as rich as the makers choose once it's fun.
 
@@ -16,7 +16,7 @@ The kit names four virtual models; Nathan decides what each points to and can ch
 | Model | Used by |
 |---|---|
 | `claude-code/vmc/jam-guide` | build terminal, onboarding and plan block (default) |
-| `claude-code/vmc/jam-lead` | build terminal, build block: at **12:45** run `/model claude-code/vmc/jam-lead` |
+| `claude-code/vmc/jam-lead` | build terminal, build block: at **1:00** run `/model claude-code/vmc/jam-lead` |
 | `claude-code/vmc/jam-build` | `jam-builder` subagent |
 | `claude-code/vmc/jam-cheap` | `jam-helper` subagent and the devlog terminal |
 
@@ -26,17 +26,17 @@ Everyone follows the same clock, even if they started late. `Start time` in `jam
 
 | Clock | Block | Outcome |
 |---|---|---|
-| 10:00 to 11:00 | Onboarding | Kit installed, key works, GitHub login, handle (`/jam-start`) |
-| 11:00 to 12:30 | Plan (`/jam-plan`) | `context/` filled and `context/BUILD-PLAN.md` approved |
-| 12:30 to 12:45 | Break | |
-| 12:45 to 3:30 | Build, test, ship | M1 to M5, two playtests, `/jam-ship` by 3:30 |
+| 11:00 to 11:30 | Onboarding | Kit installed, key works, GitHub login, handle (`/jam-start`) |
+| 11:30 to 12:45 | Plan (`/jam-plan`) | `context/` filled and `context/BUILD-PLAN.md` approved |
+| 12:45 to 1:00 | Break | |
+| 1:00 to 3:30 | Build, test, ship | M1 to M5, two playtests, `/jam-ship` by 3:30 |
 | 3:30 to 4:00 | Gallery | Nathan merges; games go live |
 
 | By | Milestone | Done when |
 |---|---|---|
-| 1:15 | M1 gray box | The one action works with plain shapes; restart works |
-| 1:45 | M2 loop | Fail, score, restart in under 2 seconds. **Playtest 1** |
-| 2:30 | M3 feel | Tuning numbers live in `tuning.js`; feedback on the action and on failure. **Playtest 2** |
+| 1:30 | M1 gray box | The one action works with plain shapes; restart works |
+| 2:00 | M2 loop | Fail, score, restart in under 2 seconds. **Playtest 1** |
+| 2:45 | M3 feel | Tuning numbers live in `tuning.js`; feedback on the action and on failure. **Playtest 2** |
 | 3:15 | M4 look | Models, textures, sound around the card's safe budget; gameplay frozen |
 | 3:30 | M5 ship | `JUDGING.md` self-check, `/jam-ship` |
 

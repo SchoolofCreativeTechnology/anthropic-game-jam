@@ -8,10 +8,10 @@ How the pieces fit together: [STACK.md](STACK.md).
 
 | Time | What |
 |---|---|
-| **10:00** | Onboarding: install, key, GitHub login (`/jam-start`) |
-| **11:00** | Plan: research, pick a card, write your context kit and build plan (`/jam-plan`) |
-| **12:30** | Break |
-| **12:45** | Build: milestones M1 to M5, two playtests |
+| **11:00** | Onboarding: install, key, GitHub login (`/jam-start`) |
+| **11:30** | Plan: research, pick a card, write your context kit and build plan (`/jam-plan`) |
+| **12:45** | Break |
+| **1:00** | Build: milestones M1 to M5, two playtests |
 | **3:30 PM** | Ship (`/jam-ship`) |
 | **4:00 PM** | Games live in the gallery; judging until 5:30 |
 
@@ -36,25 +36,27 @@ Your game is built around **one action the player repeats**, from one starter ca
 
 Then log in to GitHub: `gh auth login`. You don't need a Claude account: the jam gives you a key.
 
-## Install (at 10:00)
+## Install (at 11:00)
 
 You'll get a slip with a gateway key. Run this from your home folder (not Desktop or Documents if they sync to OneDrive or iCloud):
 
 ```bash
 cd ~
-curl -fsSL https://raw.githubusercontent.com/SchoolofCreativeTechnology/anthropic-game-jam/main/install.sh | bash
+bash <(curl -fsSL https://raw.githubusercontent.com/SchoolofCreativeTechnology/anthropic-game-jam/main/install.sh)
 ```
 
 It checks your tools, downloads the kit into `anthropic-game-jam/`, and asks for the key (typing stays hidden). Paste with Cmd+V on a Mac; in Git Bash, right-click and choose Paste, or press Shift+Insert (Ctrl+V doesn't paste there). The key is saved in `.claude/settings.local.json`, which is never committed or shipped. Don't paste it anywhere else.
 
 ## Start
 
+The installer opens Claude for you and starts `/jam-start`. To come back later (or if it didn't open):
+
 ```bash
-cd anthropic-game-jam
+cd ~/anthropic-game-jam
 claude --agent jam-companion
 ```
 
-When Claude asks whether to trust this folder, choose **Yes** (otherwise the jam settings don't load). Then type `/jam-start`. At 11:00, `/jam-plan`. At 12:45, run `/model claude-code/vmc/jam-lead` and start building.
+When Claude asks whether you trust this folder, press **↓** to **Yes, I trust this folder**, then Enter (the default is No, which closes Claude). If you opened Claude yourself, type `/jam-start`. At 11:30, `/jam-plan`. At 1:00, run `/model claude-code/vmc/jam-lead` and start building.
 
 ## Your devlog
 
@@ -79,7 +81,7 @@ The window may stay blank; that's fine, leave it open. Open http://localhost:800
 
 ## Playtests
 
-After M2 (about 1:45) and M3 (about 2:30), someone from another entry plays yours for 3 minutes. Say nothing; just watch. Then ask "Tell me the story of what just happened." Tell your devlog what you saw before you change anything.
+After M2 (about 2:00) and M3 (about 2:45), someone from another entry plays yours for 3 minutes. Say nothing; just watch. Then ask "Tell me the story of what just happened." Tell your devlog what you saw before you change anything.
 
 ## Ship
 
