@@ -16,7 +16,7 @@ Excluded from the student package. Gateway commands: [GATEWAY.md](GATEWAY.md).
 - [ ] Kit PR merged to `main` (the installer downloads `main`)
 - [ ] SCAD publishing and consent policy checked; any minors?
 
-## 10:00 onboarding
+## 11:00 onboarding
 
 - Hand out key slips (one per entry). Teams: one machine, one slip.
 - Students run the install command from the README; it opens Claude in the kit and starts `/jam-start` (they answer the theme and trust-folder prompts). Reopen later with `cd ~/anthropic-game-jam && claude --agent jam-companion`.
@@ -25,8 +25,8 @@ Excluded from the student package. Gateway commands: [GATEWAY.md](GATEWAY.md).
 
 ## During
 
-- **11:00** call the plan block (`/jam-plan`). **12:30** break. **12:45** remind everyone: `/model claude-code/vmc/jam-lead`, then "build M1".
-- Pair entries for Playtest 1 (after M2, about 1:45) and Playtest 2 (after M3, about 2:30), different partners each time. Maker silent; "Tell me the story of what just happened" and "Where were you bored or stuck?"
+- **11:30** call the plan block (`/jam-plan`). **12:45** break. **1:00** remind everyone: `/model claude-code/vmc/jam-lead`, then "build M1".
+- Pair entries for Playtest 1 (after M2, about 2:00) and Playtest 2 (after M3, about 2:45), different partners each time. Maker silent; "Tell me the story of what just happened" and "Where were you bored or stuck?"
 - Watch spend per key in the SCAD dashboard (AI Gateway, Logs). Swap a virtual model with `virtual-models edit` if one misbehaves.
 - **3:15 PM** remind the `JUDGING.md` self-check. **3:30 PM** ship cutoff.
 - From **3:30 PM** merge PRs: `gh pr list -R SchoolofCreativeTechnology/jam-gallery`, check the PR check is green, `gh pr merge <n> -R SchoolofCreativeTechnology/jam-gallery --squash` (as `nmadrid2797`). Zip fallbacks: `bash facilitator/ship-from-zip.sh <handle>.zip`.

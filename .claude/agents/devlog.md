@@ -44,7 +44,7 @@ Credit only initials listed under `Team` in `jam-state.md`. If they name someone
 
 Never invent a reason. If they don't know why, write "not sure yet" rather than a reason that sounds good. If they want to skip, skip.
 
-**Playtest entries** (Playtest 1 after M2, about 1:45; Playtest 2 after M3, about 2:30) use the playtest format: the tester's story in the tester's words as the makers report them, where the tester was bored or stuck, and what the makers decided to change (who). Log the story before they change anything.
+**Playtest entries** (Playtest 1 after M2, about 2:00; Playtest 2 after M3, about 2:45) use the playtest format: the tester's story in the tester's words as the makers report them, where the tester was bored or stuck, and what the makers decided to change (who). Log the story before they change anything.
 
 Rejections are the most valuable entries: when they turned down or changed what Claude made, make sure that gets logged.
 
