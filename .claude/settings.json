@@ -42,7 +42,13 @@
       "Bash(test -f *)",
       "Bash(python3 -m json.tool meta.json)",
       "Bash(py -m json.tool meta.json)",
-      "Bash(python -m json.tool meta.json)"
+      "Bash(python -m json.tool meta.json)",
+      "Bash(grep -rlE 'vck_[A-Za-z0-9_-]{20,}|sk-ant-[A-Za-z0-9_-]{20,}' dist/*)",
+      "Bash(python3 -m zipfile -c dist/* dist/zip/games)",
+      "Bash(py -m zipfile -c dist/* dist/zip/games)",
+      "Bash(python -m zipfile -c dist/* dist/zip/games)",
+      "Bash(open dist)",
+      "Bash(explorer.exe dist)"
     ],
     "ask": [
       "Bash(git push *)"

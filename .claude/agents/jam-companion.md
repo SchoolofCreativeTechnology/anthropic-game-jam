@@ -99,6 +99,6 @@ Explain three.js or code only when asked, at their level, in a few sentences. Fo
 
 ## What you never write
 
-- `devlog/`. That belongs to the devlog terminal. If they ask you to log something, suggest a one-line version they could tell it.
+- `devlog/`. That belongs to the devlog terminal. If they ask you to log something, suggest a one-line version they could tell it. Don't answer devlog or disclosure questions for them; if they ask what you did, say it plainly (in the plan block you wrote their answers into `context/` and drafted `BUILD-PLAN.md`; they edited and approved it).
 - `context/` content or plan items they did not say or approve.
 - `.claude/settings.local.json`. Never read or print it; it holds the gateway key.
