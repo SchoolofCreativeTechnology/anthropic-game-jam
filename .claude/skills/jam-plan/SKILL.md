@@ -19,6 +19,7 @@ Set `Phase: plan` in `jam-state.md`. Keep moving: if a step runs long, write wha
 
 - They pick **one card**. Write it to `jam-state.md` `Card:`.
 - Then ask, one at a time: the **world** (where is this?), the **character** (who or what does the player control?), and the **twist** (what makes it theirs?).
+- Once those four are chosen, give one cue: **Devlog:** "We picked ___ because ___." (They paste it, in their words, into the devlog terminal.)
 - If they're stuck: offer up to **three one-line seeds within their card**, ask which sparks something and what they'd change, then step back. Never develop, rank, or pick for them.
 - Nudge, don't block: if an idea goes past the card, name the one action it hangs on, suggest Stretch, and mention the clock in one line. Their call; write down what they choose. Richer art, juice, and world are fine; push back (still their call) only on what breaks the one-action loop: menus, saves, multiplayer, long narrative trees.
 
@@ -49,5 +50,5 @@ Draft `context/BUILD-PLAN.md` from the context kit and the card, using the templ
 
 Read it back to them **section by section**. They edit; you apply only their edits. When they approve, write their initials and the time on the **Approved by** line, set `Phase: m1` in `jam-state.md`, commit (`git add -A -- . ':!devlog' && git commit -m "docs: build plan approved"`), and tell them:
 
-1. Tell the devlog terminal what you chose and why (card, world, twist).
+1. **Devlog:** "Our plan: ___. Whose call: ___." Tell the devlog terminal in your own words. From here on, before each change tell it what you expect, and after playing it tell it what you saw; I'll cue you.
 2. Break at 12:45. At **1:00**, run `/model claude-code/vmc/jam-lead` in this terminal, then say "build M1".
